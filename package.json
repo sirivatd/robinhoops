@@ -1,5 +1,39 @@
 {
   "name": "trade-blitz",
   "private": true,
-  "dependencies": {}
+  "dependencies": {
+    "@babel/core": "^7.1.2",
+    "@babel/preset-env": "^7.1.0",
+    "@babel/preset-react": "^7.0.0",
+    "babel-loader": "^8.0.4",
+    "react": "^16.5.2",
+    "react-dom": "^16.5.2",
+    "react-redux": "^5.0.7",
+    "redux": "^4.0.0",
+    "redux-logger": "^3.0.6",
+    "webpack": "^4.20.2",
+    "webpack-cli": "^3.1.2"
+  },
+  "description": "TradeBlitz is a web application that allows users to invest in the top athletes.",
+  "version": "1.0.0",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib",
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "webpack": "webpack --mode=development --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sirivatd/trade-blitz.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sirivatd/trade-blitz/issues"
+  },
+  "homepage": "https://github.com/sirivatd/trade-blitz#readme"
 }
