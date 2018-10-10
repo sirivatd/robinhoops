@@ -13,8 +13,8 @@
  *= require_self
  */
 
-@import "reset.css";
-@import "animate.css";
-@import "greeting.css";
-@import "login.css";
-@import "signup.css";
+@import "./reset.css";
+@import "./animate.css";
+@import "./greeting.css";
+@import "./login.css";
+@import "./signup.css";
