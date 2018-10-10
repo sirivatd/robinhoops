@@ -43,6 +43,11 @@
   justify-content: space-between;
 }
 
+.login-link-text {
+  font-family: "Source Sans Pro", sans-serif;
+  margin-right: 5px;
+}
+
 .signup-first-name-input {
   width: 42%;
   left: 0px;

@@ -102,7 +102,12 @@ class SignUpForm extends React.Component {
               <br />
               <br />
               <br />
-              <div className="login-link">{this.props.navLink}</div>
+              <div className="login-link">
+                <span className="login-link-text">
+                  Already have an account?
+                </span>
+                {this.props.navLink}
+              </div>
               <br />
               <br />
               <br />
