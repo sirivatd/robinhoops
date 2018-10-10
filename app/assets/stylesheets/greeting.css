@@ -69,6 +69,7 @@
   font-family: "Noto Sans", sans-serif;
   border-radius: 7px;
   font-size: 15px;
+  border: none;
 }
 
 .hero-button:hover {
@@ -207,4 +208,16 @@ hr {
 
 .lock-icon {
   max-height: 61px;
+}
+
+.free-content {
+  visibility: hidden;
+}
+
+#seen {
+  visibility: visible;
+}
+
+.design-content {
+  visibility: hidden;
 }

@@ -1,7 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { withRouter } from "react-router";
 
-const Greeting = ({ currentUser, logout }) => {
+const Greeting = ({ currentUser, logout, history }) => {
   $(document).ready(function() {
     console.log("The document is ready");
     $(".free-section").hover(function() {
@@ -34,6 +35,28 @@ const Greeting = ({ currentUser, logout }) => {
     e.target.classList.remove("black");
   };
 
+  const animateFree = e => {
+    document.getElementById("free-content").setAttribute("id", "seen");
+
+    document
+      .getElementsByClassName("free-content")[0]
+      .classList.add("animated");
+    document
+      .getElementsByClassName("free-content")[0]
+      .classList.add("fadeInUp");
+  };
+
+  const animateDesign = e => {
+    document.getElementById("design-content").setAttribute("id", "seen");
+
+    document
+      .getElementsByClassName("design-content")[0]
+      .classList.add("animated");
+    document
+      .getElementsByClassName("design-content")[0]
+      .classList.add("fadeInUp");
+  };
+
   const personalGreeting = () => (
     <hgroup className="header-group">
       <h2 className="header-name">Hi, {currentUser.first_name}!</h2>
@@ -60,7 +83,10 @@ const Greeting = ({ currentUser, logout }) => {
           <h3 className="hero-description animated fadeInUp delay-2s">
             TradeBlitz lets you invest in top athletes for free.
           </h3>
-          <button className="hero-button animated fadeInUp delay-3s">
+          <button
+            onClick={() => history.push("/signup")}
+            className="hero-button animated fadeInUp delay-3s"
+          >
             Sign Up
           </button>
         </div>
@@ -72,14 +98,14 @@ const Greeting = ({ currentUser, logout }) => {
           />
         </div>
       </section>
-      <section className="free-section">
+      <section className="free-section" onMouseEnter={animateFree}>
         <div className="free-visual">
           <video autoPlay loop className="free-img" data-vscid="ggqk0uytb">
             <source src="https://d2ue93q3u507c2.cloudfront.net/assets/marketing/images/home_redesign/Android_trading.mp4" />
           </video>
         </div>
 
-        <div className="free-content">
+        <div className="free-content" id="free-content">
           <h2 className="free-text">Invest for free.</h2>
           <h3 className="free-description">
             We believe that the financial system should
@@ -109,8 +135,8 @@ const Greeting = ({ currentUser, logout }) => {
         </div>
       </section>
 
-      <section className="design-section">
-        <div className="design-content">
+      <section className="design-section" onMouseEnter={animateDesign}>
+        <div className="design-content" id="design-content">
           <h2 className="design-text">No manual needed.</h2>
           <h3 className="design-description">
             We've designed TradeBlitz from the ground up{" "}
@@ -235,4 +261,4 @@ const Greeting = ({ currentUser, logout }) => {
   );
 };
 
-export default Greeting;
+export default withRouter(Greeting);

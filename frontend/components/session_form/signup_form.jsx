@@ -25,9 +25,11 @@ class SignUpForm extends React.Component {
   }
   renderErrors() {
     return (
-      <ul>
+      <ul className="error-list">
         {this.props.errors.map((error, i) => (
-          <li key={`error-${i}`}>{error}</li>
+          <li className="error-text" key={`error-${i}`}>
+            {error} <br /> <br />
+          </li>
         ))}
       </ul>
     );
@@ -44,7 +46,6 @@ class SignUpForm extends React.Component {
         </div>
         <div className="signup-content">
           <form onSubmit={this.handleSubmit} className="signup-form-box">
-            {this.renderErrors()}
             <h1 className="signup-header">Make Your Money Move</h1>
             <h3 className="signup-description">
               TradeBlitz lets you invest in athletes you love, commission-free.
@@ -102,6 +103,8 @@ class SignUpForm extends React.Component {
             </div>
           </form>
           <div className="signup-visual-box">
+            {this.renderErrors()}
+
             <img
               className="signup-gif"
               src="https://static1.squarespace.com/static/548f6ec1e4b0ccccd2f1c61b/t/5adabb11352f53992d9621fd/1524284188353/bb2.gif"
