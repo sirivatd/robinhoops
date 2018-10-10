@@ -2,6 +2,12 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 const Greeting = ({ currentUser, logout }) => {
+  $(document).ready(function() {
+    console.log("The document is ready");
+    $(".security-section").hover(function() {
+      console.log("Hovered");
+    });
+  });
   const sessionLinks = () => (
     <nav className="login-signup">
       <Link className="login-logout" to="/login">
@@ -26,7 +32,7 @@ const Greeting = ({ currentUser, logout }) => {
       <div className="fixed-nav-bar">
         <img
           className="logo-img"
-          src="https://marketplace.canva.com/MACP0S1Ht8Q/1/0/thumbnail_large/canva-black-with-target-icon-sports-logo-MACP0S1Ht8Q.jpg"
+          src="https://media.glassdoor.com/sqll/1167765/robinhood-squarelogo-1530549970728.png"
         />
         {currentUser ? personalGreeting() : sessionLinks()}
       </div>
@@ -156,13 +162,46 @@ const Greeting = ({ currentUser, logout }) => {
           </h3>
         </div>
       </section>
-
-      <section className="web-section">
-        <h1>Web Section</h1>
-      </section>
-
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
       <footer>
-        <h1>Footer</h1>
+        <hr />
+        <a href="mailto:don@sirivat.com">
+          <img
+            className="footer-icon"
+            src="https://d2ue93q3u507c2.cloudfront.net/assets/marketing/images/social/email%402x.png"
+            alt="email-icon"
+          />
+        </a>
+        <a href="https://www.instagram.com/donsirivat/">
+          <img
+            className="footer-icon"
+            src="https://d2ue93q3u507c2.cloudfront.net/assets/marketing/images/social/instagram%402x.png"
+            alt="instagram-icon"
+          />
+        </a>
+        <a href="https://www.facebook.com/don.sirivat">
+          <img
+            className="footer-icon"
+            src="https://d2ue93q3u507c2.cloudfront.net/assets/marketing/images/social/facebook%402x.png"
+            alt="facebook-icon"
+          />
+        </a>
+        <a href="https://www.linkedin.com/in/donsirivat/">
+          <img
+            className="footer-icon"
+            src="https://d2ue93q3u507c2.cloudfront.net/assets/marketing/images/social/linkedin%402x.png"
+            alt="linkedin-icon"
+          />
+        </a>
+        <hr />
+        <p className="footer-text">
+          Created by Don Sirivat. Inspired by Robinhood.
+        </p>
       </footer>
     </div>
   );

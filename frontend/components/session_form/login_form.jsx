@@ -82,7 +82,7 @@ class LoginForm extends React.Component {
 
             <br />
             <br />
-            <input className="session-submit" type="submit" value="Sign In" />
+            <input className="login-submit" type="submit" value="Sign In" />
           </div>
         </form>
         <br />

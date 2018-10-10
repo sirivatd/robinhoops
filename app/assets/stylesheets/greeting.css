@@ -177,3 +177,26 @@
   font-size: 16px;
   color: white;
 }
+
+.footer-icon {
+  max-height: 40px;
+  margin-top: 40px;
+  margin-bottom: 40px;
+  margin-left: 40px;
+  margin-right: 40px;
+}
+
+footer {
+  text-align: center;
+}
+
+.footer-text {
+  margin-top: 40px;
+  margin-bottom: 40px;
+  color: gray;
+  font-family: "Noto Sans", sans-serif;
+}
+
+hr {
+  width: 70%;
+}

@@ -35,51 +35,80 @@ class SignUpForm extends React.Component {
 
   render() {
     return (
-      <div className="login-form-container">
-        <form onSubmit={this.handleSubmit} className="login-form-box">
-          Make Your Money Move
-          <br />
-          {this.renderErrors()}
-          <div className="login-form">
-            <br />
-            <input
-              type="text"
-              value={this.state.first_name}
-              onChange={this.update("first_name")}
-              className="login-input"
-            />
-            <input
-              type="text"
-              value={this.state.last_name}
-              onChange={this.update("last_name")}
-              className="login-input"
-              placeholder="Last name"
-            />
-            <label>
-              Email:
+      <div className="signup-form-container">
+        <div className="logo-container">
+          <img
+            className="logo-img"
+            src="https://media.glassdoor.com/sqll/1167765/robinhood-squarelogo-1530549970728.png"
+          />
+        </div>
+        <div className="signup-content">
+          <form onSubmit={this.handleSubmit} className="signup-form-box">
+            {this.renderErrors()}
+            <h1 className="signup-header">Make Your Money Move</h1>
+            <h3 className="signup-description">
+              TradeBlitz lets you invest in athletes you love, commission-free.
+            </h3>
+            <div className="signup-form">
+              <div className="name-inputs">
+                <input
+                  type="text"
+                  value={this.state.first_name}
+                  onChange={this.update("first_name")}
+                  className="signup-first-name-input"
+                  placeholder="First name"
+                />
+                <input
+                  type="text"
+                  value={this.state.last_name}
+                  onChange={this.update("last_name")}
+                  className="signup-last-name-input"
+                  placeholder="Last name"
+                />
+              </div>
+
+              <br />
+              <br />
               <input
                 type="text"
                 value={this.state.email}
                 onChange={this.update("email")}
-                className="login-input"
+                className="signup-email-input"
+                placeholder="Email address"
               />
-            </label>
-            <br />
-            <label>
-              Password:
+              <br />
+              <br />
+              <br />
               <input
                 type="password"
                 value={this.state.password}
                 onChange={this.update("password")}
-                className="login-input"
+                className="signup-password-input"
+                placeholder="Password (min. 6 characters)"
               />
-            </label>
-            <br />
-            <input className="session-submit" type="submit" value="Continue" />
+              <br />
+              <br />
+              <br />
+              <input
+                className="session-submit"
+                type="submit"
+                value="Continue"
+              />
+              <br />
+              <br />
+              <br />
+              <br />
+              <div className="login-link">{this.props.navLink}</div>
+            </div>
+          </form>
+          <div className="signup-visual-box">
+            <img
+              className="signup-gif"
+              src="https://static1.squarespace.com/static/548f6ec1e4b0ccccd2f1c61b/t/5adabb11352f53992d9621fd/1524284188353/bb2.gif"
+              alt="bouncing basketballs"
+            />
           </div>
-        </form>
-        <br />
-        Already started? {this.props.navLink}
+        </div>
       </div>
     );
   }

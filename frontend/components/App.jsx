@@ -21,7 +21,7 @@ const App = () => (
         rel="stylesheet"
       />
       <link
-        href="https://fonts.googleapis.com/css?family=Poppins:300|Source+Sans+Pro:600"
+        href="https://fonts.googleapis.com/css?family=Montserrat:300|Poppins:300|Source+Sans+Pro:600"
         rel="stylesheet"
       />
     </header>
