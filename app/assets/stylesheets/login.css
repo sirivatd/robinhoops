@@ -68,6 +68,16 @@
   background-color: #1ae9aa;
 }
 
+.demo-link {
+  font-family: "Source Sans Pro", sans-serif;
+  text-decoration: none;
+  color: #21ce99;
+}
+
+.demo-link:hover {
+  color: #1ae9aa;
+}
+
 .demo-button {
   font-family: "Source Sans Pro", sans-serif;
   background-color: white;
