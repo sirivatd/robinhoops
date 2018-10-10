@@ -159,10 +159,10 @@
 .security-section {
   margin-top: 50px;
   text-align: center;
-  background-color: rgb(4, 13, 20);
   height: 800px;
   padding-top: 350px;
   overflow: hidden;
+  transition: background-color 0.5s ease;
 }
 
 .security-text {
@@ -201,8 +201,8 @@ hr {
   width: 70%;
 }
 
-.green {
-  background-color: green;
+.black {
+  background-color: rgb(4, 13, 20);
 }
 
 .lock-icon {

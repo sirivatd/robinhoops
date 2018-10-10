@@ -4,14 +4,16 @@ import { Link } from "react-router-dom";
 const Greeting = ({ currentUser, logout }) => {
   $(document).ready(function() {
     console.log("The document is ready");
-    $(".security-section").hover(function() {
+    $(".free-section").hover(function() {
       console.log("Hovered");
+      console.log("Hovering on body");
+      $(".free-section").toggleClass("black");
     });
 
-    $("body").hover(function() {
-      console.log("Hovering on body");
-      $(".free-section").toggleClass("green");
-    });
+    // $("body").hover(function() {
+    //   console.log("Hovering on body");
+    //   $(".free-section").toggleClass("black");
+    // });
   });
   const sessionLinks = () => (
     <nav className="login-signup">
@@ -23,6 +25,14 @@ const Greeting = ({ currentUser, logout }) => {
       </Link>
     </nav>
   );
+
+  const addColorAnimation = e => {
+    e.target.classList.add("black");
+  };
+
+  const removeColorAnimation = e => {
+    e.target.classList.remove("black");
+  };
 
   const personalGreeting = () => (
     <hgroup className="header-group">
@@ -143,7 +153,11 @@ const Greeting = ({ currentUser, logout }) => {
         </div>
       </section>
 
-      <section className="security-section">
+      <section
+        className="security-section"
+        onMouseEnter={addColorAnimation}
+        onMouseLeave={removeColorAnimation}
+      >
         <div className="security-content">
           <img
             className="lock-icon"
