@@ -7,6 +7,11 @@ const Greeting = ({ currentUser, logout }) => {
     $(".security-section").hover(function() {
       console.log("Hovered");
     });
+
+    $("body").hover(function() {
+      console.log("Hovering on body");
+      $(".free-section").toggleClass("green");
+    });
   });
   const sessionLinks = () => (
     <nav className="login-signup">
@@ -173,34 +178,38 @@ const Greeting = ({ currentUser, logout }) => {
         <a href="mailto:don@sirivat.com">
           <img
             className="footer-icon"
-            src="https://d2ue93q3u507c2.cloudfront.net/assets/marketing/images/social/email%402x.png"
+            src="https://image.flaticon.com/icons/svg/59/59965.svg"
             alt="email-icon"
           />
         </a>
-        <a href="https://www.instagram.com/donsirivat/">
+        <a href="https://www.instagram.com/donsirivat">
           <img
             className="footer-icon"
-            src="https://d2ue93q3u507c2.cloudfront.net/assets/marketing/images/social/instagram%402x.png"
+            src="https://image.freepik.com/free-icon/instagram-social-network-logo-of-photo-camera_318-64651.jpg"
             alt="instagram-icon"
           />
         </a>
         <a href="https://www.facebook.com/don.sirivat">
           <img
             className="footer-icon"
-            src="https://d2ue93q3u507c2.cloudfront.net/assets/marketing/images/social/facebook%402x.png"
+            src="https://image.freepik.com/free-icon/facebook-logo_318-49940.jpg"
             alt="facebook-icon"
           />
         </a>
         <a href="https://www.linkedin.com/in/donsirivat/">
           <img
             className="footer-icon"
-            src="https://d2ue93q3u507c2.cloudfront.net/assets/marketing/images/social/linkedin%402x.png"
+            src="https://cdns.iconmonstr.com/wp-content/assets/preview/2012/240/iconmonstr-linkedin-3.png"
             alt="linkedin-icon"
           />
         </a>
+
         <hr />
         <p className="footer-text">
-          Created by Don Sirivat. Inspired by Robinhood.
+          Created by Don Sirivat
+          <br />
+          <br />
+          Inspired by Robinhood.com
         </p>
       </footer>
     </div>

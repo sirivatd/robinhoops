@@ -200,3 +200,7 @@ footer {
 hr {
   width: 70%;
 }
+
+.green {
+  background-color: green;
+}
