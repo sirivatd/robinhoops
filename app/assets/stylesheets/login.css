@@ -68,13 +68,15 @@
   background-color: #1ae9aa;
 }
 
-.demo-link {
+.demo-button {
   font-family: "Source Sans Pro", sans-serif;
-  text-decoration: none;
+  background-color: white;
+  border: none;
   color: #21ce99;
+  font-size: 15px;
 }
 
-.demo-link:hover {
+.demo-button:hover {
   color: #1ae9aa;
 }
 

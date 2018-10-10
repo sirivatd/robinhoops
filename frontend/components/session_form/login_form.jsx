@@ -11,6 +11,45 @@ class LoginForm extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
+  loginAsGuest() {
+    const emailArr = "demo@demo.com".split("");
+    const passwordArr = "password".split("");
+    const button = document.getElementById("login-button");
+    this.setState({ email: "", password: "" }, () =>
+      this.loginAsGuestHelper(emailArr, passwordArr, button)
+    );
+  }
+
+  loginAsGuestHelper(emailArr, passwordArr, button) {
+    if (emailArr.length > 0) {
+      this.setState(
+        {
+          email: this.state.email + emailArr.shift()
+        },
+        () => {
+          window.setTimeout(
+            () => this.loginAsGuestHelper(emailArr, passwordArr, button),
+            70
+          );
+        }
+      );
+    } else if (passwordArr.length > 0) {
+      this.setState(
+        {
+          password: this.state.password + passwordArr.shift()
+        },
+        () => {
+          window.setTimeout(
+            () => this.loginAsGuestHelper(emailArr, passwordArr, button),
+            100
+          );
+        }
+      );
+    } else {
+      button.click();
+    }
+  }
+
   update(field) {
     return e =>
       this.setState({
@@ -75,14 +114,24 @@ class LoginForm extends React.Component {
             </label>
             <br />
             <br />
-            {this.props.navLink}
+            <button
+              className="demo-button"
+              onClick={this.loginAsGuest.bind(this)}
+            >
+              Try the demo
+            </button>
             <br />
             <br />
             {this.renderErrors()}
 
             <br />
             <br />
-            <input className="login-submit" type="submit" value="Sign In" />
+            <input
+              id="login-button"
+              className="login-submit"
+              type="submit"
+              value="Sign In"
+            />
           </div>
         </form>
         <br />
