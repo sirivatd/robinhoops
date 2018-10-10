@@ -32,19 +32,21 @@ const Greeting = ({ currentUser, logout }) => {
       </div>
       <section className="hero-section">
         <div className="hero-content">
-          <h1 className="hero-text">Investing.</h1>
+          <h1 className="hero-text animated fadeInUp">Investing,</h1>
           <br />
-          <h1 className="hero-text">Reimagined.</h1>
+          <h1 className="hero-text animated fadeInUp delay-1s">Reimagined.</h1>
           <br />
-          <h3 className="hero-description">
+          <h3 className="hero-description animated fadeInUp delay-2s">
             TradeBlitz lets you invest in top athletes for free.
           </h3>
-          <button className="hero-button">Sign Up</button>
+          <button className="hero-button animated fadeInUp delay-3s">
+            Sign Up
+          </button>
         </div>
 
         <div className="hero-visual">
           <img
-            className="hero-img"
+            className="hero-img animated fadeInDown delay-2s"
             src="https://venturebeat.com/wp-content/uploads/2015/12/robinhood-animated.gif?resize=322%2C642&strip=all"
           />
         </div>
