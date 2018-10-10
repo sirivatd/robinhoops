@@ -16,6 +16,14 @@ const App = () => (
         href="https://fonts.googleapis.com/css?family=Open+Sans|Roboto:700"
         rel="stylesheet"
       />
+      <link
+        href="https://fonts.googleapis.com/css?family=Roboto:500"
+        rel="stylesheet"
+      />
+      <link
+        href="https://fonts.googleapis.com/css?family=Poppins:300|Source+Sans+Pro:600"
+        rel="stylesheet"
+      />
     </header>
     <Route exact path="/" component={GreetingContainer} />
     <AuthRoute exact path="/login" component={LoginFormContainer} />

@@ -1,7 +1,7 @@
 import React from "react";
 import { withRouter } from "react-router-dom";
 
-class LoginForm extends React.Component {
+class SignUpForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -25,11 +25,9 @@ class LoginForm extends React.Component {
   }
   renderErrors() {
     return (
-      <ul className="error-list">
+      <ul>
         {this.props.errors.map((error, i) => (
-          <li className="error-text" key={`error-${i}`}>
-            {error}
-          </li>
+          <li key={`error-${i}`}>{error}</li>
         ))}
       </ul>
     );
@@ -38,21 +36,27 @@ class LoginForm extends React.Component {
   render() {
     return (
       <div className="login-form-container">
-        <div className="img-container">
-          <img
-            className="login-image"
-            src="https://d2ue93q3u507c2.cloudfront.net/assets/generated_assets/94977d34f99015525dcd0fc9987fcbe6.png"
-            alt="A plain green background"
-          />
-        </div>
         <form onSubmit={this.handleSubmit} className="login-form-box">
-          <h2 className="login-header">Welcome to TradeBlitz</h2>
+          Make Your Money Move
+          <br />
+          {this.renderErrors()}
           <div className="login-form">
             <br />
-            <label className="email-text">
-              Email or Username
-              <br />
-              <br />
+            <input
+              type="text"
+              value={this.state.first_name}
+              onChange={this.update("first_name")}
+              className="login-input"
+            />
+            <input
+              type="text"
+              value={this.state.last_name}
+              onChange={this.update("last_name")}
+              className="login-input"
+              placeholder="Last name"
+            />
+            <label>
+              Email:
               <input
                 type="text"
                 value={this.state.email}
@@ -61,11 +65,8 @@ class LoginForm extends React.Component {
               />
             </label>
             <br />
-            <br />
-            <label className="password-text">
-              Password
-              <br />
-              <br />
+            <label>
+              Password:
               <input
                 type="password"
                 value={this.state.password}
@@ -74,21 +75,14 @@ class LoginForm extends React.Component {
               />
             </label>
             <br />
-            <br />
-            {this.props.navLink}
-            <br />
-            <br />
-            {this.renderErrors()}
-
-            <br />
-            <br />
-            <input className="session-submit" type="submit" value="Sign In" />
+            <input className="session-submit" type="submit" value="Continue" />
           </div>
         </form>
         <br />
+        Already started? {this.props.navLink}
       </div>
     );
   }
 }
 
-export default withRouter(LoginForm);
+export default withRouter(SignUpForm);
