@@ -38,7 +38,10 @@ class SignUpForm extends React.Component {
   render() {
     return (
       <div className="signup-form-container">
-        <div className="logo-container">
+        <div
+          className="logo-container"
+          onClick={() => this.props.history.push("/")}
+        >
           <img
             className="logo-img"
             src="https://media.glassdoor.com/sqll/1167765/robinhood-squarelogo-1530549970728.png"
