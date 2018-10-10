@@ -166,6 +166,11 @@
   transition: background-color 0.5s ease;
 }
 
+.security-content {
+  padding-top: 100px;
+  padding-bottom: 100px;
+}
+
 .security-text {
   font-family: "Roboto", sans-serif;
   font-size: 35px;
