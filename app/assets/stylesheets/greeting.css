@@ -204,3 +204,7 @@ hr {
 .green {
   background-color: green;
 }
+
+.lock-icon {
+  max-height: 61px;
+}

@@ -145,7 +145,12 @@ const Greeting = ({ currentUser, logout }) => {
 
       <section className="security-section">
         <div className="security-content">
-          <img className="lock-icon" src="" />
+          <img
+            className="lock-icon"
+            src="https://www.iconsdb.com/icons/preview/white/lock-xxl.png"
+          />
+          <br />
+          <br />
           <h2 className="security-text">Trusted by Millions in the USA</h2>
           <h3 className="security-description">
             We're serious about security and use cutting-edge technology to
