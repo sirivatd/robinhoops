@@ -37,6 +37,7 @@
   display: flex;
   justify-content: space-between;
   align-content: center;
+  overflow: hidden;
 }
 
 .hero-text {
@@ -97,6 +98,7 @@
   margin-top: 50px;
   display: flex;
   justify-content: space-around;
+  overflow: hidden;
 }
 
 .free-img {
@@ -107,6 +109,7 @@
 .design-section {
   display: flex;
   justify-content: space-around;
+  overflow: hidden;
 }
 
 .design-img {
@@ -159,6 +162,7 @@
   background-color: rgb(4, 13, 20);
   height: 800px;
   padding-top: 350px;
+  overflow: hidden;
 }
 
 .security-text {

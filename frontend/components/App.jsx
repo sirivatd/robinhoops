@@ -16,8 +16,8 @@ const App = () => (
         href="https://fonts.googleapis.com/css?family=Open+Sans|Roboto:700"
         rel="stylesheet"
       />
-      <GreetingContainer />
     </header>
+    <Route exact path="/" component={GreetingContainer} />
     <AuthRoute exact path="/login" component={LoginFormContainer} />
     <AuthRoute exact path="/signup" component={SignupFormContainer} />
   </div>
