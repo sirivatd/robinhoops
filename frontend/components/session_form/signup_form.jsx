@@ -100,6 +100,9 @@ class SignUpForm extends React.Component {
               <br />
               <br />
               <div className="login-link">{this.props.navLink}</div>
+              <br />
+              <br />
+              <br />
             </div>
           </form>
           <div className="signup-visual-box">

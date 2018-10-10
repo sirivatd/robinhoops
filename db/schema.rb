@@ -10,10 +10,44 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_09_185636) do
+ActiveRecord::Schema.define(version: 2018_10_10_213039) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "athletes", force: :cascade do |t|
+    t.string "name", null: false
+    t.integer "twitter_sentiment_positive"
+    t.integer "twitter_sentiment_negative"
+    t.string "twitter_handle"
+    t.integer "jersey_number"
+    t.string "team_name"
+    t.string "position"
+    t.string "height"
+    t.string "weight"
+    t.date "birthdate"
+    t.string "birthplace"
+    t.string "highschool"
+    t.string "college"
+    t.string "image_url"
+    t.integer "games_played", null: false
+    t.float "two_pointers_made", null: false
+    t.float "two_pointer_percentage", null: false
+    t.float "three_pointers_made", null: false
+    t.float "three_point_percentage", null: false
+    t.float "field_goal_percentage", null: false
+    t.float "rebounds", null: false
+    t.float "assists", null: false
+    t.float "points_per_game", null: false
+    t.float "turnovers", null: false
+    t.float "steals", null: false
+    t.float "blocks", null: false
+    t.float "plus_minus_per_game", null: false
+    t.string "symbol", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["symbol"], name: "index_athletes_on_symbol"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", null: false
