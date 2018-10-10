@@ -14,6 +14,237 @@
  *= require_self
  */
 
+.fixed-nav-bar {
+  background-color: white;
+  height: 70px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 5;
+}
+
+.logo-img {
+  width: 70px;
+  height: 70px;
+  float: left;
+  margin-left: 20px;
+}
+
 .login-signup {
-  background-color: red;
+  float: right;
+  vertical-align: middle;
+  margin-top: 25px;
+}
+
+.login-logout {
+  margin-right: 35px;
+  text-decoration: none;
+  color: #21ce99;
+  font-family: "Noto Sans", sans-serif;
+}
+
+.login-logout:hover {
+  color: #1ae9aa;
+}
+
+.hero-section {
+  margin-top: 120px;
+  display: flex;
+  justify-content: space-between;
+  align-content: center;
+}
+
+.hero-text {
+  margin: 0;
+  font-family: "Roboto", sans-serif;
+  font-size: 60px;
+}
+
+.hero-visual {
+  margin-right: 100px;
+}
+
+.hero-content {
+  vertical-align: middle;
+  margin-left: 50px;
+  margin-top: 100px;
+}
+
+.hero-description {
+  font-family: "Open Sans", sans-serif;
+}
+
+.hero-button {
+  margin-top: 30px;
+  width: 88px;
+  height: 48px;
+  color: white;
+  background-color: #21ce99;
+  font-family: "Noto Sans", sans-serif;
+  border-radius: 7px;
+  font-size: 15px;
+}
+
+.hero-button:hover {
+  background-color: #1ae9aa;
+}
+
+.hero-img {
+  width: 260px;
+  height: 520px;
+}
+
+.free-text {
+  font-family: "Roboto", sans-serif;
+  font-size: 35px;
+}
+
+.free-content {
+  margin-top: 75px;
+}
+.free-description {
+  margin: 0;
+  font-family: "Open Sans", sans-serif;
+  font-size: 16px;
+}
+
+.free-section {
+  margin-top: 50px;
+  display: flex;
+  justify-content: space-around;
+}
+
+.free-img {
+  height: 520px;
+  width: 345px;
+}
+
+.design-section {
+  display: flex;
+  justify-content: space-around;
+}
+
+.design-img {
+  width: 800px;
+  height: 800px;
+  margin-right: -500px;
+}
+
+.design-content {
+  margin-top: 100px;
+  margin-left: 30px;
+}
+
+.design-text {
+  font-family: "Roboto", sans-serif;
+  font-size: 35px;
+}
+
+.design-description {
+  margin: 0;
+  font-family: "Open Sans", sans-serif;
+  font-size: 16px;
+}
+
+.design-testimony {
+  background-image: url("/assets/images/trade_testimony_2.png");
+}
+
+.quote-image {
+  width: 13px;
+  height: 10px;
+}
+
+.testimony-text {
+  font-family: "Open Sans", sans-serif;
+  font-size: 13px;
+  color: gray;
+}
+
+.author-name {
+  font-family: "Open Sans", sans-serif;
+  font-size: 13px;
+  color: gray;
+  font-weight: bolder;
+}
+
+.security-section {
+  margin-top: 50px;
+  text-align: center;
+  background-color: rgb(4, 13, 20);
+  height: 800px;
+  padding: auto;
+}
+
+.security-text {
+  font-family: "Roboto", sans-serif;
+  font-size: 35px;
+  color: white;
+}
+
+.security-description {
+  margin: 0;
+  font-family: "Open Sans", sans-serif;
+  font-size: 16px;
+  color: white;
+}
+
+/* CSS reset
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
+}
+body {
+  line-height: 1;
+}
+ol,
+ul {
+  list-style: none;
+}
+blockquote,
+q {
+  quotes: none;
+}
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: "";
+  content: none;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
 }

@@ -8,7 +8,14 @@ import { AuthRoute, ProtectedRoute } from "../util/route_util";
 const App = () => (
   <div>
     <header>
-      <h1>TradeBlitz</h1>
+      <link
+        href="https://fonts.googleapis.com/css?family=Noto+Sans"
+        rel="stylesheet"
+      />
+      <link
+        href="https://fonts.googleapis.com/css?family=Open+Sans|Roboto:700"
+        rel="stylesheet"
+      />
       <GreetingContainer />
     </header>
     <AuthRoute exact path="/login" component={LoginFormContainer} />
