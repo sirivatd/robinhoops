@@ -2,60 +2,50 @@
 
 one:
   name: MyString
-  twitter_sentiment_positive: 1
-  twitter_sentiment_negative: 1
-  twitter_handle: MyString
-  jersey_number: 1
+  team_acronym: MyString
   team_name: MyString
-  position: MyString
-  height: MyString
-  weight: MyString
-  birthdate: 2018-10-10
-  birthplace: MyString
-  highschool: MyString
-  college: MyString
-  image_url: MyString
   games_played: 1
-  two_pointers_made: 1.5
-  two_pointer_percentage: 1.5
-  three_pointers_made: 1.5
-  three_point_percentage: 1.5
+  minutes_per_game: 1.5
+  field_goals_attempted_per_game: 1.5
+  field_goals_made_per_game: 1.5
   field_goal_percentage: 1.5
-  rebounds: 1.5
-  assists: 1.5
+  free_throw_percentage: 1.5
+  three_point_attempted_per_game: 1.5
+  three_point_made_per_game: 1.5
+  three_point_percentage: 1.5
   points_per_game: 1.5
-  turnovers: 1.5
-  steals: 1.5
-  blocks: 1.5
-  plus_minus_per_game: 1.5
-  symbol: MyString
+  offensive_rebounds_per_game: 1.5
+  defensive_rebounds_per_game: 1.5
+  rebounds_per_game: 1.5
+  assists_per_game: 1.5
+  steals_per_game: 1.5
+  blocks_per_game: 1.5
+  turnovers_per_game: 1.5
+  player_efficiency_rating: 1.5
+  twitter_sentiment: 1.5
+  image_url: MyString
 
 two:
   name: MyString
-  twitter_sentiment_positive: 1
-  twitter_sentiment_negative: 1
-  twitter_handle: MyString
-  jersey_number: 1
+  team_acronym: MyString
   team_name: MyString
-  position: MyString
-  height: MyString
-  weight: MyString
-  birthdate: 2018-10-10
-  birthplace: MyString
-  highschool: MyString
-  college: MyString
-  image_url: MyString
   games_played: 1
-  two_pointers_made: 1.5
-  two_pointer_percentage: 1.5
-  three_pointers_made: 1.5
-  three_point_percentage: 1.5
+  minutes_per_game: 1.5
+  field_goals_attempted_per_game: 1.5
+  field_goals_made_per_game: 1.5
   field_goal_percentage: 1.5
-  rebounds: 1.5
-  assists: 1.5
+  free_throw_percentage: 1.5
+  three_point_attempted_per_game: 1.5
+  three_point_made_per_game: 1.5
+  three_point_percentage: 1.5
   points_per_game: 1.5
-  turnovers: 1.5
-  steals: 1.5
-  blocks: 1.5
-  plus_minus_per_game: 1.5
-  symbol: MyString
+  offensive_rebounds_per_game: 1.5
+  defensive_rebounds_per_game: 1.5
+  rebounds_per_game: 1.5
+  assists_per_game: 1.5
+  steals_per_game: 1.5
+  blocks_per_game: 1.5
+  turnovers_per_game: 1.5
+  player_efficiency_rating: 1.5
+  twitter_sentiment: 1.5
+  image_url: MyString

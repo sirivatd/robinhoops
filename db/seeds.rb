@@ -5,3 +5,24 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+require 'net/http'
+require 'json'
+
+uri = URI("http://nba-players.herokuapp.com/players-stats/")
+http = Net::HTTP.new(uri.host, uri.port)
+req = Net::HTTP::Get.new(uri.path)
+resp = http.request(req)
+
+players_data = JSON.parse(resp.body)
+
+players_data.each do |player|
+    name = player["name"].split(" ")
+    first_name = name[0]
+    last_name = name[1]
+
+    image_url = "http://nba-players.herokuapp.com/players/#{last_name}/#{first_name}"
+    twitter_sentiment = 0
+
+    Athlete.create({name: player["name"], team_acronym: player["team_acronym"], team_name: player["team-name"], games_played: player["games_played"], minutes_per_game: player["minutes_per_game"], field_goals_attempted_per_game: player["field_goals_attempted_per_game"], field_goals_made_per_game: player["field_goals_made_per_game"], field_goal_percentage: player["field_goal_percentage"], free_throw_percentage: player["free_throw_percentage"], three_point_attempted_per_game: player["three_point_attempted_per_game"], three_point_made_per_game: player["three_point_made_per_game"], three_point_percentage: player["three_point_percentage"], points_per_game: player["points_per_game"], offensive_rebounds_per_game: player["offensive_rebounds_per_game"], defensive_rebounds_per_game: player["defensive_rebounds_per_game"], rebounds_per_game: player["rebounds_per_game"], assists_per_game: player["assists_per_game"], steals_per_game: player["steals_per_game"], blocks_per_game: player["blocks_per_game"], turnovers_per_game: player["turnovers_per_game"], player_efficiency_rating: player["player_efficiency_rating"], twitter_sentiment: twitter_sentiment, image_url: image_url})
+end
