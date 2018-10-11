@@ -13,8 +13,48 @@
 }
 
 .free-stock-result {
-  margin-top: 200px;
+  margin-top: 70px;
   display: none;
+}
+
+#player-info {
+  background-color: white;
+  width: 50%;
+  margin: 0 auto;
+  box-shadow: 0 3px 8px rgba(50, 50, 50, 0.17);
+  height: 200px;
+  border-radius: 10px;
+  padding: 15px;
+}
+
+#free-price {
+  margin-top: 0;
+  font-family: "Mukta", sans-serif;
+  font-size: 34px;
+}
+
+#free-player-name {
+  font-family: "Noto Sans", sans-serif;
+}
+
+#free-stock-button {
+  background-color: #21ce99;
+  color: white;
+  border: none;
+  width: 88px;
+  height: 48px;
+  font-size: 17px;
+  border-radius: 10px;
+  font-family: "Noto Sans", sans-serif;
+}
+
+#free-stock-button:hover {
+  background-color: #1ae9aa;
+}
+
+#free-player-picture {
+  max-width: 200px;
+  margin-bottom: 0;
 }
 .free-stock-pop-up {
   background-color: #171718;

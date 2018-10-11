@@ -30,6 +30,10 @@ const App = () => (
         href="https://fonts.googleapis.com/css?family=Knewave|Monoton|Orbitron"
         rel="stylesheet"
       />
+      <link
+        href="https://fonts.googleapis.com/css?family=Mukta"
+        rel="stylesheet"
+      />
     </header>
     <Switch>
       <ProtectedRoute exact path="/home" component={HomeContainer} />

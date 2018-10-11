@@ -1,4 +1,5 @@
 import React from "react";
+import { fetchAthlete } from "./../../util/athlete_api_util";
 
 class Home extends React.Component {
   constructor(props) {
@@ -12,6 +13,7 @@ class Home extends React.Component {
 
   componentDidMount() {
     this.props.fetchStocks();
+    window.fetchAthlete = fetchAthlete;
   }
 
   freeStockClicked(e) {
@@ -22,8 +24,10 @@ class Home extends React.Component {
     freeSection.classList.add("lightSpeedOut");
     this.setState({ freeStock: this.props.stocks[randomNum] });
     console.log(document.getElementsByClassName("free-stock-result")[0]);
-
     document.getElementById("free-stock-view").setAttribute("id", "show");
+    fetchAthlete(this.props.stocks[randomNum].athlete_id).then(athlete => {
+      this.setState({ freeAthlete: Object.values(athlete)[0] });
+    });
   }
 
   render() {
@@ -36,12 +40,24 @@ class Home extends React.Component {
 
     const freeStockView = () => (
       <div id="free-stock-view" className="free-stock-result">
-        <h1>{this.state.freeStock.initial_price}</h1>
-        <h3>{this.state.freeStock.athlete_id}</h3>
+        <img
+          id="free-player-picture"
+          src={this.state.freeAthlete.image_url}
+          alt="Player picture"
+        />
+
+        <div id="player-info">
+          <h1 id="free-price">${this.state.freeStock.initial_price}</h1>
+          <h3 id="free-player-name">{this.state.freeAthlete.name}</h3>
+          <br />
+          <hr />
+          <br />
+          <button id="free-stock-button">Next</button>
+        </div>
       </div>
     );
 
-    console.log("Rendering");
+    console.log(this.state.freeAthlete);
 
     return (
       <div className="home-section">
@@ -59,7 +75,7 @@ class Home extends React.Component {
             </button>
           </nav>
         </div>
-        {this.state.freeStock ? freeStockView() : loader()}
+        {this.state.freeAthlete ? freeStockView() : loader()}
         <div
           id="free-stock-section"
           className="free-stock-pop-up animated jackInTheBox"
