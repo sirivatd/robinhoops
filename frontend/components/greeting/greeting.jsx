@@ -185,11 +185,6 @@ const Greeting = ({ currentUser, logout, history }) => {
         onMouseLeave={removeColorAnimation}
       >
         <div className="security-content">
-          <img
-            className="lock-icon"
-            src="https://www.iconsdb.com/icons/preview/white/padlock-xxl.png"
-          />
-          <br />
           <br />
           <h2 className="security-text">Trusted by Millions in the USA</h2>
           <h3 className="security-description">
@@ -212,8 +207,6 @@ const Greeting = ({ currentUser, logout, history }) => {
           </h3>
         </div>
       </section>
-      <br />
-      <br />
       <br />
       <br />
       <br />
