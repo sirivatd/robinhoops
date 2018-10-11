@@ -56,6 +56,7 @@
   border: 1px solid white;
   background-color: #fafafa;
   padding-left: 20px;
+  font-size: 17px;
 }
 
 .signup-first-name-input:hover {
@@ -83,6 +84,7 @@
   border: 1px solid white;
   background-color: #fafafa;
   padding-left: 20px;
+  font-size: 17px;
 }
 
 .signup-email-input:hover {
@@ -101,6 +103,7 @@
   border: 1px solid white;
   background-color: #fafafa;
   padding-left: 20px;
+  font-size: 17px;
 }
 
 .signup-password-input {
@@ -110,6 +113,7 @@
   border: 1px solid white;
   background-color: #fafafa;
   padding-left: 20px;
+  font-size: 17px;
 }
 .signup-password-input:hover {
   border-color: #cbcbcd;
@@ -129,6 +133,7 @@
   border-radius: 5px;
   border: none;
   font-size: 15px;
+  cursor: pointer;
 }
 
 .session-submit:hover {

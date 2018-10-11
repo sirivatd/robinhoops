@@ -168,7 +168,7 @@ const Greeting = ({ currentUser, logout, history }) => {
             Great app, easy to use. Intuitive interface.
           </p>
           <br />
-          <p className="author-name">Katie from Milwaukee, WI</p>
+          <p className="author-name">Katie from Kenosha, WI</p>
         </div>
 
         <div className="design-visual">

@@ -42,6 +42,8 @@
   border-radius: 5px;
   border: 1px solid white;
   background-color: #fafafa;
+  padding-left: 20px;
+  font-size: 17px;
 }
 
 .login-input:hover {
@@ -62,6 +64,7 @@
   border-radius: 5px;
   border: none;
   font-size: 15px;
+  cursor: pointer;
 }
 
 .login-submit:hover {

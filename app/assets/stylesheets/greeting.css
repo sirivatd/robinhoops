@@ -70,6 +70,7 @@
   border-radius: 7px;
   font-size: 15px;
   border: none;
+  cursor: pointer;
 }
 
 .hero-button:hover {

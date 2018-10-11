@@ -12,6 +12,10 @@ class LoginForm extends React.Component {
     this.loginAsGuest = this.loginAsGuest.bind(this);
   }
 
+  componentDidMount() {
+    this.props.receiveErrors([]);
+  }
+
   loginAsGuest(e) {
     e.preventDefault();
     const emailArr = "demo@demo.com".split("");
