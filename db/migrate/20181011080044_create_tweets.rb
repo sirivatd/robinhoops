@@ -3,7 +3,7 @@ class CreateTweets < ActiveRecord::Migration[5.2]
     create_table :tweets do |t|
       t.string :body
       t.float :score
-      t.integer :athlete_id
+      t.integer :athlete_id, null: false
 
       t.timestamps
     end
