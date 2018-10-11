@@ -17,7 +17,7 @@ class Stock < ApplicationRecord
         blocks_per_game_score = athlete.blocks_per_game * 400000
         turnovers_per_game_score = athlete.turnovers_per_game * 500000
         player_efficiency_rating_score = (athlete.player_efficiency_rating * 75000000)/100 
-        twitter_sentiment_score = athlete.twitter_sentiment * 50000000
+        twitter_sentiment_score = athlete.twitter_sentiment * 15000000
 
         total_value = games_played_score + minutes_per_game_score + field_goal_percentage_score + field_goals_made_per_game_score + field_goal_percentage_score + free_throw_percentage_score + three_point_made_per_game_score + three_point_percentage_score + points_per_game_score + rebounds_per_game_score + assists_per_game_score + steals_per_game_score + blocks_per_game_score - turnovers_per_game_score + player_efficiency_rating_score + twitter_sentiment_score
 

@@ -1,0 +1,52 @@
+.doge-picture {
+  max-height: 300px;
+  position: absolute;
+  bottom: 0;
+}
+
+.not-found-visual {
+  margin-right: 150px;
+}
+
+.not-found-subtitle {
+  font-family: "Open Sans", sans-serif;
+  font-weight: lighter;
+  font-size: 31px;
+}
+
+.not-found-error-text {
+  font-family: "Open Sans", sans-serif;
+  font-weight: 900;
+  font-size: 36px;
+}
+
+.not-found-button {
+  width: 120px;
+  height: 48px;
+  color: white;
+  background-color: #21ce99;
+  font-family: "Noto Sans", sans-serif;
+  border-radius: 7px;
+  font-size: 15px;
+  border: none;
+}
+
+.not-found-button:hover {
+  background-color: #1ae9aa;
+}
+
+.not-found-description {
+  font-family: "Open Sans", sans-serif;
+  font-size: 18px;
+  font-weight: lighter;
+}
+
+.not-found-section {
+  display: flex;
+  justify-content: space-evenly;
+  overflow: hidden;
+}
+
+.not-found-content {
+  margin-top: 100px;
+}

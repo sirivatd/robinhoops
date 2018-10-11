@@ -39,8 +39,4 @@ end
 Athlete.all.each do |athlete|
     initial_price = Stock.calculate_value(athlete)
     Stock.create({athlete_id: athlete.id, current_price: 0, initial_price: initial_price})
-    if athlete.name == 'LeBron James'
-        Tweet.sync(athlete)
-
-    end
 end
