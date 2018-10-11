@@ -12,6 +12,10 @@
   color: #1ae9aa;
 }
 
+.free-stock-result {
+  margin-top: 200px;
+  display: none;
+}
 .free-stock-pop-up {
   background-color: #171718;
   z-index: 10;
@@ -70,5 +74,5 @@
 }
 
 #show {
-  display: show;
+  display: block;
 }
