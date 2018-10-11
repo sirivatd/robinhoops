@@ -36,5 +36,6 @@ players_data.each do |player|
 end
 
 Athlete.all.each do |athlete|
-    Stock.create({athlete_id: athlete.id, current_price: 0, initial_price: 0})
+    initial_price = Stock.calculate_value(athlete)
+    Stock.create({athlete_id: athlete.id, current_price: 0, initial_price: initial_price})
 end
