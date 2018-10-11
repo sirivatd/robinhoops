@@ -71,6 +71,7 @@
 
 .home-section {
   text-align: center;
+  overflow: hidden;
 }
 
 .free-stock-button {

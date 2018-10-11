@@ -44,6 +44,7 @@ class Home extends React.Component {
           id="free-player-picture"
           src={this.state.freeAthlete.image_url}
           alt="Player picture"
+          className="animated fadeIn"
         />
 
         <div id="player-info">
