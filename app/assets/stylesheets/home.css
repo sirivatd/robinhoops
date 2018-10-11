@@ -11,3 +11,51 @@
 .login-logout-button:hover {
   color: #1ae9aa;
 }
+
+.free-stock-pop-up {
+  background-color: #171718;
+  z-index: 10;
+  color: white;
+  width: 65%;
+  border-radius: 10px;
+  margin: 0 auto;
+  margin-top: 120px;
+  height: 350px;
+  border: 3px solid white;
+  box-shadow: 2px 2px 2px 1px #ccc;
+}
+
+.home-section {
+  text-align: center;
+}
+
+.free-stock-button {
+  background-image: url("https://image.flaticon.com/icons/svg/1043/1043476.svg");
+  height: 100px;
+  width: 100px;
+  margin-top: 50px;
+  background-color: transparent;
+  border: none;
+  margin-left: 10px;
+  margin-right: 10px;
+  transition: width 0.5s ease;
+  transition: height 0.5 ease;
+  background-repeat: no-repeat;
+  cursor: pointer;
+}
+
+.free-stock-header {
+  color: #1ae9aa;
+  font-family: "Knewave", cursive;
+  font-size: 50px;
+}
+
+.free-stock-subtitle {
+  font-family: "Orbitron", sans-serif;
+  font-size: 17px;
+}
+
+.free-stock-button:hover {
+  width: 120px;
+  height: 120px;
+}
