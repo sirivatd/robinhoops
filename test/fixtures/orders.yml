@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  type: 
+  num_share: 1
+  user_id: MyString
+  stock_id: MyString
+  purchase_date: 2018-10-10
+  purchase_price: 1.5
+  total_return: 1.5
+  today_return: 1.5
+  equity: 1.5
+
+two:
+  type: 
+  num_share: 1
+  user_id: MyString
+  stock_id: MyString
+  purchase_date: 2018-10-10
+  purchase_price: 1.5
+  total_return: 1.5
+  today_return: 1.5
+  equity: 1.5

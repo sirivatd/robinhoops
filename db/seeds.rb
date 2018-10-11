@@ -12,6 +12,7 @@ require 'json'
 User.destroy_all
 Athlete.destroy_all
 Stock.destroy_all
+Order.destroy_all
 
 
 uri = URI("http://nba-players.herokuapp.com/players-stats/")
