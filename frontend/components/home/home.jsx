@@ -9,6 +9,7 @@ class Home extends React.Component {
       freeAthlete: {}
     };
     this.freeStockClicked = this.freeStockClicked.bind(this);
+    this.freeStockReceived = this.freeStockReceived.bind(this);
   }
 
   componentDidMount() {
@@ -22,12 +23,21 @@ class Home extends React.Component {
     const freeSection = document.getElementById("free-stock-section");
     freeSection.classList.remove("jackInTheBox");
     freeSection.classList.add("lightSpeedOut");
+    freeSection.setAttribute("id", "hide");
     this.setState({ freeStock: this.props.stocks[randomNum] });
-    console.log(document.getElementsByClassName("free-stock-result")[0]);
-    document.getElementById("free-stock-view").setAttribute("id", "show");
     fetchAthlete(this.props.stocks[randomNum].athlete_id).then(athlete => {
       this.setState({ freeAthlete: Object.values(athlete)[0] });
+      document.getElementById("free-stock-view").setAttribute("id", "show");
     });
+  }
+
+  freeStockReceived(e) {
+    e.preventDefault();
+    const freeStock = document.getElementById("show");
+    console.log(freeStock);
+    freeStock.classList.remove("fadeInUp");
+    freeStock.classList.remove("animated");
+    freeStock.setAttribute("id", "hide");
   }
 
   render() {
@@ -39,7 +49,7 @@ class Home extends React.Component {
     );
 
     const freeStockView = () => (
-      <div id="free-stock-view" className="free-stock-result">
+      <div id="free-stock-view" className="free-stock-result animated fadeInUp">
         <img
           id="free-player-picture"
           src={this.state.freeAthlete.image_url}
@@ -53,13 +63,12 @@ class Home extends React.Component {
           <br />
           <hr />
           <br />
-          <button id="free-stock-button">Next</button>
+          <button onClick={this.freeStockReceived} id="free-stock-button">
+            Next
+          </button>
         </div>
       </div>
     );
-
-    console.log(this.state.freeAthlete);
-
     return (
       <div className="home-section">
         <div className="fixed-nav-bar">
@@ -76,7 +85,9 @@ class Home extends React.Component {
             </button>
           </nav>
         </div>
-        {this.state.freeAthlete ? freeStockView() : loader()}
+        {Object.values(this.state.freeStock).length > 0
+          ? freeStockView()
+          : loader()}
         <div
           id="free-stock-section"
           className="free-stock-pop-up animated jackInTheBox"
