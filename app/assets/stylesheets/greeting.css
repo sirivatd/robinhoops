@@ -224,6 +224,10 @@ hr {
   visibility: visible;
 }
 
+#unseen {
+  visibility: hidden;
+}
+
 .design-content {
   visibility: hidden;
 }
