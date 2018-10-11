@@ -9,9 +9,11 @@ class LoginForm extends React.Component {
       password: ""
     };
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.loginAsGuest = this.loginAsGuest.bind(this);
   }
 
-  loginAsGuest() {
+  loginAsGuest(e) {
+    e.preventDefault();
     const emailArr = "demo@demo.com".split("");
     const passwordArr = "password".split("");
     const button = document.getElementById("login-button");
@@ -114,10 +116,7 @@ class LoginForm extends React.Component {
             </label>
             <br />
             <br />
-            <button
-              className="demo-button"
-              onClick={this.loginAsGuest.bind(this)}
-            >
+            <button className="demo-button" onClick={this.loginAsGuest}>
               Try the demo
             </button>
             <br />
