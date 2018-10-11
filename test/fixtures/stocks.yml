@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  athlete_id: 1
+  current_price: 1.5
+  initial_price: 1.5
+
+two:
+  athlete_id: 1
+  current_price: 1.5
+  initial_price: 1.5
