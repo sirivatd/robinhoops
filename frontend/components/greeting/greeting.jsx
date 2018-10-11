@@ -56,15 +56,6 @@ const Greeting = ({ currentUser, logout, history }) => {
       .getElementsByClassName("design-content")[0]
       .classList.add("fadeInUp");
   };
-
-  const personalGreeting = () => (
-    <hgroup className="header-group">
-      <h2 className="header-name">Hi, {currentUser.first_name}!</h2>
-      <button className="header-button" onClick={logout}>
-        Log Out
-      </button>
-    </hgroup>
-  );
   return (
     <div>
       <div className="fixed-nav-bar">
@@ -72,7 +63,7 @@ const Greeting = ({ currentUser, logout, history }) => {
           className="logo-img"
           src="https://media.glassdoor.com/sqll/1167765/robinhood-squarelogo-1530549970728.png"
         />
-        {currentUser ? personalGreeting() : sessionLinks()}
+        {sessionLinks()}
       </div>
       <section className="hero-section">
         <div className="hero-content">

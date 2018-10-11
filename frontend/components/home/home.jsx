@@ -5,19 +5,23 @@ class Home extends React.Component {
     super(props);
   }
   render() {
-    const personalGreeting = () => (
-      <hgroup className="header-group">
-        <h2 className="header-name">
-          Hi, {this.props.currentUser.first_name}!
-        </h2>
-        <button className="header-button" onClick={this.props.logout}>
-          Log Out
-        </button>
-        <h1>You're on the Home page!</h1>
-      </hgroup>
-    );
     let currentUser = this.props.currentUser;
-    return <div>{personalGreeting()}</div>;
+    return (
+      <div className="fixed-nav-bar">
+        <img
+          className="logo-img"
+          src="https://media.glassdoor.com/sqll/1167765/robinhood-squarelogo-1530549970728.png"
+        />
+        <nav className="login-signup">
+          <button
+            className="login-logout-button"
+            onClick={() => this.props.logout(currentUser)}
+          >
+            Logout
+          </button>
+        </nav>
+      </div>
+    );
   }
 }
 

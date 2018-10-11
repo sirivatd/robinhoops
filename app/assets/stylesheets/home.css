@@ -1,0 +1,13 @@
+.login-logout-button {
+  margin-right: 35px;
+  text-decoration: none;
+  color: #21ce99;
+  font-family: "Noto Sans", sans-serif;
+  background-color: white;
+  border: none;
+  font-size: 16px;
+}
+
+.login-logout-button:hover {
+  color: #1ae9aa;
+}
