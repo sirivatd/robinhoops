@@ -187,7 +187,7 @@ const Greeting = ({ currentUser, logout, history }) => {
         <div className="security-content">
           <img
             className="lock-icon"
-            src="https://www.iconsdb.com/icons/preview/white/lock-xxl.png"
+            src="https://www.iconsdb.com/icons/preview/white/padlock-xxl.png"
           />
           <br />
           <br />
