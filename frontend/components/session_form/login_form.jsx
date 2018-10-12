@@ -99,6 +99,9 @@ class LoginForm extends React.Component {
               <br />
               <br />
               <input
+                onKeyPress={e => {
+                  if (e.key === "Enter") e.preventDefault();
+                }}
                 type="text"
                 value={this.state.email}
                 onChange={this.update("email")}
@@ -112,6 +115,9 @@ class LoginForm extends React.Component {
               <br />
               <br />
               <input
+                onKeyPress={e => {
+                  if (e.key === "Enter") e.preventDefault();
+                }}
                 type="password"
                 value={this.state.password}
                 onChange={this.update("password")}

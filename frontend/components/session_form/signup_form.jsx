@@ -11,6 +11,10 @@ class SignUpForm extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
+  onKeyPress(event) {
+    console.log(event.which);
+  }
+
   componentDidMount() {
     this.props.receiveErrors([]);
   }
