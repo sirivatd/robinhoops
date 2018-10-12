@@ -1,12 +1,14 @@
 import React from "react";
 import { fetchAthlete } from "./../../util/athlete_api_util";
+import { withRouter } from "react-router";
 
 class FreeStock extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       freeStock: {},
-      freeAthlete: {}
+      freeAthlete: {},
+      userId: ""
     };
     this.freeStockClicked = this.freeStockClicked.bind(this);
     this.freeStockReceived = this.freeStockReceived.bind(this);
@@ -24,6 +26,7 @@ class FreeStock extends React.Component {
     freeSection.classList.remove("jackInTheBox");
     freeSection.classList.add("lightSpeedOut");
     freeSection.setAttribute("id", "hide");
+    console.log(this.props.match);
     this.setState({ freeStock: this.props.stocks[randomNum] });
     fetchAthlete(this.props.stocks[randomNum].athlete_id).then(athlete => {
       this.setState({ freeAthlete: Object.values(athlete)[0] });
@@ -33,11 +36,20 @@ class FreeStock extends React.Component {
 
   freeStockReceived(e) {
     e.preventDefault();
+    console.log(this.props.match.params);
     const freeStock = document.getElementById("show");
-    console.log(freeStock);
     freeStock.classList.remove("fadeInUp");
     freeStock.classList.remove("animated");
     freeStock.setAttribute("id", "hide");
+    const newOrder = {
+      num_share: 1,
+      user_id: parseInt(this.props.match.params.user_id),
+      stock_id: this.state.freeStock.id,
+      purchase_price: this.state.freeStock.initial_price
+    };
+    console.log(newOrder);
+    this.props.createOrder(newOrder);
+    console.log(newOrder);
   }
 
   render() {
@@ -119,4 +131,4 @@ class FreeStock extends React.Component {
   }
 }
 
-export default FreeStock;
+export default withRouter(FreeStock);

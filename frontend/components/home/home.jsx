@@ -9,7 +9,7 @@ class Home extends React.Component {
   }
 
   componentDidMount() {
-    this.props.fetchAllOrders();
+    this.props.fetchAllOrders(this.props.currentUser.id);
   }
 
   render() {

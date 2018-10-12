@@ -20,7 +20,7 @@ const mapStateToProps = (
 const mapDispatchToProps = dispatch => ({
   logout: () => dispatch(logout()),
   fetchStocks: () => dispatch(fetchStocks()),
-  fetchAllOrders: () => dispatch(fetchAllOrders())
+  fetchAllOrders: userId => dispatch(fetchAllOrders(userId))
 });
 
 export default connect(

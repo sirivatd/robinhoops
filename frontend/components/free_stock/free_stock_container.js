@@ -3,6 +3,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import FreeStock from "./free_stock";
 import { fetchStocks } from "../../actions/stock_actions";
+import { createOrder } from "../../actions/order_actions";
 
 const mSP = ({ session, entities: { user, stocks } }, ownProps) => {
   return {
@@ -12,7 +13,8 @@ const mSP = ({ session, entities: { user, stocks } }, ownProps) => {
 
 const mDP = dispatch => ({
   logout: () => dispatch(logout()),
-  fetchStocks: () => dispatch(fetchStocks())
+  fetchStocks: () => dispatch(fetchStocks()),
+  createOrder: order => dispatch(createOrder(order))
 });
 
 export default connect(

@@ -37,9 +37,13 @@ const App = () => (
       />
     </header>
     <Switch>
-      <ProtectedRoute exact path="/free-stock" component={FreeStockContainer} />
-
       <ProtectedRoute exact path="/home" component={HomeContainer} />
+      <ProtectedRoute
+        exact
+        path="/:user_id/free-stock"
+        component={FreeStockContainer}
+      />
+
       <AuthRoute exact path="/" component={GreetingContainer} />
       <AuthRoute exact path="/login" component={LoginFormContainer} />
       <AuthRoute exact path="/signup" component={SignupFormContainer} />

@@ -26,7 +26,6 @@ class LoginForm extends React.Component {
     e.preventDefault();
     const user = Object.assign({}, this.state);
     this.props.processForm(user);
-    this.props.history.push("/free-stock");
   }
   renderErrors() {
     return (
@@ -86,12 +85,7 @@ class LoginForm extends React.Component {
             </label>
             <br />
             <br />
-            <button
-              className="demo-button"
-              onClick={this.props.history.push("/")}
-            >
-              Don't have an account?
-            </button>
+            {this.props.navLink}
             <br />
             <br />
             {this.renderErrors()}
