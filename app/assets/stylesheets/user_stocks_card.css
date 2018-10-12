@@ -38,7 +38,31 @@
   );
 }
 
+.order-index-item {
+  height: 60px;
+}
+
+.order-index-item:hover {
+  background-color: #f5f5f5;
+}
+
 .user-stocks-item-price {
   font-size: 16px;
   font-family: "Barlow", sans-serif;
+}
+
+.order-index-item-img {
+  max-height: 50px;
+  float: left;
+}
+
+.order-index-item-athlete-name {
+  display: inline-block;
+  margin: auto;
+  margin-top: 20px;
+}
+
+.user-stocks-item-price {
+  float: right;
+  margin-right: 17px;
 }

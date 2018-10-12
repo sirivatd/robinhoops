@@ -29,7 +29,11 @@ class Home extends React.Component {
     );
 
     const userStocksIndex = () => (
-      <UserStocksIndex orders={this.props.orders} />
+      <UserStocksIndex
+        orders={this.props.orders}
+        currentUser={currentUser}
+        stocks={this.props.stocks}
+      />
     );
 
     return (
