@@ -90,6 +90,11 @@
   cursor: pointer;
 }
 
+#free-stock-button {
+  box-shadow: 0 0 0 0 #1ae9aa;
+  animation: pulse 1.5s infinite cubic-bezier(0.66, 0, 0, 1);
+}
+
 .free-stock-button:focus {
   outline: none;
   border: none;
@@ -121,4 +126,11 @@
 
 .user-stock-card {
   margin-top: 200px;
+  overflow: hidden;
+}
+
+@-webkit-keyframes pulse {
+  to {
+    box-shadow: 0 0 0 145px #1ae9aa;
+  }
 }

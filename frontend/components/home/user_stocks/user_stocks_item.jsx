@@ -14,7 +14,6 @@ class UserStocksItem extends React.Component {
   }
 
   componentDidMount() {
-    console.log(this.props.stocks);
     this.setState({ order: this.props.order });
     fetchStock(this.props.order.stock_id).then(res => {
       this.setState({ stock: res });
@@ -26,9 +25,13 @@ class UserStocksItem extends React.Component {
 
   render() {
     const athlete = Object.values(this.state.athlete)[0];
-    console.log(this.state);
+    console.log(athlete);
+
     const athleteName = () => (
-      <h3 className="order-index-item-athlete-name">{athlete.name}</h3>
+      <div className="order-index-item-athlete-info">
+        <h3 className="order-index-item-athlete-name">{athlete.name}</h3>
+        <h4 className="order-index-item-athlete-team">{athlete.team_name}</h4>
+      </div>
     );
 
     const athleteImage = () => (
@@ -43,7 +46,7 @@ class UserStocksItem extends React.Component {
 
     const itemPrice = () => (
       <h3 className="user-stocks-item-price">
-        ${this.state.order.purchase_price}
+        ${this.state.order.purchase_price.toFixed(2)}
       </h3>
     );
     return (

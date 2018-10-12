@@ -6,10 +6,15 @@
   width: 275px;
   background-color: white;
   overflow-y: scroll;
-  box-shadow: 0 3px 8px rgba(100, 100, 100, 0.5);
+  box-shadow: -1px 4px 18px #c4c4c4;
   border-radius: 2px;
   text-align: center;
   padding: 0;
+  -ms-overflow-style: none;
+}
+
+.user-stocks-card::-webkit-scrollbar {
+  width: 0 !important;
 }
 
 .user-stocks-title {
@@ -44,26 +49,121 @@
 
 .order-index-item:hover {
   background-color: #f5f5f5;
-}
-
-.user-stocks-item-price {
-  font-size: 16px;
-  padding-top: 5px;
-  font-family: "Barlow", sans-serif;
+  cursor: pointer;
 }
 
 .order-index-item-img {
-  max-height: 50px;
+  max-height: 45px;
   float: left;
+  border-radius: 15px;
 }
 
-.order-index-item-athlete-name {
+.order-index-item-athlete-info {
   display: inline-block;
   margin: auto;
   margin-top: 20px;
+  font-size: 13px;
+  font-family: "Biryani", sans-serif;
 }
 
+.order-index-item-athlete-name {
+  font-size: 15px;
+  margin-bottom: 0px;
+  margin-top: 0px;
+}
+
+.order-index-item-athlete-team {
+  font-size: 10px;
+  margin-top: 1px;
+}
 .user-stocks-item-price {
   float: right;
   margin-right: 17px;
+  font-family: "Prompt", sans-serif;
+  font-weight: 100;
+  font-size: 13px;
+  padding-top: 6px;
+}
+
+.user-stocks-options-button {
+  float: right;
+  font-size: 32px;
+  height: 20px;
+  background-color: white;
+  border: none;
+  margin-right: 20px;
+  margin-top: -2px;
+}
+
+.user-stocks-options-button:hover {
+  color: #21ce99;
+  cursor: pointer;
+}
+
+.user-stocks-options-button:active,
+.user-stocks-options-button:focus {
+  outline: 0;
+  border: none;
+  -moz-outline-style: none;
+  color: #21ce99;
+}
+
+.user-stocks-dropdown {
+  box-shadow: -1px 4px 18px #c4c4c4;
+
+  background-color: white;
+  width: 180px;
+  height: 292px;
+  position: fixed;
+  top: 120px;
+  z-index: 99;
+  right: 40px;
+  padding: 0px;
+  text-align: left;
+}
+
+.hidden-menu {
+  display: none;
+}
+
+.user-stocks-options-title {
+  font-family: "Biryani", sans-serif;
+  font-size: 15px;
+  float: left;
+  font-weight: 0;
+  margin-left: 25px;
+  padding-top: 10px;
+}
+
+.user-stocks-options-break-line {
+  width: 100%;
+  display: block;
+  border: none;
+  height: 1px;
+  background: #f2f2f2;
+  background: -webkit-gradient(
+    radial,
+    50% 50%,
+    0,
+    50% 50%,
+    350,
+    from(#f2f2f2),
+    to(white)
+  );
+}
+
+.user-stocks-option {
+  font-family: "Biryani", sans-serif;
+  font-size: 13px;
+  padding-left: 25px;
+  margin-top: 26px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  margin-bottom: 26px;
+}
+
+.user-stocks-option:hover {
+  color: #21ce99;
+  cursor: pointer;
+  border-left: 2px solid #21ce99;
 }

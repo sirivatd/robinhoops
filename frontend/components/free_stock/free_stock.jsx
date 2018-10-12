@@ -16,7 +16,6 @@ class FreeStock extends React.Component {
 
   componentDidMount() {
     this.props.fetchStocks();
-    window.fetchAthlete = fetchAthlete;
   }
 
   freeStockClicked(e) {
@@ -49,7 +48,7 @@ class FreeStock extends React.Component {
     };
     console.log(newOrder);
     this.props.createOrder(newOrder);
-    console.log(newOrder);
+    this.props.history.push("/");
   }
 
   render() {
@@ -70,7 +69,9 @@ class FreeStock extends React.Component {
         />
 
         <div id="player-info">
-          <h1 id="free-price">${this.state.freeStock.initial_price}</h1>
+          <h1 id="free-price">
+            ${this.state.freeStock.initial_price.toFixed(2)}
+          </h1>
           <h3 id="free-player-name">{this.state.freeAthlete.name}</h3>
           <br />
           <hr />
