@@ -1,0 +1,13 @@
+.user-stocks-card {
+  position: fixed;
+  top: 70px;
+  right: 100px;
+  bottom: 10px;
+  width: 22%;
+  background-color: white;
+  overflow-y: scroll;
+  box-shadow: 0 3px 8px rgba(50, 50, 50, 0.17);
+  border-radius: 10px;
+  text-align: center;
+  padding: 0;
+}

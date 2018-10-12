@@ -5,3 +5,10 @@ export const createOrder = order => {
     data: { order }
   });
 };
+
+export const fetchAllOrders = id => {
+  return $.ajax({
+    type: "GET",
+    url: `api/users/${id}/orders`
+  });
+};

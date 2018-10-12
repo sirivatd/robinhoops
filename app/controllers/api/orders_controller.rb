@@ -1,10 +1,10 @@
 class Api::OrdersController < ApplicationController
     def show
-
+        @order - Order.find(params[:id])
     end
 
     def index
-        @orders = Order.all
+        @orders = Order.all.where(:user_id == params[:userId])
     end
 
     def create

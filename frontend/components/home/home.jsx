@@ -1,6 +1,7 @@
 import React from "react";
 import { fetchAthlete } from "./../../util/athlete_api_util";
 import { createOrder } from "./../../util/order_api_util";
+import UserStocksIndex from "./user_stocks/user_stocks_index";
 
 class Home extends React.Component {
   constructor(props) {
@@ -8,7 +9,7 @@ class Home extends React.Component {
   }
 
   componentDidMount() {
-    this.props.fetchStocks();
+    this.props.fetchAllOrders();
   }
 
   render() {
@@ -17,6 +18,18 @@ class Home extends React.Component {
       <span className="cssload-loader">
         <span className="cssload-loader-inner" />
       </span>
+    );
+
+    const userOrders = () => (
+      <ul className="user-stock-card">
+        {this.props.orders.map(order => (
+          <li>{order.purchase_price}</li>
+        ))}
+      </ul>
+    );
+
+    const userStocksIndex = () => (
+      <UserStocksIndex orders={this.props.orders} />
     );
 
     return (
@@ -35,6 +48,9 @@ class Home extends React.Component {
             </button>
           </nav>
         </div>
+        {Object.values(this.props.orders).length > 0
+          ? userStocksIndex()
+          : loader()}
       </div>
     );
   }
