@@ -37,11 +37,12 @@ const App = () => (
       />
     </header>
     <Switch>
+      <ProtectedRoute exact path="/free-stock" component={FreeStockContainer} />
+
       <ProtectedRoute exact path="/home" component={HomeContainer} />
       <AuthRoute exact path="/" component={GreetingContainer} />
       <AuthRoute exact path="/login" component={LoginFormContainer} />
       <AuthRoute exact path="/signup" component={SignupFormContainer} />
-      <ProtectedRoute exact path="/free-stock" component={FreeStockContainer} />
       <Route component={NotFound} />
     </Switch>
   </div>
