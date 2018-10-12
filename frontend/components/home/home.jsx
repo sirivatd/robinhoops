@@ -1,5 +1,6 @@
 import React from "react";
 import { fetchAthlete } from "./../../util/athlete_api_util";
+import { createOrder } from "./../../util/order_api_util";
 
 class Home extends React.Component {
   constructor(props) {
@@ -10,11 +11,24 @@ class Home extends React.Component {
     };
     this.freeStockClicked = this.freeStockClicked.bind(this);
     this.freeStockReceived = this.freeStockReceived.bind(this);
+    this.addFreeStock = this.addFreeStock.bind(this);
   }
 
   componentDidMount() {
     this.props.fetchStocks();
     window.fetchAthlete = fetchAthlete;
+  }
+
+  addFreeStock() {
+    const newOrder = {
+      order_type: "BUY",
+      num_share: 1,
+      user_id: this.props.currentUser.id,
+      stock_id: this.state.freeStock.id,
+      purchase_price: this.state.freeStock.initial_price
+    };
+    console.log(newOrder);
+    createOrder(newOrder).then(res => console.log(res));
   }
 
   freeStockClicked(e) {
@@ -38,6 +52,7 @@ class Home extends React.Component {
     freeStock.classList.remove("fadeInUp");
     freeStock.classList.remove("animated");
     freeStock.setAttribute("id", "hide");
+    this.addFreeStock();
   }
 
   render() {

@@ -10,7 +10,8 @@ const mapStateToProps = (
   ownProps
 ) => {
   return {
-    stocks: Object.values(stocks)
+    stocks: Object.values(stocks),
+    currentUser: users[session.id]
   };
 };
 
