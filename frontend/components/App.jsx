@@ -6,6 +6,7 @@ import SignupFormContainer from "./session_form/signup_form_container";
 import { AuthRoute, ProtectedRoute } from "../util/route_util";
 import HomeContainer from "./home/home_container";
 import NotFound from "./not_found";
+import FreeStockContainer from "./free_stock/free_stock_container";
 
 const App = () => (
   <div>
@@ -40,6 +41,7 @@ const App = () => (
       <AuthRoute exact path="/" component={GreetingContainer} />
       <AuthRoute exact path="/login" component={LoginFormContainer} />
       <AuthRoute exact path="/signup" component={SignupFormContainer} />
+      <ProtectedRoute exact path="/free-stock" component={FreeStockContainer} />
       <Route component={NotFound} />
     </Switch>
   </div>
