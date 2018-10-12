@@ -3,11 +3,42 @@
   top: 70px;
   right: 100px;
   bottom: 10px;
-  width: 22%;
+  width: 275px;
   background-color: white;
   overflow-y: scroll;
-  box-shadow: 0 3px 8px rgba(50, 50, 50, 0.17);
-  border-radius: 10px;
+  box-shadow: 0 3px 8px rgba(100, 100, 100, 0.5);
+  border-radius: 2px;
   text-align: center;
   padding: 0;
+}
+
+.user-stocks-title {
+  font-family: "Biryani", sans-serif;
+  font-size: 15px;
+  float: left;
+  font-weight: 0;
+  margin-left: 15px;
+  padding-top: 10px;
+}
+
+.user-stocks-break-line {
+  width: 100%;
+  display: block;
+  border: none;
+  height: 1px;
+  background: #f2f2f2;
+  background: -webkit-gradient(
+    radial,
+    50% 50%,
+    0,
+    50% 50%,
+    350,
+    from(#f2f2f2),
+    to(white)
+  );
+}
+
+.user-stocks-item-price {
+  font-size: 16px;
+  font-family: "Barlow", sans-serif;
 }

@@ -5,6 +5,8 @@ const UserStocksIndex = props => {
   console.log(props);
   return (
     <ul className="user-stocks-card">
+      <h2 className="user-stocks-title">Stocks</h2>
+      <hr className="user-stocks-break-line" />
       {props.orders.map(order => (
         <UserStocksItem key={order.id} order={order} />
       ))}
