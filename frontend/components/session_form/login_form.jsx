@@ -9,51 +9,10 @@ class LoginForm extends React.Component {
       password: ""
     };
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.loginAsGuest = this.loginAsGuest.bind(this);
   }
 
   componentDidMount() {
     this.props.receiveErrors([]);
-  }
-
-  loginAsGuest(e) {
-    e.preventDefault();
-    const emailArr = "demo@demo.com".split("");
-    const passwordArr = "password".split("");
-    const button = document.getElementById("login-button");
-    this.setState({ email: "", password: "" }, () =>
-      this.loginAsGuestHelper(emailArr, passwordArr, button)
-    );
-  }
-
-  loginAsGuestHelper(emailArr, passwordArr, button) {
-    if (emailArr.length > 0) {
-      this.setState(
-        {
-          email: this.state.email + emailArr.shift()
-        },
-        () => {
-          window.setTimeout(
-            () => this.loginAsGuestHelper(emailArr, passwordArr, button),
-            70
-          );
-        }
-      );
-    } else if (passwordArr.length > 0) {
-      this.setState(
-        {
-          password: this.state.password + passwordArr.shift()
-        },
-        () => {
-          window.setTimeout(
-            () => this.loginAsGuestHelper(emailArr, passwordArr, button),
-            100
-          );
-        }
-      );
-    } else {
-      button.click();
-    }
   }
 
   update(field) {
@@ -126,8 +85,11 @@ class LoginForm extends React.Component {
             </label>
             <br />
             <br />
-            <button className="demo-button" onClick={this.loginAsGuest}>
-              Try the demo
+            <button
+              className="demo-button"
+              onClick={this.props.history.push("/")}
+            >
+              Don't have an account?
             </button>
             <br />
             <br />
