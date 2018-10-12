@@ -9,10 +9,69 @@ class SignUpForm extends React.Component {
       password: ""
     };
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.loginAsGuest = this.loginAsGuest.bind(this);
   }
 
   componentDidMount() {
     this.props.receiveErrors([]);
+  }
+
+  loginAsGuest(e) {
+    e.preventDefault();
+    const emailArr = "demo@demo.com".split("");
+    const passwordArr = "password".split("");
+    this.setState({ email: "", password: "" }, () =>
+      this.loginAsGuestHelper(emailArr, passwordArr)
+    );
+  }
+
+  randomEmail() {
+    let chars = "abcdefghijklmnopqrstuvwxyz1234567890";
+    let string = "";
+    for (let i = 0; i < 15; i++) {
+      string += chars[Math.floor(Math.random() * chars.length)];
+    }
+    let domain = "";
+    for (let j = 0; j < 7; j++) {
+      domain += chars[Math.floor(Math.random() * chars.length)];
+    }
+    return string + "@" + domain + ".com";
+  }
+
+  loginAsGuestHelper(emailArr, passwordArr) {
+    if (emailArr.length > 0) {
+      this.setState(
+        {
+          email: this.state.email + emailArr.shift()
+        },
+        () => {
+          window.setTimeout(
+            () => this.loginAsGuestHelper(emailArr, passwordArr),
+            70
+          );
+        }
+      );
+    } else if (passwordArr.length > 0) {
+      this.setState(
+        {
+          password: this.state.password + passwordArr.shift()
+        },
+        () => {
+          window.setTimeout(
+            () => this.loginAsGuestHelper(emailArr, passwordArr),
+            100
+          );
+        }
+      );
+    } else {
+      let user = {
+        email: this.randomEmail(),
+        first_name: "Demo",
+        last_name: "Demo",
+        password: "password"
+      };
+      this.props.processForm(user);
+    }
   }
 
   update(field) {
@@ -108,10 +167,10 @@ class SignUpForm extends React.Component {
               <br />
               <br />
               <div className="login-link">
-                <span className="login-link-text">
-                  Already have an account?
-                </span>
-                {this.props.navLink}
+                <span className="login-link-text" />
+                <button className="demo-button" onClick={this.loginAsGuest}>
+                  Try the demo
+                </button>
               </div>
               <br />
               <br />
