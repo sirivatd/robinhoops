@@ -12,10 +12,3 @@ export const fetchAllOrders = id => {
     url: `api/users/${id}/orders`
   });
 };
-
-export const fetchAthleteFromOrder = (userId, orderId) => {
-  return $.ajax({
-    type: "GET",
-    url: `api/users/${userId}/orders/${orderId}/athletes`
-  });
-};
