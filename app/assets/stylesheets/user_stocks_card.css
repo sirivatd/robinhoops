@@ -56,6 +56,7 @@
   max-height: 45px;
   float: left;
   border-radius: 15px;
+  padding-top: 3px;
 }
 
 .order-index-item-athlete-info {
@@ -109,6 +110,9 @@
   outline: 0;
   border: none;
   -moz-outline-style: none;
+}
+
+.user-stocks-options-button:active {
   color: #21ce99;
 }
 

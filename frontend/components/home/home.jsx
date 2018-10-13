@@ -25,11 +25,14 @@ class Home extends React.Component {
   }
 
   handleClick(e) {
+    const button = document.getElementById("account-button");
+
     console.log(document.getElementsByClassName("account-settings-menu")[0]);
     if (
       document
         .getElementsByClassName("account-settings-menu")[0]
-        .contains(e.target)
+        .contains(e.target) ||
+      button.contains(e.target)
     ) {
       return;
     }
@@ -102,7 +105,11 @@ class Home extends React.Component {
           />
           <nav className="login-signup">
             <button className="login-logout-button">Leaderboard</button>
-            <button className="login-logout-button" onClick={this.showMenu}>
+            <button
+              id="account-button"
+              className="login-logout-button"
+              onClick={this.showMenu}
+            >
               Account
             </button>
           </nav>

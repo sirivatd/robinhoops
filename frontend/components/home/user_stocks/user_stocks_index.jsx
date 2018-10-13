@@ -29,10 +29,12 @@ class UserStocksIndex extends React.Component {
   }
 
   handleClick(e) {
+    const button = document.getElementById("user-stocks-options-btn");
     if (
       document
         .getElementsByClassName("user-stocks-dropdown")[0]
-        .contains(e.target)
+        .contains(e.target) ||
+      button.contains(e.target)
     ) {
       return;
     }
@@ -64,6 +66,7 @@ class UserStocksIndex extends React.Component {
         <ul className="user-stocks-card animated fadeInRight">
           <h2 className="user-stocks-title">Stocks</h2>
           <button
+            id="user-stocks-options-btn"
             className="user-stocks-options-button"
             onClick={this.showMenu}
           >
