@@ -90,7 +90,7 @@ class Home extends React.Component {
           className="account-settings-list"
           onClick={() => this.props.logout(currentUser)}
         >
-          <li className="account-settings-item">Logoutt</li>
+          <li className="account-settings-item">Logout</li>
         </ul>
       </div>
     );
