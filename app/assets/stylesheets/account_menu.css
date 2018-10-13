@@ -1,0 +1,89 @@
+.account-settings-menu {
+  text-align: left;
+}
+
+.account-settings-stats {
+  font-family: "Noto Sans", sans-serif;
+}
+
+.account-settings-name {
+  font-family: "Noto Sans", sans-serif;
+  font-size: 17px;
+  margin-left: 20px;
+  margin-top: 30px;
+}
+
+.account-setting-label {
+  font-size: 12px;
+  margin: 0px;
+  font-weight: 100;
+  font-family: "Noto Sans", sans-serif;
+  padding-bottom: 20px;
+}
+
+.account-setting-port-value {
+  font-size: 17px;
+  font-family: "Noto Sans", sans-serif;
+  margin-bottom: 7px;
+  margin-top: 0px;
+}
+
+.account-setting-power-value {
+  font-size: 17px;
+  font-family: "Noto Sans", sans-serif;
+  margin-bottom: 7px;
+  margin-top: 10px;
+}
+
+.account-setting-divider {
+  display: block;
+  margin-top: 0.5em;
+  margin-bottom: 0;
+  width: 99%;
+  border-color: black;
+  border-style: inset;
+  border-width: 0.7px;
+}
+
+.account-setting-port {
+  display: inline-block;
+  text-align: left;
+  margin-left: 20px;
+}
+
+.account-setting-power {
+  display: inline-block;
+  text-align: left;
+  margin-left: 30px;
+}
+
+.account-settings-list {
+  height: 23px;
+  margin: 0;
+  padding-top: 16px;
+  padding-bottom: 16px;
+}
+
+.account-settings-item {
+  font-family: "Noto Sans", sans-serif;
+  font-size: 16px;
+  position: absolute;
+  left: 20px;
+}
+
+.account-settings-list:hover {
+  background-color: rgb(23, 23, 24);
+  cursor: pointer;
+}
+
+.account-settings-list li {
+  display: inline;
+  padding-right: 6px;
+  padding-left: 25px;
+}
+
+.account-settings-list .account-settings-item {
+  background-image: url("https://www.iconsdb.com/icons/preview/white/logout-xxl.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+}

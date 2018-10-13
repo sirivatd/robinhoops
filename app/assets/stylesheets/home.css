@@ -134,3 +134,16 @@
     box-shadow: 0 0 0 145px #1ae9aa;
   }
 }
+
+.account-settings-menu {
+  color: white;
+  background-color: rgba(27, 27, 29);
+  z-index: 999;
+  position: fixed;
+  width: 296px;
+  height: 195px;
+  right: 30px;
+  top: 60px;
+  box-shadow: -1px 4px 18px gray;
+  border-radius: 3px;
+}

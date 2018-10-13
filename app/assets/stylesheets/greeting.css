@@ -28,6 +28,17 @@
   font-family: "Noto Sans", sans-serif;
 }
 
+.login-logout-button:hover {
+  cursor: pointer;
+}
+
+.login-logout-button:active,
+.login-logout-button:focus {
+  outline: 0;
+  border: none;
+  -moz-outline-style: none;
+}
+
 .login-logout:hover {
   color: #1ae9aa;
 }
