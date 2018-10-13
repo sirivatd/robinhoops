@@ -11,6 +11,7 @@ export const receiveAllOrders = orders => {
 };
 
 export const receiveOrder = order => {
+  debugger;
   return {
     type: RECEIVE_A_ORDER,
     order: order
@@ -26,5 +27,7 @@ export const fetchAllOrders = id => dispatch => {
 };
 
 export const createOrder = order => dispatch => {
-  return APIUtil.createOrder(order).then(res => dispatch(receiveOrder(order)));
+  return APIUtil.createOrder(order).then(res => {
+    dispatch(receiveOrder(res));
+  });
 };

@@ -8,7 +8,7 @@ const ordersReducer = (state = {}, action) => {
     case RECEIVE_ALL_ORDERS:
       return merge({}, state, action.orders);
     case RECEIVE_A_ORDER:
-      return merge({}, state, { [action.order.id]: action.order });
+      return merge({}, state, action.order);
     default:
       return state;
   }

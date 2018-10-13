@@ -18,10 +18,10 @@
 }
 
 .user-stocks-title {
-  font-family: "Biryani", sans-serif;
+  font-family: "Roboto", sans-serif;
   font-size: 15px;
   float: left;
-  font-weight: 0;
+  font-weight: 100;
   margin-left: 15px;
   padding-top: 10px;
 }
@@ -61,20 +61,24 @@
 .order-index-item-athlete-info {
   display: inline-block;
   margin: auto;
-  margin-top: 20px;
+  margin-top: 15px;
   font-size: 13px;
-  font-family: "Biryani", sans-serif;
+  font-weight: 100;
+  font-family: "Roboto", sans-serif;
 }
 
 .order-index-item-athlete-name {
-  font-size: 15px;
+  font-size: 14px;
   margin-bottom: 0px;
   margin-top: 0px;
+  font-weight: 100;
 }
 
 .order-index-item-athlete-team {
-  font-size: 10px;
+  padding-top: 5px;
+  font-size: 11px;
   margin-top: 1px;
+  font-weight: 100;
 }
 .user-stocks-item-price {
   float: right;
@@ -112,8 +116,8 @@
   box-shadow: -1px 4px 18px #c4c4c4;
 
   background-color: white;
-  width: 180px;
-  height: 292px;
+  width: 170px;
+  height: 280px;
   position: fixed;
   top: 120px;
   z-index: 99;
@@ -127,10 +131,10 @@
 }
 
 .user-stocks-options-title {
-  font-family: "Biryani", sans-serif;
-  font-size: 15px;
+  font-family: "Roboto", sans-serif;
+  font-size: 16px;
   float: left;
-  font-weight: 0;
+  font-weight: 100;
   margin-left: 25px;
   padding-top: 10px;
 }
@@ -153,13 +157,13 @@
 }
 
 .user-stocks-option {
-  font-family: "Biryani", sans-serif;
+  font-family: "Roboto", sans-serif;
   font-size: 13px;
   padding-left: 25px;
-  margin-top: 26px;
-  padding-top: 10px;
-  padding-bottom: 10px;
-  margin-bottom: 26px;
+  margin-top: 22px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  margin-bottom: 22px;
 }
 
 .user-stocks-option:hover {
