@@ -9,16 +9,65 @@
 }
 
 .logo-img {
-  width: 70px;
-  height: 70px;
+  width: 60px;
+  height: 60px;
   float: left;
-  margin-left: 20px;
+  margin-left: 40px;
 }
 
 .login-signup {
   float: right;
   vertical-align: middle;
-  margin-top: 25px;
+  margin-top: 20px;
+}
+
+input::-webkit-input-placeholder {
+  color: #e4e4e4 !important;
+}
+
+input:-moz-placeholder {
+  /* Firefox 18- */
+  color: #e4e4e4 !important;
+}
+
+input::-moz-placeholder {
+  /* Firefox 19+ */
+  color: #e4e4e4 !important;
+}
+
+input:-ms-input-placeholder {
+  color: #e4e4e4 !important;
+}
+
+.search-bar {
+  width: 478px;
+  height: 36px;
+  margin-top: 10px;
+  float: left;
+  margin-left: 10px;
+  padding-left: 10px;
+  border: 1px solid #e4e4e4;
+  border-radius: 7px;
+  color: #e4e4e4;
+  font-family: FontAwesome;
+  font-size: 13px;
+}
+
+.search-bar:active {
+  outline: none;
+  border: 1px solid #e4e4e4;
+  color: black;
+}
+
+.search-bar:focus {
+  outline: none;
+  border: 1px solid #e4e4e4;
+  color: black;
+}
+
+input:hover {
+  color: black;
+  box-shadow: -1px 4px 18px #c4c4c4;
 }
 
 .login-logout {
