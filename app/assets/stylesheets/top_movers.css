@@ -1,6 +1,6 @@
 .top-movers-item {
-  width: 250px;
-  height: 180px;
+  width: 210px;
+  height: 140px;
   display: inline-block;
   position: relative;
   margin-right: 15px;
@@ -10,7 +10,7 @@
 }
 
 .top-movers-img {
-  max-height: 150px;
+  max-height: 105px;
   float: right;
   position: absolute;
   bottom: 0px;
@@ -18,7 +18,7 @@
 }
 
 .top-movers-item:hover {
-  background-color: #c4c4c4;
+  background-color: #f5f5f5;
   box-shadow: -1px 4px 18px #c4c4c4;
   cursor: pointer;
 }
