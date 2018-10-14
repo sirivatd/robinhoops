@@ -35,7 +35,7 @@ class SearchBar extends React.Component {
     const searchResults = document.getElementsByClassName("search-results")[0];
     if (searchResults.classList.contains("hidden-menu")) {
     } else {
-      menu.classList.toggle("hidden-menu");
+      searchResults.classList.toggle("hidden-menu");
     }
   }
   render() {
@@ -53,7 +53,7 @@ class SearchBar extends React.Component {
           <input
             className="search-input"
             type="text"
-            placeholder="&#xF002;   Search"
+            placeholder="Search"
             value={this.state.search}
             onChange={this.updateSearch}
             onClick={this.showSearchResults}

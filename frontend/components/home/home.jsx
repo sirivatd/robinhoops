@@ -3,6 +3,8 @@ import { fetchAthlete, fetchAllAthletes } from "./../../util/athlete_api_util";
 import { createOrder } from "./../../util/order_api_util";
 import UserStocksContainer from "./user_stocks/user_stocks_container";
 import SearchBar from "./../search_bar/search_bar";
+import TopMoversIndex from "./top_movers/top_movers_index";
+
 import {
   LineChart,
   Line,
@@ -242,6 +244,7 @@ class Home extends React.Component {
     const topMovers = () => (
       <div className="top-movers-section">
         <h3>Top Movers</h3>
+        <TopMoversIndex athletes={this.props.athletes} />
       </div>
     );
 
@@ -270,6 +273,7 @@ class Home extends React.Component {
         {Object.values(this.props.athletes).length > 0
           ? userStocksIndex()
           : loader()}
+        )}
       </div>
     );
   }

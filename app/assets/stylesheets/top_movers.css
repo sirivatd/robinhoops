@@ -1,0 +1,55 @@
+.top-movers-item {
+  width: 250px;
+  height: 180px;
+  display: inline-block;
+  position: relative;
+  margin-right: 15px;
+  padding-left: 10px;
+  border-radius: 7px;
+  border: 1px solid #e4e4e4;
+}
+
+.top-movers-img {
+  max-height: 150px;
+  float: right;
+  position: absolute;
+  bottom: 0px;
+  right: 0px;
+}
+
+.top-movers-item:hover {
+  background-color: #c4c4c4;
+  box-shadow: -1px 4px 18px #c4c4c4;
+  cursor: pointer;
+}
+
+.top-movers-detail {
+  float: left;
+}
+
+.top-movers-section {
+  overflow-x: scroll;
+  overflow-y: hidden;
+  width: 55%;
+  white-space: nowrap;
+  -ms-overflow-style: none;
+}
+
+.top-movers-section::-webkit-scrollbar {
+  height: 0 !important;
+}
+
+.top-movers-name {
+  font-size: 17px;
+  margin-bottom: 1px;
+}
+
+.top-movers-team {
+  font-size: 22px;
+  margin-top: 1px;
+  margin-bottom: 50px;
+}
+
+.top-movers-price {
+  font-size: 20px;
+}
