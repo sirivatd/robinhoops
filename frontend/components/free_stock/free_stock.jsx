@@ -25,7 +25,6 @@ class FreeStock extends React.Component {
     freeSection.classList.remove("jackInTheBox");
     freeSection.classList.add("lightSpeedOut");
     freeSection.setAttribute("id", "hide");
-    console.log(this.props.match);
     this.setState({ freeStock: this.props.stocks[randomNum] });
     fetchAthlete(this.props.stocks[randomNum].athlete_id).then(athlete => {
       this.setState({ freeAthlete: Object.values(athlete)[0] });
@@ -35,7 +34,6 @@ class FreeStock extends React.Component {
 
   freeStockReceived(e) {
     e.preventDefault();
-    console.log(this.props.match.params);
     const freeStock = document.getElementById("show");
     freeStock.classList.remove("fadeInUp");
     freeStock.classList.remove("animated");
@@ -46,7 +44,6 @@ class FreeStock extends React.Component {
       stock_id: this.state.freeStock.id,
       purchase_price: this.state.freeStock.initial_price
     };
-    console.log(newOrder);
     this.props.createOrder(newOrder);
     this.props.history.push("/");
   }

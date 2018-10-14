@@ -5,22 +5,26 @@ import Home from "./home";
 import { logout } from "../../actions/session_actions";
 import { fetchStocks } from "../../actions/stock_actions";
 import { fetchAllOrders } from "../../actions/order_actions";
+import { fetchAllAthletes } from "../../actions/athlete_actions";
 
 const mapStateToProps = (
-  { session, entities: { users, stocks, orders } },
+  { session, entities: { users, stocks, orders, athletes } },
   ownProps
 ) => {
   return {
-    stocks: Object.values(stocks),
+    stocks: stocks,
     currentUser: users[session.id],
-    orders: Object.values(orders)
+    orders: Object.values(orders),
+    athletes: Object.values(athletes)
   };
 };
 
 const mapDispatchToProps = dispatch => ({
   logout: () => dispatch(logout()),
   fetchStocks: () => dispatch(fetchStocks()),
-  fetchAllOrders: userId => dispatch(fetchAllOrders(userId))
+  fetchAllOrders: userId => dispatch(fetchAllOrders(userId)),
+  fetchAllAthletes: () => dispatch(fetchAllAthletes()),
+  fetchStocks: () => dispatch(fetchStocks())
 });
 
 export default connect(

@@ -4,3 +4,10 @@ export const fetchAthlete = id => {
     method: "GET"
   });
 };
+
+export const fetchAllAthletes = userId => {
+  return $.ajax({
+    url: `api/athletes`,
+    method: "GET"
+  });
+};

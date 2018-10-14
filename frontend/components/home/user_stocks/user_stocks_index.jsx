@@ -7,6 +7,7 @@ class UserStocksIndex extends React.Component {
     super(props);
     this.showMenu = this.showMenu.bind(this);
     this.handleClick = this.handleClick.bind(this);
+    this.findAthlete = this.findAthlete.bind(this);
   }
 
   showMenu() {
@@ -42,8 +43,20 @@ class UserStocksIndex extends React.Component {
     this.handleClickOutside();
   }
 
+  findAthlete(order) {
+    const stockId = parseInt(order.stock_id);
+    const stocks = this.props.stocks;
+    const athletes = this.props.athletes;
+    let athlete = {};
+    for (let i = 0; i < stocks.length; i++) {
+      if (stocks[i].id === stockId) {
+        athlete = athletes[i];
+      }
+    }
+    return athlete;
+  }
+
   handleClickOutside() {
-    console.log("Scrolling");
     const menu = document.getElementsByClassName("user-stocks-dropdown")[0];
     if (menu.classList.contains("hidden-menu")) {
     } else {
@@ -74,13 +87,15 @@ class UserStocksIndex extends React.Component {
           </button>
 
           <hr className="user-stocks-break-line" />
-          {this.props.orders.map(order => (
-            <UserStocksItem
-              key={order.id}
-              order={order}
-              currentUser={this.props.currentUser}
-            />
-          ))}
+          {this.props.orders.map(order => {
+            return (
+              <UserStocksItem
+                key={order.id}
+                athlete={this.findAthlete(order)}
+                order={order}
+              />
+            );
+          })}
         </ul>
       </div>
     );

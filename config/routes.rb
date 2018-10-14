@@ -8,6 +8,6 @@ Rails.application.routes.draw do
     end
     resource :session, only: [:create, :destroy, :show]
     resources :stocks, only: [:index, :show]
-    resources :athletes, only: [:show]
+    resources :athletes, only: [:show, :index]
   end
 end

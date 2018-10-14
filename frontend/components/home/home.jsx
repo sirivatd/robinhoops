@@ -1,7 +1,7 @@
 import React from "react";
-import { fetchAthlete } from "./../../util/athlete_api_util";
+import { fetchAthlete, fetchAllAthletes } from "./../../util/athlete_api_util";
 import { createOrder } from "./../../util/order_api_util";
-import UserStocksIndex from "./user_stocks/user_stocks_index";
+import UserStocksContainer from "./user_stocks/user_stocks_container";
 
 class Home extends React.Component {
   constructor(props) {
@@ -12,6 +12,8 @@ class Home extends React.Component {
 
   componentDidMount() {
     this.props.fetchAllOrders(this.props.currentUser.id);
+    this.props.fetchAllAthletes();
+    this.props.fetchStocks();
     document.addEventListener("mousedown", this.handleClick, false);
   }
 
@@ -27,7 +29,6 @@ class Home extends React.Component {
   handleClick(e) {
     const button = document.getElementById("account-button");
 
-    console.log(document.getElementsByClassName("account-settings-menu")[0]);
     if (
       document
         .getElementsByClassName("account-settings-menu")[0]
@@ -62,13 +63,7 @@ class Home extends React.Component {
       </ul>
     );
 
-    const userStocksIndex = () => (
-      <UserStocksIndex
-        orders={this.props.orders}
-        currentUser={currentUser}
-        stocks={this.props.stocks}
-      />
-    );
+    const userStocksIndex = () => <UserStocksContainer />;
 
     const accountSettings = () => (
       <div className="account-settings-menu hidden-menu">
@@ -114,7 +109,7 @@ class Home extends React.Component {
             </button>
           </nav>
         </div>
-        {Object.values(this.props.orders).length > 0
+        {Object.values(this.props.athletes).length > 0
           ? userStocksIndex()
           : loader()}
       </div>

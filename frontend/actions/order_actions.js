@@ -11,7 +11,6 @@ export const receiveAllOrders = orders => {
 };
 
 export const receiveOrder = order => {
-  debugger;
   return {
     type: RECEIVE_A_ORDER,
     order: order

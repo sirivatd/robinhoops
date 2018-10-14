@@ -4,17 +4,9 @@ import { withRouter } from "react-router";
 
 const Greeting = ({ currentUser, logout, history }) => {
   $(document).ready(function() {
-    console.log("The document is ready");
     $(".free-section").hover(function() {
-      console.log("Hovered");
-      console.log("Hovering on body");
       $(".free-section").toggleClass("black");
     });
-
-    // $("body").hover(function() {
-    //   console.log("Hovering on body");
-    //   $(".free-section").toggleClass("black");
-    // });
   });
   const sessionLinks = () => (
     <nav className="login-signup">
