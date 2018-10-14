@@ -42,7 +42,8 @@ class FreeStock extends React.Component {
       num_share: 1,
       user_id: parseInt(this.props.match.params.user_id),
       stock_id: this.state.freeStock.id,
-      purchase_price: this.state.freeStock.initial_price
+      purchase_price: this.state.freeStock.initial_price,
+      order_type: "BUY"
     };
     this.props.createOrder(newOrder);
     this.props.history.push("/");

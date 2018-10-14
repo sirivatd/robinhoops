@@ -1,0 +1,36 @@
+.home-chart-view {
+  float: left;
+  width: 676px;
+  margin-top: 60px;
+  margin-left: 30px;
+  text-align: left;
+  display: block;
+}
+
+.home-port-value {
+  font-family: "Roboto", sans-serif;
+  font-size: 35px;
+  margin-left: 60px;
+  font-weight: 100;
+  margin-bottom: 10px;
+}
+
+.home-daily-gain {
+  font-family: "Roboto", sans-serif;
+  font-size: 13px;
+  margin-left: 65px;
+  font-weight: 100;
+  margin-top: 0px;
+}
+
+.top-movers-section {
+  display: block;
+  margin-top: 70vh;
+  font-family: "Roboto", sans-serif;
+  font-weight: 100;
+  font-size: 21px;
+  float: left;
+  text-align: left;
+  position: absolute;
+  left: 100px;
+}
