@@ -2,6 +2,7 @@ import React from "react";
 import { fetchAthlete, fetchAllAthletes } from "./../../util/athlete_api_util";
 import { createOrder } from "./../../util/order_api_util";
 import UserStocksContainer from "./user_stocks/user_stocks_container";
+import SearchBar from "./../search_bar/search_bar";
 import {
   LineChart,
   Line,
@@ -252,11 +253,7 @@ class Home extends React.Component {
             className="logo-img"
             src="https://media.glassdoor.com/sqll/1167765/robinhood-squarelogo-1530549970728.png"
           />
-          <input
-            className="search-bar"
-            type="text"
-            placeholder="&#xF002;   Search"
-          />
+          <SearchBar athletes={this.props.athletes} />
           <nav className="login-signup">
             <button className="login-logout-button">Leaderboard</button>
             <button

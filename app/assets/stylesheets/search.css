@@ -1,0 +1,112 @@
+input::-webkit-input-placeholder {
+  color: #e4e4e4 !important;
+}
+
+input:-moz-placeholder {
+  /* Firefox 18- */
+  color: #e4e4e4 !important;
+}
+
+input::-moz-placeholder {
+  /* Firefox 19+ */
+  color: #e4e4e4 !important;
+}
+
+input:-ms-input-placeholder {
+  color: #e4e4e4 !important;
+}
+
+.search-input {
+  width: 420px;
+  height: 36px;
+  margin-top: 10px;
+  float: left;
+  padding-left: 10px;
+  border: 1px solid #e4e4e4;
+  border-radius: 7px;
+  color: #e4e4e4;
+  font-family: FontAwesome;
+  font-size: 13px;
+}
+
+.search-bar-container {
+  width: 478px;
+  display: inline-block;
+  margin-top: 0px;
+  text-align: left;
+}
+
+.search-bar {
+  width: 433px;
+  overflow: hidden;
+  position: fixed;
+  top: 0;
+  left: 120px;
+}
+
+.search-bar:hover {
+  box-shadow: -1px 4px 18px #c4c4c4;
+  background-color: white;
+}
+
+.search-bar:active {
+  box-shadow: -1px 4px 18px #c4c4c4;
+  background-color: white;
+}
+
+.search-bar:focus {
+  box-shadow: -1px 4px 18px #c4c4c4;
+  background-color: white;
+}
+
+.search-input:active {
+  outline: none;
+  color: black;
+  border: none;
+}
+
+.search-results {
+  padding: 0px;
+}
+
+.search-input:focus {
+  outline: none;
+  color: black;
+  border: none;
+}
+.search-athlete-team {
+  font-family: "Noto Sans", sans-serif;
+  font-size: 15px;
+  margin-top: 0px;
+  width: 60px;
+  margin-bottom: 0px;
+  padding-left: 10px;
+}
+
+.search-athlete-name {
+  font-family: "Noto Sans", sans-serif;
+  font-size: 15px;
+  margin-top: 0px;
+  margin-left: 20px;
+  margin-bottom: 0px;
+}
+
+.search-result-label {
+  margin-top: 65px;
+  font-family: "Noto Sans", sans-serif;
+  color: lightgray;
+  font-size: 15px;
+  padding-left: 10px;
+}
+
+.search-result-item {
+  display: flex;
+  justify-content: left;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.search-result-item:hover {
+  cursor: pointer;
+  background-color: #f5f5f5;
+}

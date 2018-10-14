@@ -21,55 +21,6 @@
   margin-top: 20px;
 }
 
-input::-webkit-input-placeholder {
-  color: #e4e4e4 !important;
-}
-
-input:-moz-placeholder {
-  /* Firefox 18- */
-  color: #e4e4e4 !important;
-}
-
-input::-moz-placeholder {
-  /* Firefox 19+ */
-  color: #e4e4e4 !important;
-}
-
-input:-ms-input-placeholder {
-  color: #e4e4e4 !important;
-}
-
-.search-bar {
-  width: 478px;
-  height: 36px;
-  margin-top: 10px;
-  float: left;
-  margin-left: 10px;
-  padding-left: 10px;
-  border: 1px solid #e4e4e4;
-  border-radius: 7px;
-  color: #e4e4e4;
-  font-family: FontAwesome;
-  font-size: 13px;
-}
-
-.search-bar:active {
-  outline: none;
-  border: 1px solid #e4e4e4;
-  color: black;
-}
-
-.search-bar:focus {
-  outline: none;
-  border: 1px solid #e4e4e4;
-  color: black;
-}
-
-input:hover {
-  color: black;
-  box-shadow: -1px 4px 18px #c4c4c4;
-}
-
 .login-logout {
   margin-right: 35px;
   text-decoration: none;
