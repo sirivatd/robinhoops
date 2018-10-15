@@ -27,22 +27,14 @@ User.create({email: "demo@demo.com", first_name: "Demo", last_name: "Demo", pass
 
 players_data.each do |player|
     name = player["name"].split(" ")
-    if name.length > 2 
-        first_name = name[0]
-        last_name = name[1] + "_" + name[2]
-    else
+ 
         first_name = name[0]
         last_name = name[1]
-    end
+    
 
-    first_name.split("").delete('.')
-    first_name.delete("'")
-    last_name.split("").delete('.')
-    last_name.delete("'")
 
-    image_url = "http://nba-players.herokuapp.com/players/#{last_name.join("")}/#{first_name.join("")}"
-    res = Net::HTTP.get_response(URI.parse(image_url))
-    image_url = 'http://team4096.org/site/assets/files/8881/profile-picture_man.400x400.png' if res === "Sorry, that player was not found. Please check the spelling."
+    image_url = "http://nba-players.herokuapp.com/players/#{last_name}/#{first_name}"
+   
     twitter_sentiment = 0
 
     Athlete.create({name: player["name"], team_acronym: player["team_acronym"], team_name: player["team_name"], games_played: player["games_played"], minutes_per_game: player["minutes_per_game"], field_goals_attempted_per_game: player["field_goals_attempted_per_game"], field_goals_made_per_game: player["field_goals_made_per_game"], field_goal_percentage: player["field_goal_percentage"], free_throw_percentage: player["free_throw_percentage"], three_point_attempted_per_game: player["three_point_attempted_per_game"], three_point_made_per_game: player["three_point_made_per_game"], three_point_percentage: player["three_point_percentage"], points_per_game: player["points_per_game"], offensive_rebounds_per_game: player["offensive_rebounds_per_game"], defensive_rebounds_per_game: player["defensive_rebounds_per_game"], rebounds_per_game: player["rebounds_per_game"], assists_per_game: player["assists_per_game"], steals_per_game: player["steals_per_game"], blocks_per_game: player["blocks_per_game"], turnovers_per_game: player["turnovers_per_game"], player_efficiency_rating: player["player_efficiency_rating"], twitter_sentiment: twitter_sentiment, image_url: image_url})
