@@ -2,7 +2,7 @@ namespace :stocks do
   desc "TODO"
   task updatePrice: :environment do
     Stock.all.each do |stock|
-      stock.update_price()
+      Stock.update_price(stock)
     end
   end
 

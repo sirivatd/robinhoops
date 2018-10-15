@@ -8,6 +8,7 @@ class UserStocksIndex extends React.Component {
     this.showMenu = this.showMenu.bind(this);
     this.handleClick = this.handleClick.bind(this);
     this.findAthlete = this.findAthlete.bind(this);
+    this.findStock = this.findStock.bind(this);
   }
 
   showMenu() {
@@ -56,6 +57,19 @@ class UserStocksIndex extends React.Component {
     return athlete;
   }
 
+  findStock(order) {
+    const stockId = parseInt(order.stock_id);
+    const stocks = this.props.stocks;
+    let stock = {};
+
+    for (let i = 0; i < stocks.length; i++) {
+      if (stocks[i].id === stockId) {
+        stock = stocks[i];
+      }
+    }
+    return stock;
+  }
+
   handleClickOutside() {
     const menu = document.getElementsByClassName("user-stocks-dropdown")[0];
     if (menu.classList.contains("hidden-menu")) {
@@ -92,7 +106,7 @@ class UserStocksIndex extends React.Component {
               <UserStocksItem
                 key={order.id}
                 athlete={this.findAthlete(order)}
-                order={order}
+                stock={this.findStock(order)}
               />
             );
           })}

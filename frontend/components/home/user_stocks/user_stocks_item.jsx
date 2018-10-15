@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const UserStocksItem = ({ athlete, order }) => {
+const UserStocksItem = ({ athlete, stock }) => {
   const athleteName = () => (
     <div className="order-index-item-athlete-info">
       <h3 className="order-index-item-athlete-name">{athlete.name}</h3>
@@ -21,7 +21,7 @@ const UserStocksItem = ({ athlete, order }) => {
 
   const itemPrice = () => (
     <h3 className="user-stocks-item-price">
-      ${order.purchase_price.toFixed(2)}
+      ${stock.initial_price.toFixed(2)}
     </h3>
   );
 

@@ -5,26 +5,19 @@ import UserStocksContainer from "./user_stocks/user_stocks_container";
 import SearchBar from "./../search_bar/search_bar";
 import TopMoversIndex from "./top_movers/top_movers_index";
 
-import {
-  LineChart,
-  Line,
-  XAxis,
-  YAxis,
-  CartesianGrid,
-  Tooltip,
-  ResponsiveContainer
-} from "recharts";
 import CountUp from "react-countup";
 
 class Home extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      totalPortValue: 0
+      totalPortValue: 0,
+      previousPortValue: 0
     };
     this.showMenu = this.showMenu.bind(this);
     this.handleClick = this.handleClick.bind(this);
     this.calculateTotalPortValue = this.calculateTotalPortValue.bind(this);
+    this.findStock = this.findStock.bind(this);
   }
 
   componentDidMount() {
@@ -41,6 +34,22 @@ class Home extends React.Component {
 
   componentWillReceiveProps() {
     this.calculateTotalPortValue();
+    this.props.fetchAllOrders(this.props.currentUser.id);
+    this.props.fetchAllAthletes();
+    this.props.fetchStocks();
+  }
+
+  findStock(order) {
+    const stockId = parseInt(order.stock_id);
+    const stocks = this.props.stocks;
+    let stock = {};
+
+    for (let i = 0; i < stocks.length; i++) {
+      if (stocks[i].id === stockId) {
+        stock = stocks[i];
+      }
+    }
+    return stock;
   }
 
   showMenu() {
@@ -50,11 +59,13 @@ class Home extends React.Component {
 
   calculateTotalPortValue() {
     let total = 0;
+    let currentTotal = this.state.totalPortValue;
     this.props.orders.forEach(order => {
-      let totalEquity = order.num_share * order.purchase_price;
+      let totalEquity = order.num_share * this.findStock(order).initial_price;
       total += totalEquity;
     });
     this.setState({
+      previousPortValue: currentTotal,
       totalPortValue: total
     });
   }
@@ -187,9 +198,9 @@ class Home extends React.Component {
       <div className="home-chart-view">
         <h2 className="home-port-value">
           <CountUp
-            start={0}
+            start={this.state.previousPortValue}
             end={this.state.totalPortValue}
-            duration={2.75}
+            duration={4.2}
             separator=","
             decimals={2}
             decimal="."
@@ -197,7 +208,7 @@ class Home extends React.Component {
           />
         </h2>
         <h4 className="home-daily-gain">+1,854.26 (5.62%) Today</h4>
-        <ResponsiveContainer width="100%" height={300}>
+        {/* <ResponsiveContainer width="100%" height={300}>
           <LineChart cx="50%" cy="50%" outerRadius="80%" data={chartData}>
             <XAxis dataKey="year" />
             <YAxis />
@@ -210,7 +221,7 @@ class Home extends React.Component {
               stroke="black"
             />
           </LineChart>
-        </ResponsiveContainer>
+        </ResponsiveContainer> */}
       </div>
     );
 

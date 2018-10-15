@@ -3,7 +3,10 @@ class Stock < ApplicationRecord
     has_many :orders
 
     def self.update_price(stock)
-        stock.update(initial_price: stock.initial_price + 0.5)
+   
+            stock.update(initial_price: stock.initial_price - 0.5)
+
+        
     end
 
     def self.calculate_value(athlete) 
