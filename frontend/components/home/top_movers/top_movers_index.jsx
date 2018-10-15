@@ -12,7 +12,7 @@ class TopMoversIndex extends React.Component {
       <TopMoversIndexItem
         key={topAthlete}
         athlete={this.props.athletes[topAthlete]}
-        price={this.props.stocks[topAthlete].initial_price}
+        price={this.props.stocks[topAthlete].current_price}
       />
     ));
   }

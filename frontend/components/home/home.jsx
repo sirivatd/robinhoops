@@ -12,18 +12,22 @@ class Home extends React.Component {
     super(props);
     this.state = {
       totalPortValue: 0,
-      previousPortValue: 0
+      previousPortValue: 0,
+      previousTotalGain: 0,
+      currentTotalGain: 0,
+      previousDailyPercentGain: 0,
+      currentDailyPercentGain: 0
     };
     this.showMenu = this.showMenu.bind(this);
     this.handleClick = this.handleClick.bind(this);
     this.calculateTotalPortValue = this.calculateTotalPortValue.bind(this);
     this.findStock = this.findStock.bind(this);
+    this.calculateTodayGain = this.calculateTodayGain.bind(this);
   }
 
   componentDidMount() {
     this.props.fetchAllOrders(this.props.currentUser.id);
     this.props.fetchAllAthletes();
-    this.props.fetchStocks();
 
     document.addEventListener("mousedown", this.handleClick, false);
   }
@@ -34,9 +38,9 @@ class Home extends React.Component {
 
   componentWillReceiveProps() {
     this.calculateTotalPortValue();
-    this.props.fetchAllOrders(this.props.currentUser.id);
-    this.props.fetchAllAthletes();
     this.props.fetchStocks();
+
+    this.calculateTodayGain();
   }
 
   findStock(order) {
@@ -57,11 +61,32 @@ class Home extends React.Component {
     menu.classList.toggle("hidden-menu");
   }
 
+  calculateTodayGain() {
+    let currentTotal = 0;
+    let previousTotal = this.state.currentTotalGain;
+    let previousPercentGain = this.state.currentDailyPercentGain;
+    let initial_price = 0;
+    this.props.orders.forEach(order => {
+      let totalEquity = order.num_share * this.findStock(order).current_price;
+      let initialTotalPrice =
+        order.num_share * this.findStock(order).initial_price;
+      initial_price += initialTotalPrice;
+      currentTotal += totalEquity;
+    });
+
+    this.setState({
+      previousTotalGain: previousTotal,
+      currentTotalGain: currentTotal - initial_price,
+      previousDailyPercentGain: previousPercentGain,
+      currentDailyPercentGain: (currentTotal / initial_price) * 100
+    });
+  }
+
   calculateTotalPortValue() {
     let total = 0;
     let currentTotal = this.state.totalPortValue;
     this.props.orders.forEach(order => {
-      let totalEquity = order.num_share * this.findStock(order).initial_price;
+      let totalEquity = order.num_share * this.findStock(order).current_price;
       total += totalEquity;
     });
     this.setState({
@@ -107,107 +132,43 @@ class Home extends React.Component {
       </ul>
     );
 
-    const chartData = [
-      {
-        date: "2013-10-14",
-        open: 3.87,
-        high: 4.05,
-        low: 3.85,
-        close: 3.97,
-        volume: 63574509,
-        unadjustedVolume: 63574509,
-        change: 0.14,
-        changePercent: 3.655,
-        vwap: 3.965,
-        label: "Oct 14, 13",
-        changeOverTime: 0
-      },
-      {
-        date: "2013-10-15",
-        open: 4.03,
-        high: 4.1,
-        low: 4.01,
-        close: 4.02,
-        volume: 51957120,
-        unadjustedVolume: 51957120,
-        change: 0.05,
-        changePercent: 1.259,
-        vwap: 4.057,
-        label: "Oct 15, 13",
-        changeOverTime: 0.012594458438286996
-      },
-      {
-        date: "2013-10-16",
-        open: 4.1,
-        high: 4.1,
-        low: 4.025,
-        close: 4.09,
-        volume: 34038975,
-        unadjustedVolume: 34038975,
-        change: 0.07,
-        changePercent: 1.741,
-        vwap: 4.0634,
-        label: "Oct 16, 13",
-        changeOverTime: 0.03022670025188908
-      },
-      {
-        date: "2013-10-17",
-        open: 4.12,
-        high: 4.13,
-        low: 4.06,
-        close: 4.09,
-        volume: 44715674,
-        unadjustedVolume: 44715674,
-        change: 0,
-        changePercent: 0,
-        vwap: 4.0758,
-        label: "Oct 17, 13",
-        changeOverTime: 0.03022670025188908
-      },
-      {
-        date: "2013-10-18",
-        open: 3.56,
-        high: 3.66,
-        low: 3.51,
-        close: 3.53,
-        volume: 108732538,
-        unadjustedVolume: 108732538,
-        change: -0.56,
-        changePercent: -13.692,
-        vwap: 3.5974,
-        label: "Oct 18, 13",
-        changeOverTime: -0.11083123425692705
-      },
-      {
-        date: "2013-10-21",
-        open: 3.56,
-        high: 3.56,
-        low: 3.3,
-        close: 3.37,
-        volume: 68809614,
-        unadjustedVolume: 68809614,
-        change: -0.16,
-        changePercent: -4.533,
-        vwap: 3.3859,
-        label: "Oct 21, 13",
-        changeOverTime: -0.15113350125944586
-      }
-    ];
-
     const chartView = () => (
       <div className="home-chart-view">
         <h2 className="home-port-value">
           <CountUp
             start={this.state.previousPortValue}
             end={this.state.totalPortValue}
-            duration={4.2}
+            duration={5}
             separator=","
             decimals={2}
             decimal="."
             prefix="$"
           />
         </h2>
-        <h4 className="home-daily-gain">+1,854.26 (5.62%) Today</h4>
+        <h4 className="home-daily-gain">
+          {this.state.currentTotalGain > 0 ? "+ " : "- "}
+          <CountUp
+            start={Math.abs(this.state.previousTotalGain)}
+            end={Math.abs(this.state.currentTotalGain)}
+            duration={5}
+            separator=","
+            decimals={2}
+            decimal="."
+            prefix=""
+          />{" "}
+          (
+          <CountUp
+            start={this.state.previousDailyPercentGain}
+            end={this.state.currentDailyPercentGain}
+            duration={5}
+            separator=","
+            decimals={2}
+            decimal="."
+            prefix=""
+          />
+          %) Today
+        </h4>
+
         {/* <ResponsiveContainer width="100%" height={300}>
           <LineChart cx="50%" cy="50%" outerRadius="80%" data={chartData}>
             <XAxis dataKey="year" />

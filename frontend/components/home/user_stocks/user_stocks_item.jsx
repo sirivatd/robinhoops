@@ -21,7 +21,7 @@ const UserStocksItem = ({ athlete, stock }) => {
 
   const itemPrice = () => (
     <h3 className="user-stocks-item-price">
-      ${stock.initial_price.toFixed(2)}
+      ${stock.current_price.toFixed(2)}
     </h3>
   );
 

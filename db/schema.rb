@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_12_000110) do
+ActiveRecord::Schema.define(version: 2018_10_15_210353) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -64,6 +64,8 @@ ActiveRecord::Schema.define(version: 2018_10_12_000110) do
     t.float "initial_price"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.float "day_end_price"
+    t.float "day_start_price"
     t.index ["athlete_id"], name: "index_stocks_on_athlete_id"
   end
 

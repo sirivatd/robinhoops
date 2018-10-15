@@ -45,12 +45,11 @@ class UserStocksIndex extends React.Component {
   }
 
   findAthlete(order) {
-    const stockId = parseInt(order.stock_id);
-    const stocks = this.props.stocks;
+    const stock = this.findStock(order);
     const athletes = this.props.athletes;
     let athlete = {};
-    for (let i = 0; i < stocks.length; i++) {
-      if (stocks[i].id === stockId) {
+    for (let i = 0; i < athletes.length; i++) {
+      if (athletes[i].id === stock.athlete_id) {
         athlete = athletes[i];
       }
     }

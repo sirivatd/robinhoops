@@ -3,8 +3,9 @@ class Stock < ApplicationRecord
     has_many :orders
 
     def self.update_price(stock)
-   
-            stock.update(initial_price: stock.initial_price - 0.5)
+            randomNumber = rand(-5...5)
+
+            stock.update(current_price: stock.current_price + (randomNumber * (0.5)))
 
         
     end
