@@ -2,8 +2,8 @@ class Athlete < ApplicationRecord
     has_one :stock
     has_many :tweets
 
-   def say_hello
-    print(self.name)
-end
+   def update_price
+    print("Updating")
+    end
 
 end

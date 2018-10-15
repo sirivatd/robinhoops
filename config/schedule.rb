@@ -21,5 +21,5 @@
 set :environment, "development"
 set :output, 'log/whenever.log'
 every 1.minute do
-rake "athletes:updateAthletes"
+rake "stocks:updatePrice"
 end

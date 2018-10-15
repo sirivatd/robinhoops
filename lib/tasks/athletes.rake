@@ -3,7 +3,7 @@ namespace :athletes do
   task updateAthletes: :environment do
     puts "Updating athletes"
     Athlete.all.each do |athlete|
-      athlete.say_hello()
+      athlete.update_price()
     end
     puts "#{Time.now} - Success!"
   end
