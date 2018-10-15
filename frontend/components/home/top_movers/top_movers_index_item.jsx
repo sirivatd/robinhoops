@@ -1,11 +1,11 @@
 import React from "react";
 
-const TopMoversIndexItem = ({ athlete }) => {
+const TopMoversIndexItem = ({ athlete, price }) => {
   const athleteDetail = () => (
     <div className="top-movers-detail">
       <h3 className="top-movers-name">{athlete.name}</h3>
       <h2 className="top-movers-team">{athlete.team_acronym.toUpperCase()}</h2>
-      <h2 className="top-movers-price">$78.23</h2>
+      <h2 className="top-movers-price">${price.toFixed(2)}</h2>
     </div>
   );
 

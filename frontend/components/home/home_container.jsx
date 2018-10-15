@@ -12,7 +12,7 @@ const mapStateToProps = (
   ownProps
 ) => {
   return {
-    stocks: stocks,
+    stocks: Object.values(stocks),
     currentUser: users[session.id],
     orders: Object.values(orders),
     athletes: Object.values(athletes)

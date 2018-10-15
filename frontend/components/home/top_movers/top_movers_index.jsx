@@ -7,11 +7,14 @@ class TopMoversIndex extends React.Component {
   }
 
   render() {
-    return this.props.athletes
-      .slice(0, 7)
-      .map(athlete => (
-        <TopMoversIndexItem key={athlete.id} athlete={athlete} />
-      ));
+    let topAthletes = [1, 2, 3, 4, 5, 10];
+    return topAthletes.map(topAthlete => (
+      <TopMoversIndexItem
+        key={topAthlete}
+        athlete={this.props.athletes[topAthlete]}
+        price={this.props.stocks[topAthlete].initial_price}
+      />
+    ));
   }
 }
 

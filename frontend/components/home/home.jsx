@@ -244,7 +244,10 @@ class Home extends React.Component {
     const topMovers = () => (
       <div className="top-movers-section">
         <h3>Top Movers</h3>
-        <TopMoversIndex athletes={this.props.athletes} />
+        <TopMoversIndex
+          athletes={this.props.athletes}
+          stocks={this.props.stocks}
+        />
       </div>
     );
 
@@ -258,7 +261,7 @@ class Home extends React.Component {
           />
           <SearchBar athletes={this.props.athletes} />
           <nav className="login-signup">
-            <button className="login-logout-button">Leaderboard</button>
+            {/* <button className="login-logout-button">Leaderboard</button> */}
             <button
               id="account-button"
               className="login-logout-button"
