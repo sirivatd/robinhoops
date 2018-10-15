@@ -2,6 +2,10 @@ class Stock < ApplicationRecord
     belongs_to :athlete
     has_many :orders
 
+    def self.say_hi
+        print("Whenever is working")
+    end
+
     def self.calculate_value(athlete) 
         games_played_score = athlete.games_played * 100000
         minutes_per_game_score = athlete.minutes_per_game * 50000

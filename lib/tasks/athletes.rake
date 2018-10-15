@@ -1,0 +1,11 @@
+namespace :athletes do
+  desc "TODO"
+  task updateAthletes: :environment do
+    puts "Updating athletes"
+    Athlete.all.each do |athlete|
+      athlete.say_hello()
+    end
+    puts "#{Time.now} - Success!"
+  end
+
+end
