@@ -94,7 +94,7 @@ class Home extends React.Component {
     });
     this.setState({
       previousPortValue: currentTotal,
-      totalPortValue: total
+      totalPortValue: total + this.props.currentUser.buying_power
     });
   }
 
@@ -191,13 +191,17 @@ class Home extends React.Component {
         <div className="account-settings-stats">
           <h3 className="account-settings-name">Don Sirivat</h3>
           <div className="account-setting-port">
-            <h4 className="account-setting-port-value">$12,034.12</h4>
+            <h4 className="account-setting-port-value">
+              ${this.state.totalPortValue.toFixed(2)}
+            </h4>
 
             <h4 className="account-setting-label">Portfolio Value</h4>
           </div>
 
           <div className="account-setting-power">
-            <h4 className="account-setting-power-value">$1524.23</h4>
+            <h4 className="account-setting-power-value">
+              ${this.props.currentUser.buying_power.toFixed(2)}
+            </h4>
             <h4 className="account-setting-label">Buying Power</h4>
           </div>
         </div>

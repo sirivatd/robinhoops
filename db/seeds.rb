@@ -23,7 +23,7 @@ resp = http.request(req)
 
 players_data = JSON.parse(resp.body)
 
-User.create({email: "demo@demo.com", first_name: "Demo", last_name: "Demo", password: "password"})
+User.create({email: "demo@demo.com", first_name: "Demo", last_name: "Demo", password: "password", buying_power: 2000})
 
 players_data.each do |player|
     name = player["name"].split(" ")

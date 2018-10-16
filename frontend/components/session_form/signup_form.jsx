@@ -6,7 +6,8 @@ class SignUpForm extends React.Component {
     super(props);
     this.state = {
       email: "",
-      password: ""
+      password: "",
+      buying_power: 2000
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.loginAsGuest = this.loginAsGuest.bind(this);
@@ -68,7 +69,8 @@ class SignUpForm extends React.Component {
         email: this.randomEmail(),
         first_name: "Demo",
         last_name: "Demo",
-        password: "password"
+        password: "password",
+        buying_power: 2000
       };
       this.props.processForm(user);
     }

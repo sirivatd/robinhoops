@@ -5,7 +5,8 @@ import {
   YAxis,
   HorizontalGridLines,
   VerticalGridLines,
-  LineSeries
+  LineSeries,
+  LineMarkSeries
 } from "react-vis";
 
 class HomeChart extends React.Component {
@@ -30,15 +31,15 @@ class HomeChart extends React.Component {
   render() {
     return (
       <XYPlot width={800} height={300}>
-        <HorizontalGridLines />
+        <HorizontalGridLines tickTotal={2} style={{ strokeStyle: "dashed" }} />
+
         <LineSeries
           data={this.state.data}
           color={"#21ce99"}
-          style={{ strokeWidth: 2 }}
+          style={{ strokeWidth: 3 }}
         />
 
         <XAxis />
-        <YAxis />
       </XYPlot>
     );
   }
