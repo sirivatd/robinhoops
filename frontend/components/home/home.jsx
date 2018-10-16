@@ -4,8 +4,10 @@ import { createOrder } from "./../../util/order_api_util";
 import UserStocksContainer from "./user_stocks/user_stocks_container";
 import SearchBar from "./../search_bar/search_bar";
 import TopMoversIndex from "./top_movers/top_movers_index";
+import HomeChartContainer from "./home_chart/home_chart_container";
 
 import CountUp from "react-countup";
+import HomeChartViewContainer from "./home_chart/home_chart_container";
 
 class Home extends React.Component {
   constructor(props) {
@@ -27,6 +29,7 @@ class Home extends React.Component {
 
   componentDidMount() {
     this.props.fetchAllOrders(this.props.currentUser.id);
+    this.props.fetchStocks();
     this.props.fetchAllAthletes();
 
     document.addEventListener("mousedown", this.handleClick, false);
@@ -38,7 +41,6 @@ class Home extends React.Component {
 
   componentWillReceiveProps() {
     this.calculateTotalPortValue();
-    this.props.fetchStocks();
 
     this.calculateTodayGain();
   }
@@ -78,7 +80,8 @@ class Home extends React.Component {
       previousTotalGain: previousTotal,
       currentTotalGain: currentTotal - initial_price,
       previousDailyPercentGain: previousPercentGain,
-      currentDailyPercentGain: (currentTotal / initial_price) * 100
+      currentDailyPercentGain:
+        ((currentTotal - initial_price) / initial_price) * 100
     });
   }
 
@@ -135,15 +138,7 @@ class Home extends React.Component {
     const chartView = () => (
       <div className="home-chart-view">
         <h2 className="home-port-value">
-          <CountUp
-            start={this.state.previousPortValue}
-            end={this.state.totalPortValue}
-            duration={5}
-            separator=","
-            decimals={2}
-            decimal="."
-            prefix="$"
-          />
+          ${this.state.totalPortValue.toFixed(2)}
         </h2>
         <h4 className="home-daily-gain">
           {this.state.currentTotalGain > 0 ? "+ " : "- "}
@@ -168,6 +163,9 @@ class Home extends React.Component {
           />
           %) Today
         </h4>
+        <div className="home-chart-container">
+          <HomeChartContainer />
+        </div>
 
         {/* <ResponsiveContainer width="100%" height={300}>
           <LineChart cx="50%" cy="50%" outerRadius="80%" data={chartData}>
