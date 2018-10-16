@@ -1,4 +1,5 @@
 import React from "react";
+import { withRouter } from "react-router-dom";
 
 class SearchBar extends React.Component {
   constructor(props) {
@@ -38,6 +39,7 @@ class SearchBar extends React.Component {
       searchResults.classList.toggle("hidden-menu");
     }
   }
+
   render() {
     let filteredAthletes = this.props.athletes.filter(athlete => {
       if (
@@ -47,6 +49,7 @@ class SearchBar extends React.Component {
         return athlete;
       }
     });
+
     return (
       <div className="search-bar-container">
         <form className="search-bar">
@@ -78,4 +81,4 @@ class SearchBar extends React.Component {
   }
 }
 
-export default SearchBar;
+export default withRouter(SearchBar);

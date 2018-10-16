@@ -1,6 +1,7 @@
 class Api::OrdersController < ApplicationController
     def show
         @order = Order.find(params[:id])
+        @stock = @order.stock
     end
 
     def index
@@ -13,18 +14,19 @@ class Api::OrdersController < ApplicationController
         sentimentScore = Tweet.scrape_tweeter(@order.athlete.name)
         scoreImpact = 0
         if sentimentScore < 1
-            scoreImpact =  -0.10
+            scoreImpact =  -0.05
         elsif sentimentScore < 0
-            scoreImpact = -0.05
+            scoreImpact = -0.01
         elsif sentimentScore > 1
-            scoreImpact = 0.10
-        elsif sentimentScore > 0
             scoreImpact = 0.05
+        elsif sentimentScore > 0
+            scoreImpact = 0.10
         end
-        if scoreImpact + @order.stock.current_price < 0
-            @order.stock.update(current_price: 0)
+        if scoreImpact + @order.stock.current_price < @order.stock.initial_price/2
+            @order.stock.update(current_price: @order.stock.initial_price * 0.5 + 0.25)
         else
         @order.stock.update(current_price: @order.stock.current_price + scoreImpact)
+        @stock = @order.stock
         end
         render "api/orders/show"
     end

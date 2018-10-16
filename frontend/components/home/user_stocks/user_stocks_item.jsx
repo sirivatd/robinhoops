@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 
 const UserStocksItem = ({ athlete, stock }) => {
   const athleteName = () => (
@@ -26,7 +26,7 @@ const UserStocksItem = ({ athlete, stock }) => {
   );
 
   return (
-    <li className="order-index-item">
+    <li onClick={console.log("clicked")} className="order-index-item">
       {Object.values(athlete).length > 0 ? athleteImage() : loader()}
       {Object.values(athlete).length > 0 ? athleteName() : loader()}
 

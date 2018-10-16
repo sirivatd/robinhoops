@@ -6,9 +6,8 @@ import UserStocksContainer from "./user_stocks/user_stocks_container";
 import SearchBar from "./../search_bar/search_bar";
 import TopMoversIndex from "./top_movers/top_movers_index";
 import HomeChartContainer from "./home_chart/home_chart_container";
-
-import CountUp from "react-countup";
 import HomeChartViewContainer from "./home_chart/home_chart_container";
+import CountUp from "react-countup";
 
 class Home extends React.Component {
   constructor(props) {
@@ -19,7 +18,10 @@ class Home extends React.Component {
       previousTotalGain: 0,
       currentTotalGain: 0,
       previousDailyPercentGain: 0,
-      currentDailyPercentGain: 0
+      currentDailyPercentGain: 0,
+      orders: this.props.orders,
+      athletes: this.props.athletes,
+      stocks: this.props.stocks
     };
     this.showMenu = this.showMenu.bind(this);
     this.handleClick = this.handleClick.bind(this);
@@ -50,8 +52,11 @@ class Home extends React.Component {
 
   updateOrders() {
     console.log("Updating orders");
+    let newOrders = [];
     this.props.orders.forEach(order => {
-      updateOrder(this.props.currentUser.id, order.id);
+      updateOrder(this.props.currentUser.id, order.id).then(res =>
+        this.props.receiveAStock(res)
+      );
     });
   }
 
@@ -91,7 +96,7 @@ class Home extends React.Component {
       currentTotalGain: currentTotal - initial_price,
       previousDailyPercentGain: previousPercentGain,
       currentDailyPercentGain:
-        ((currentTotal - initial_price) / initial_price) * 100
+        ((currentTotal - initial_price) / this.state.totalPortValue) * 100
     });
   }
 
@@ -148,7 +153,15 @@ class Home extends React.Component {
     const chartView = () => (
       <div className="home-chart-view">
         <h2 className="home-port-value">
-          ${this.state.totalPortValue.toFixed(2)}
+          <CountUp
+            start={this.state.previousPortValue.toFixed(2)}
+            end={this.state.totalPortValue.toFixed(2)}
+            duration={5}
+            separator=","
+            decimals={2}
+            decimal="."
+            prefix="$"
+          />
         </h2>
         <h4 className="home-daily-gain">
           {this.state.currentTotalGain > 0 ? "+ " : "- "}
@@ -176,21 +189,6 @@ class Home extends React.Component {
         <div className="home-chart-container">
           <HomeChartContainer />
         </div>
-
-        {/* <ResponsiveContainer width="100%" height={300}>
-          <LineChart cx="50%" cy="50%" outerRadius="80%" data={chartData}>
-            <XAxis dataKey="year" />
-            <YAxis />
-            <CartesianGrid strokeDasharray="3 3" />
-            <Tooltip />
-            <Line
-              connectNulls={true}
-              type="monotone"
-              dataKey="Zambia"
-              stroke="black"
-            />
-          </LineChart>
-        </ResponsiveContainer> */}
       </div>
     );
 

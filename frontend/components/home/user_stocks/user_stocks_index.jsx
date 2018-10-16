@@ -1,6 +1,7 @@
 import React from "react";
 import UserStocksItem from "./user_stocks_item";
 import { fetchAthlete } from "./../../../util/athlete_api_util";
+import { withRouter, Redirect } from "react-router-dom";
 
 class UserStocksIndex extends React.Component {
   constructor(props) {
@@ -115,4 +116,4 @@ class UserStocksIndex extends React.Component {
   }
 }
 
-export default UserStocksIndex;
+export default withRouter(UserStocksIndex);

@@ -8,7 +8,7 @@ const stocksReducer = (state = {}, action) => {
     case RECEIVE_ALL_STOCKS:
       return merge({}, state, action.stocks);
     case RECEIVE_A_STOCK:
-      return merge({}, state, { [action.stock.id]: action.stock });
+      return merge({}, state, action.stock);
     default:
       return state;
   }
