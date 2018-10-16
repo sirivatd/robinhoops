@@ -47,15 +47,8 @@
   border: none;
   height: 1px;
   background: #f2f2f2;
-  background: -webkit-gradient(
-    radial,
-    50% 50%,
-    0,
-    50% 50%,
-    350,
-    from(#f2f2f2),
-    to(white)
-  );
+
+  margin-bottom: 40px;
 }
 
 .athlete-show-buy-sell {
@@ -81,4 +74,25 @@
   max-width: 150px;
   position: absolute;
   bottom: 0px;
+}
+
+.athlete-tweets-container {
+  margin-left: 110px;
+
+  margin-top: 50px;
+  width: 676px;
+  height: 300px;
+  background-color: cyan;
+}
+
+.athlete-similar-container {
+  margin-left: 110px;
+  background-color: yellow;
+  margin-top: 50px;
+  width: 676px;
+  height: 300px;
+  overflow-x: scroll;
+  overflow-y: hidden;
+  white-space: nowrap;
+  -ms-overflow-style: none;
 }

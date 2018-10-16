@@ -10,6 +10,11 @@ const TopMoversIndexItem = ({ athlete, price, history }) => {
     </div>
   );
 
+  const loader = () => (
+    <span className="cssload-loader">
+      <span className="cssload-loader-inner" />
+    </span>
+  );
   const athleteImg = () => (
     <div className="top-movers-img-container">
       <img className="top-movers-img" src={athlete.image_url} />
@@ -20,8 +25,8 @@ const TopMoversIndexItem = ({ athlete, price, history }) => {
       onClick={() => history.push(`/athletes/${athlete.id}`)}
       className="top-movers-item"
     >
-      {athleteDetail()}
-      {athleteImg()}
+      {athlete ? athleteDetail() : loader()}
+      {athlete ? athleteImg() : loader()}
     </div>
   );
 };

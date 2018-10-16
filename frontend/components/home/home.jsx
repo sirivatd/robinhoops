@@ -4,7 +4,7 @@ import { updateOrder } from "./../../util/order_api_util";
 import { createOrder } from "./../../util/order_api_util";
 import UserStocksContainer from "./user_stocks/user_stocks_container";
 import SearchBar from "./../search_bar/search_bar";
-import TopMoversIndex from "./top_movers/top_movers_index";
+import TopMoversIndexContainer from "./top_movers/top_movers_container";
 import HomeChartContainer from "./home_chart/home_chart_container";
 import HomeChartViewContainer from "./home_chart/home_chart_container";
 import CountUp from "react-countup";
@@ -192,7 +192,7 @@ class Home extends React.Component {
             separator=","
             decimals={2}
             decimal="."
-            prefix=""
+            prefix="$"
           />{" "}
           (
           <CountUp
@@ -249,10 +249,7 @@ class Home extends React.Component {
     const topMovers = () => (
       <div className="top-movers-section">
         <h3>Top Movers</h3>
-        <TopMoversIndex
-          athletes={this.props.athletes}
-          stocks={this.props.stocks}
-        />
+        <TopMoversIndexContainer />
       </div>
     );
 

@@ -1,6 +1,7 @@
 import React from "react";
 import { withRouter } from "react-router";
 import SearchBar from "./../search_bar/search_bar";
+import TopMoversIndexContainer from "./../home/top_movers/top_movers_container";
 
 class AthleteShow extends React.Component {
   constructor(props) {
@@ -13,6 +14,7 @@ class AthleteShow extends React.Component {
 
   componentDidMount() {
     this.props.fetchAllAthletes();
+    this.props.fetchStocks();
   }
 
   calculateTotalPortValue() {
@@ -111,6 +113,21 @@ class AthleteShow extends React.Component {
       </div>
     );
 
+    const athleteTweets = () => (
+      <div className="athlete-tweets-container">
+        <h1 className="athlete-stats-header">Recent Tweets</h1>
+        <hr className="athlete-show-break-line" />
+      </div>
+    );
+
+    const similarAthletes = () => (
+      <div className="athlete-similar-container">
+        <h1 className="athlete-stats-header">Similar Athletes</h1>
+        <hr className="athlete-show-break-line" />
+        <TopMoversIndexContainer />
+      </div>
+    );
+
     return (
       <div className="athlete-show-section">
         {accountSettings()}
@@ -146,6 +163,10 @@ class AthleteShow extends React.Component {
 
         {Object.values(this.props.athletes).length > 0
           ? athleteImage()
+          : loader()}
+        {athleteTweets()}
+        {Object.values(this.props.stocks).length > 0
+          ? similarAthletes()
           : loader()}
       </div>
     );
