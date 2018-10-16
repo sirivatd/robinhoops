@@ -66,7 +66,13 @@ class SearchBar extends React.Component {
 
             {filteredAthletes.slice(0, 8).map(athlete => {
               return (
-                <li className="search-result-item" key={athlete.id}>
+                <li
+                  onClick={() =>
+                    this.props.history.push(`/athletes/${athlete.id}`)
+                  }
+                  className="search-result-item"
+                  key={athlete.id}
+                >
                   <h4 className="search-athlete-team">
                     {athlete.team_acronym.toUpperCase()}
                   </h4>

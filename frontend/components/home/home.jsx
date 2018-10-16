@@ -35,7 +35,7 @@ class Home extends React.Component {
     this.props.fetchAllOrders(this.props.currentUser.id);
     this.props.fetchStocks();
     this.props.fetchAllAthletes();
-    window.setInterval(this.updateOrders, 10000);
+    window.setInterval(this.updateOrders, 20000);
     document.addEventListener("mousedown", this.handleClick, false);
   }
 
