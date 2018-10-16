@@ -1,0 +1,84 @@
+.athlete-show-header {
+  margin-top: 125px;
+  margin-left: 110px;
+  font-family: "Noto Sans", sans-serif;
+}
+
+.athlete-show-name h1 {
+  margin-bottom: 10px;
+}
+
+.athlete-show-price {
+  font-size: 30px;
+  font-weight: 100;
+}
+
+.athlete-show-percent-change {
+  font-size: 13px;
+  margin-top: 10px;
+}
+
+.athlete-show-graph {
+  width: 676px;
+  height: 250px;
+  background-color: black;
+  margin-left: 110px;
+  margin-top: 50px;
+}
+
+.athlete-stats-section {
+  margin-left: 110px;
+
+  margin-top: 50px;
+  width: 676px;
+  height: 600px;
+  background-color: red;
+}
+
+.athlete-stats-header {
+  font-family: "Noto Sans", sans-serif;
+  font-weight: 100;
+  font-size: 30px;
+}
+
+.athlete-show-break-line {
+  width: 100%;
+  display: block;
+  border: none;
+  height: 1px;
+  background: #f2f2f2;
+  background: -webkit-gradient(
+    radial,
+    50% 50%,
+    0,
+    50% 50%,
+    350,
+    from(#f2f2f2),
+    to(white)
+  );
+}
+
+.athlete-show-buy-sell {
+  width: 275px;
+  height: 350px;
+  background-color: blue;
+  position: fixed;
+  right: 100px;
+  bottom: 50px;
+  z-index: 9999;
+}
+
+.athlete-show-image-container {
+  width: 150px;
+  height: 150px;
+  position: fixed;
+  right: 163px;
+  background-color: green;
+  bottom: 400px;
+}
+
+.athlete-show-headshot {
+  max-width: 150px;
+  position: absolute;
+  bottom: 0px;
+}
