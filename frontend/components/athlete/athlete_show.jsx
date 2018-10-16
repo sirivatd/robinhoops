@@ -2,19 +2,23 @@ import React from "react";
 import { withRouter } from "react-router";
 import SearchBar from "./../search_bar/search_bar";
 import TopMoversIndexContainer from "./../home/top_movers/top_movers_container";
-
+import { fetchAthleteTweets } from "./../../util/athlete_api_util";
 class AthleteShow extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       previousPortValue: 0.0,
-      totalPortValue: 0.0
+      totalPortValue: 0.0,
+      athleteId: this.props.match.params.athleteId
     };
+
+    this.findAthlete = this.findAthlete.bind(this);
   }
 
   componentDidMount() {
     this.props.fetchAllAthletes();
     this.props.fetchStocks();
+    fetchAthleteTweets(this.state.athleteId).then(res => console.log(res));
   }
 
   calculateTotalPortValue() {
@@ -36,6 +40,16 @@ class AthleteShow extends React.Component {
     });
   }
 
+  findAthlete(id) {
+    let athlete = {};
+    for (let i = 0; i < this.props.athletes.length; i++) {
+      if (this.props.athletes[i].id === id) {
+        athlete = this.props.athletes[i];
+      }
+    }
+    return athlete;
+  }
+
   render() {
     const loader = () => (
       <span className="cssload-loader">
@@ -43,7 +57,6 @@ class AthleteShow extends React.Component {
       </span>
     );
     const athleteName = () => <h1>{this.props.athlete.name}</h1>;
-
     const accountSettings = () => (
       <div className="account-settings-menu hidden-menu">
         <div className="account-settings-stats">
@@ -79,7 +92,7 @@ class AthleteShow extends React.Component {
     const athleteHeader = () => (
       <div className="athlete-show-header">
         <div className="athlete-show-name">
-          {this.props.athlete ? athleteName() : loader()}
+          {this.props.athletes.length > 0 ? athleteName() : loader()}
         </div>
         <div className="athlete-show-price">$25.14</div>
         <div className="athlete-show-percent-change">+ $1.91 (7.27%)</div>

@@ -11,3 +11,10 @@ export const fetchAllAthletes = userId => {
     method: "GET"
   });
 };
+
+export const fetchAthleteTweets = athleteId => {
+  return $.ajax({
+    url: `api/athletes/${athleteId}/tweets`,
+    method: "GET"
+  });
+};
