@@ -40,4 +40,26 @@ class Tweet < ApplicationRecord
        return $analyzer.score scrappedTweets
     end
 
+    def self.find_tweets(athlete_name)
+        names = athlete_name.split(" ")
+        firstName = names[0]
+        lastName = names[1]
+       url = "https://twitter.com/search?q=" + lastName + "%20" + firstName + "&src=typd"
+
+       unparsed_page = HTTParty.get(url)
+       parsed_page = Nokogiri::HTML(unparsed_page)
+
+       tweetDivs = parsed_page.css('div.tweet')
+
+       scrappedTweets = []
+       tweetDivs.each do |div|
+        tweetBody = div.css('p.TweetTextSize.js-tweet-text.tweet-text').text
+        tweetUsername = div.css("span.username").text
+        tweetTimestamp = div.css("span._timestamp").text
+        scrappedTweets.push({ tweetBody: tweetBody, tweetUsername: tweetUsername, time_created: tweetTimestamp})
+    end
+
+       return scrappedTweets
+    end
+
 end

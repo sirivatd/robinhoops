@@ -6,4 +6,7 @@ class Athlete < ApplicationRecord
     print("Updating")
     end
 
+    def random_num
+        return rand(1000-10) + 10
+    end
 end

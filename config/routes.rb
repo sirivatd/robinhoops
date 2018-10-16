@@ -9,7 +9,9 @@ Rails.application.routes.draw do
     end
     resource :session, only: [:create, :destroy, :show]
     resources :stocks, only: [:index, :show]
-    resources :athletes, only: [:show, :index] 
-      
+    resources :athletes, only: [:show, :index]  do
+      resources :tweets, only: [:index]
+
+    end
   end
 end

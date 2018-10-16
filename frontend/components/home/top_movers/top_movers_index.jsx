@@ -2,12 +2,14 @@ import React from "react";
 import TopMoversIndexItem from "./top_movers_index_item";
 import { fetchAllAthletes } from "./../../../actions/athlete_actions";
 import { fetchStocks } from "./../../../actions/stock_actions";
+import { fetchTweets } from "./../../../actions/tweet_actions";
 
 class TopMoversIndex extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      topAthletes: []
+      topAthletes: [],
+      tweets: []
     };
   }
 
@@ -16,16 +18,14 @@ class TopMoversIndex extends React.Component {
     this.props.fetchStocks();
     let topAthletes = [];
     for (let i = 0; i < 5; i++) {
-      const randomNum = Math.floor(
-        Math.random() * (this.props.athletes.length - 1)
-      );
+      const randomNum = Math.floor(Math.random() * this.props.athletes.length);
       if (topAthletes.includes(randomNum)) {
       } else {
         topAthletes.push(randomNum);
       }
     }
     this.setState({
-      topAthletes: [1, 3, 2, 7, 1]
+      topAthletes: topAthletes
     });
   }
 
