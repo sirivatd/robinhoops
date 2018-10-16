@@ -21,7 +21,8 @@ class Home extends React.Component {
       currentDailyPercentGain: 0.0,
       orders: this.props.orders,
       athletes: this.props.athletes,
-      stocks: this.props.stocks
+      stocks: this.props.stocks,
+      currentUser: this.props.currentUser
     };
     this.showMenu = this.showMenu.bind(this);
     this.handleClick = this.handleClick.bind(this);
@@ -216,7 +217,10 @@ class Home extends React.Component {
     const accountSettings = () => (
       <div className="account-settings-menu hidden-menu">
         <div className="account-settings-stats">
-          <h3 className="account-settings-name">Don Sirivat</h3>
+          <h3 className="account-settings-name">
+            {this.state.currentUser.first_name}{" "}
+            {this.state.currentUser.last_name}
+          </h3>
           <div className="account-setting-port">
             <h4 className="account-setting-port-value">
               ${this.state.totalPortValue.toFixed(2)}
