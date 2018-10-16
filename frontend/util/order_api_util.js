@@ -6,6 +6,14 @@ export const createOrder = order => {
   });
 };
 
+export const updateOrder = (userId, orderId) => {
+  return $.ajax({
+    type: "PATCH",
+    url: `api/users/${userId}/orders/${orderId}`,
+    data: {}
+  });
+};
+
 export const fetchAllOrders = id => {
   return $.ajax({
     type: "GET",

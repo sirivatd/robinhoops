@@ -1,5 +1,6 @@
 import React from "react";
 import { fetchAthlete, fetchAllAthletes } from "./../../util/athlete_api_util";
+import { updateOrder } from "./../../util/order_api_util";
 import { createOrder } from "./../../util/order_api_util";
 import UserStocksContainer from "./user_stocks/user_stocks_container";
 import SearchBar from "./../search_bar/search_bar";
@@ -25,17 +26,19 @@ class Home extends React.Component {
     this.calculateTotalPortValue = this.calculateTotalPortValue.bind(this);
     this.findStock = this.findStock.bind(this);
     this.calculateTodayGain = this.calculateTodayGain.bind(this);
+    this.updateOrders = this.updateOrders.bind(this);
   }
 
   componentDidMount() {
     this.props.fetchAllOrders(this.props.currentUser.id);
     this.props.fetchStocks();
     this.props.fetchAllAthletes();
-
+    window.setInterval(this.updateOrders, 10000);
     document.addEventListener("mousedown", this.handleClick, false);
   }
 
   componentWillUnmount() {
+    window.clearInterval();
     document.removeEventListener("mousedown", this.handleClick, false);
   }
 
@@ -43,6 +46,13 @@ class Home extends React.Component {
     this.calculateTotalPortValue();
 
     this.calculateTodayGain();
+  }
+
+  updateOrders() {
+    console.log("Updating orders");
+    this.props.orders.forEach(order => {
+      updateOrder(this.props.currentUser.id, order.id);
+    });
   }
 
   findStock(order) {
