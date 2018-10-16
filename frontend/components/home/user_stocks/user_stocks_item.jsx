@@ -1,7 +1,7 @@
 import React from "react";
 import { Link, withRouter } from "react-router-dom";
 
-const UserStocksItem = ({ athlete, stock }) => {
+const UserStocksItem = ({ athlete, stock, history }) => {
   const athleteName = () => (
     <div className="order-index-item-athlete-info">
       <h3 className="order-index-item-athlete-name">{athlete.name}</h3>
@@ -24,9 +24,11 @@ const UserStocksItem = ({ athlete, stock }) => {
       ${stock.current_price.toFixed(2)}
     </h3>
   );
-
   return (
-    <li onClick={console.log("clicked")} className="order-index-item">
+    <li
+      onClick={() => history.push(`/athletes/${athlete.id}`)}
+      className="order-index-item"
+    >
       {Object.values(athlete).length > 0 ? athleteImage() : loader()}
       {Object.values(athlete).length > 0 ? athleteName() : loader()}
 
@@ -35,4 +37,4 @@ const UserStocksItem = ({ athlete, stock }) => {
   );
 };
 
-export default UserStocksItem;
+export default withRouter(UserStocksItem);

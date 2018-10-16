@@ -2,6 +2,7 @@ class Api::OrdersController < ApplicationController
     def show
         @order = Order.find(params[:id])
         @stock = @order.stock
+        render "api/orders/show_order"
     end
 
     def index
@@ -34,7 +35,7 @@ class Api::OrdersController < ApplicationController
     def create
         @order = Order.new(order_params)
         if @order.save!
-            render "api/orders/show"
+            render "api/orders/show_order"
         
         else
         render json: @order.errors.full_messages, status: 422

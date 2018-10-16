@@ -13,12 +13,12 @@ class Home extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      totalPortValue: 0,
-      previousPortValue: 0,
-      previousTotalGain: 0,
-      currentTotalGain: 0,
-      previousDailyPercentGain: 0,
-      currentDailyPercentGain: 0,
+      totalPortValue: 0.0,
+      previousPortValue: 0.0,
+      previousTotalGain: 0.0,
+      currentTotalGain: 0.0,
+      previousDailyPercentGain: 0.0,
+      currentDailyPercentGain: 0.0,
       orders: this.props.orders,
       athletes: this.props.athletes,
       stocks: this.props.stocks
@@ -84,29 +84,48 @@ class Home extends React.Component {
     let previousPercentGain = this.state.currentDailyPercentGain;
     let initial_price = 0;
     this.props.orders.forEach(order => {
-      let totalEquity = order.num_share * this.findStock(order).current_price;
-      let initialTotalPrice =
-        order.num_share * this.findStock(order).initial_price;
+      let stockEquityCurrent = this.findStock(order).current_price;
+      if (!stockEquityCurrent) {
+        stockEquityCurrent = 0;
+      }
+      let totalEquity = order.num_share * stockEquityCurrent;
+      let stockEquityInitial = this.findStock(order).initial_price;
+
+      if (!stockEquityInitial) {
+        stockEquityInitial = 0;
+      }
+      let initialTotalPrice = order.num_share * stockEquityInitial;
       initial_price += initialTotalPrice;
       currentTotal += totalEquity;
     });
+
+    let currentPortValue = this.state.totalPortValue;
+    if (currentPortValue === 0) {
+      currentPortValue = 1;
+    }
 
     this.setState({
       previousTotalGain: previousTotal,
       currentTotalGain: currentTotal - initial_price,
       previousDailyPercentGain: previousPercentGain,
       currentDailyPercentGain:
-        ((currentTotal - initial_price) / this.state.totalPortValue) * 100
+        ((currentTotal - initial_price) / currentPortValue) * 100
     });
   }
 
   calculateTotalPortValue() {
     let total = 0;
     let currentTotal = this.state.totalPortValue;
+
     this.props.orders.forEach(order => {
-      let totalEquity = order.num_share * this.findStock(order).current_price;
+      let stockEquity = this.findStock(order).current_price;
+      if (!stockEquity) {
+        stockEquity = 0;
+      }
+      let totalEquity = order.num_share * stockEquity;
       total += totalEquity;
     });
+
     this.setState({
       previousPortValue: currentTotal,
       totalPortValue: total + this.props.currentUser.buying_power

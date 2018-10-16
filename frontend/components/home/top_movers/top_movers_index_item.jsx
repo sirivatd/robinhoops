@@ -1,6 +1,7 @@
 import React from "react";
+import { withRouter } from "react-router-dom";
 
-const TopMoversIndexItem = ({ athlete, price }) => {
+const TopMoversIndexItem = ({ athlete, price, history }) => {
   const athleteDetail = () => (
     <div className="top-movers-detail">
       <h3 className="top-movers-name">{athlete.name}</h3>
@@ -15,11 +16,14 @@ const TopMoversIndexItem = ({ athlete, price }) => {
     </div>
   );
   return (
-    <div className="top-movers-item">
+    <div
+      onClick={() => history.push(`/athletes/${athlete.id}`)}
+      className="top-movers-item"
+    >
       {athleteDetail()}
       {athleteImg()}
     </div>
   );
 };
 
-export default TopMoversIndexItem;
+export default withRouter(TopMoversIndexItem);
