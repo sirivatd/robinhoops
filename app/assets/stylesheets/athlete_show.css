@@ -58,7 +58,7 @@
   position: fixed;
   right: 100px;
   bottom: 115px;
-  z-index: 9999;
+  z-index: 999;
   box-shadow: -1px 4px 18px #c4c4c4;
 }
 

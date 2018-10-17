@@ -18,3 +18,10 @@ export const logout = () =>
     method: "DELETE",
     url: "/api/session"
   });
+
+export const updateUser = (userId, buyingPower) =>
+  $.ajax({
+    method: "PATCH",
+    url: `/api/users/${userId}`,
+    data: { user: { buying_power: buyingPower } }
+  });

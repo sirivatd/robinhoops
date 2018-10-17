@@ -1,5 +1,6 @@
 .account-settings-menu {
   text-align: left;
+  z-index: 999999;
 }
 
 .account-settings-stats {

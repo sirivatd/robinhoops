@@ -1,27 +1,56 @@
 import React from "react";
 import CountUp from "react-countup";
+import { withRouter } from "react-router-dom";
+import { updateUser } from "./../../../util/session_api_util";
 
 class BuySell extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       stock: {},
-      numShares: 0,
-      estimatedCost: 0
+      numShares: "",
+      estimatedCost: 0,
+      ownedShares: 0,
+      orderType: true
     };
     this.optionsClicked = this.optionsClicked.bind(this);
     this.findStock = this.findStock.bind(this);
     this.update = this.update.bind(this);
+    this.orderSubmitted = this.orderSubmitted.bind(this);
+    this.calculateOwnedShares = this.calculateOwnedShares.bind(this);
   }
 
   componentDidMount() {
+    this.props.fetchAllOrders();
     this.findStock(this.props.athleteId);
   }
 
   componentWillReceiveProps(nextProps) {
-    if (this.props.athleteId !== nextProps.ahleteId) {
+    if (Object.values(this.state.stock).length > 0) {
+      this.calculateOwnedShares();
+    }
+    if (this.props.athleteId !== nextProps.athleteId) {
       this.findStock(nextProps.athleteId);
     }
+  }
+
+  calculateOwnedShares() {
+    let boughtShares = 0;
+    let soldShares = 0;
+
+    for (let i = 0; i < this.props.orders.length; i++) {
+      if (parseInt(this.props.orders[i].stock_id) === this.state.stock.id) {
+        if (this.props.orders[i].order_type === "BUY") {
+          boughtShares += this.props.orders[i].num_share;
+        } else {
+          soldShares += this.props.orders[i].num_share;
+        }
+      }
+    }
+
+    this.setState({
+      ownedShares: boughtShares - soldShares
+    });
   }
 
   findStock(athleteId) {
@@ -62,6 +91,62 @@ class BuySell extends React.Component {
     const sellOption = document.getElementsByClassName("sell-order-option")[0];
     buyOption.classList.toggle("options-selected");
     sellOption.classList.toggle("options-selected");
+    this.setState({
+      orderType: !this.state.orderType
+    });
+  }
+
+  orderSubmitted() {
+    let orderType = "BUY";
+    if (this.state.orderType === false) {
+      orderType = "SELL";
+    }
+
+    // check for valid order
+    if (orderType === "BUY") {
+      if (this.state.estimatedCost > this.props.currentUser.buying_power) {
+        alert("Insufficient funds to complete this transaction");
+        return;
+      }
+    }
+
+    if (orderType === "SELL") {
+      if (parseInt(this.state.numShares) > this.state.ownedShares) {
+        alert("You cannot sell more shares than you own");
+        return;
+      }
+    }
+
+    if (
+      parseInt(this.state.numShares) === 0 ||
+      this.state.numShares === "" ||
+      parseInt(this.state.numShares) < 0
+    ) {
+      alert("There was a problem completing your order");
+    }
+
+    const newOrder = {
+      num_share: parseInt(this.state.numShares),
+      user_id: this.props.currentUser.id,
+      stock_id: this.state.stock.id,
+      purchase_price: this.state.stock.current_price,
+      order_type: orderType
+    };
+
+    if (orderType === "BUY") {
+      this.props.currentUser.buying_power -= this.state.estimatedCost;
+    } else {
+      this.props.currentUser.buying_power += this.state.estimatedCost;
+    }
+
+    this.props.createOrder(newOrder);
+    updateUser(
+      this.props.currentUser.id,
+      this.props.currentUser.buying_power
+    ).then(res => {
+      this.props.receiveCurrentUser(res);
+    });
+    this.props.history.push("/");
   }
 
   render() {
@@ -79,6 +164,68 @@ class BuySell extends React.Component {
           </h3>
         </label>
       </div>
+    );
+
+    const buySection = () => (
+      <label className="estimated-cost-credit-label">
+        Estimated Cost
+        <h3 className="estimated-cost-credit-value">
+          <CountUp
+            start={this.state.estimatedCost}
+            end={this.state.estimatedCost}
+            separator=","
+            decimals={2}
+            decimal="."
+            prefix="$"
+          />
+        </h3>
+      </label>
+    );
+
+    const sellSection = () => (
+      <label className="estimated-cost-credit-label">
+        Estimated Credit
+        <h3 className="estimated-cost-credit-value">
+          <CountUp
+            start={this.state.estimatedCost}
+            end={this.state.estimatedCost}
+            separator=","
+            decimals={2}
+            decimal="."
+            prefix="$"
+          />
+        </h3>
+      </label>
+    );
+
+    const buyingPowerSection = () => (
+      <h3 className="buying-power-shares-available">
+        <CountUp
+          start={this.props.currentUser.buying_power}
+          end={this.props.currentUser.buying_power}
+          duration={5}
+          separator=","
+          decimals={2}
+          decimal="."
+          prefix="$"
+        />{" "}
+        Buying Power Available
+      </h3>
+    );
+
+    const sellingSharesSection = () => (
+      <h3 className="buying-power-shares-available">
+        <CountUp
+          start={this.state.ownedShares}
+          end={this.state.ownedShares}
+          duration={5}
+          separator=","
+          decimals={0}
+          decimal="."
+          prefix=""
+        />{" "}
+        Shares Available
+      </h3>
     );
 
     return (
@@ -105,6 +252,7 @@ class BuySell extends React.Component {
                 className="shares-num-input"
                 value={this.state.numShares}
                 min="0"
+                placeholder="0"
               />
             </label>
           </div>
@@ -113,37 +261,16 @@ class BuySell extends React.Component {
             : loader()}
 
           <hr className="estimated-cost-break-line" />
-          <label className="estimated-cost-credit-label">
-            Estimated Cost
-            <h3 className="estimated-cost-credit-value">
-              <CountUp
-                start={this.state.estimatedCost}
-                end={this.state.estimatedCost}
-                separator=","
-                decimals={2}
-                decimal="."
-                prefix="$"
-              />
-            </h3>
-          </label>
-          <button className="order-submit-button">Place Order</button>
+          {this.state.orderType ? buySection() : sellSection()}
+          <button className="order-submit-button" onClick={this.orderSubmitted}>
+            Place Order
+          </button>
           <hr className="buying-power-break-line" />
-          <h3 className="buying-power-shares-available">
-            <CountUp
-              start={0}
-              end={this.props.currentUser.buying_power}
-              duration={5}
-              separator=","
-              decimals={2}
-              decimal="."
-              prefix="$"
-            />{" "}
-            Buying Power Available
-          </h3>
+          {this.state.orderType ? buyingPowerSection() : sellingSharesSection()}
         </div>
       </div>
     );
   }
 }
 
-export default BuySell;
+export default withRouter(BuySell);

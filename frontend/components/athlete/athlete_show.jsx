@@ -27,6 +27,8 @@ class AthleteShow extends React.Component {
 
     this.findAthlete = this.findAthlete.bind(this);
     this.findStock = this.findStock.bind(this);
+    this.handleClick = this.handleClick.bind(this);
+    this.showMenu = this.showMenu.bind(this);
   }
 
   componentDidMount() {
@@ -36,6 +38,11 @@ class AthleteShow extends React.Component {
     fetchAthleteTweets(this.state.athleteId).then(res =>
       this.setState({ tweets: Object.values(res) })
     );
+    document.addEventListener("mousedown", this.handleClick, false);
+  }
+
+  componentWillUnmount() {
+    document.removeEventListener("mousedown", this.handleClick, false);
   }
 
   componentWillReceiveProps(nextProps) {
@@ -63,6 +70,32 @@ class AthleteShow extends React.Component {
           tweets: Object.values(res)
         });
       });
+    }
+  }
+
+  showMenu() {
+    const menu = document.getElementsByClassName("account-settings-menu")[0];
+    menu.classList.toggle("hidden-menu");
+  }
+
+  handleClick(e) {
+    const button = document.getElementById("account-button");
+
+    if (
+      document
+        .getElementsByClassName("account-settings-menu")[0]
+        .contains(e.target) ||
+      button.contains(e.target)
+    ) {
+      return;
+    }
+    this.handleClickOutside();
+  }
+  handleClickOutside() {
+    const menu = document.getElementsByClassName("account-settings-menu")[0];
+    if (menu.classList.contains("hidden-menu")) {
+    } else {
+      menu.classList.toggle("hidden-menu");
     }
   }
 

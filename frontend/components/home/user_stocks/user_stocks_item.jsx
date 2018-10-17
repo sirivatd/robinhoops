@@ -30,9 +30,9 @@ const UserStocksItem = ({ athlete, stock, history }) => {
       className="order-index-item"
     >
       {Object.values(athlete).length > 0 ? athleteImage() : loader()}
-      {Object.values(athlete).length > 0 ? athleteName() : loader()}
+      {Object.values(athlete).length > 0 ? athleteName() : null}
 
-      {Object.values(athlete).length > 0 ? itemPrice() : loader()}
+      {Object.values(athlete).length > 0 ? itemPrice() : null}
     </li>
   );
 };
