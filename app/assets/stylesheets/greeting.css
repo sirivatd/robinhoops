@@ -15,6 +15,14 @@
   margin-left: 40px;
 }
 
+.logo-img:hover {
+  cursor: pointer;
+  background-color: black;
+  opacity: 0.7 !important;
+  filter: alpha(opacity=70) !important; /* For IE8 and earlier */
+  box-shadow: 0 0 0px #000000 !important;
+}
+
 .login-signup {
   float: right;
   vertical-align: middle;

@@ -21,6 +21,16 @@ class AthleteShow extends React.Component {
     fetchAthleteTweets(this.state.athleteId).then(res => console.log(res));
   }
 
+  componentWillReceiveProps(nextProps) {
+    if (
+      this.props.match.params.athleteId !== nextProps.match.params.athleteId
+    ) {
+      fetchAthleteTweets(nextProps.match.params.athleteId).then(res =>
+        console.log(res)
+      );
+    }
+  }
+
   calculateTotalPortValue() {
     let total = 0;
     let currentTotal = this.state.totalPortValue;
@@ -146,6 +156,7 @@ class AthleteShow extends React.Component {
         {accountSettings()}
         <div className="fixed-nav-bar">
           <img
+            onClick={() => this.props.history.push("/")}
             className="logo-img"
             src="https://media.glassdoor.com/sqll/1167765/robinhood-squarelogo-1530549970728.png"
           />

@@ -146,5 +146,7 @@
 }
 
 .signup-gif {
-  width: 100%;
+  width: 400px;
+  position: fixed;
+  bottom: 0px;
 }
