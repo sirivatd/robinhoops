@@ -51,6 +51,7 @@
 
 #free-stock-button:hover {
   background-color: #1ae9aa;
+  cursor: pointer;
 }
 
 #free-player-picture {

@@ -4,6 +4,7 @@ import SearchBar from "./../search_bar/search_bar";
 import TopMoversIndexContainer from "./../home/top_movers/top_movers_container";
 import { fetchAthleteTweets } from "./../../util/athlete_api_util";
 import TweetsIndex from "./tweets/tweets_index";
+import BuySellContainer from "./../home/buy_sell/buy_sell_container";
 
 class AthleteShow extends React.Component {
   constructor(props) {
@@ -12,7 +13,8 @@ class AthleteShow extends React.Component {
       previousPortValue: 0.0,
       totalPortValue: 0.0,
       athleteId: this.props.match.params.athleteId,
-      tweets: []
+      tweets: [],
+      currentUser: this.props.currentUser
     };
 
     this.findAthlete = this.findAthlete.bind(this);
@@ -129,7 +131,12 @@ class AthleteShow extends React.Component {
 
     const buySellSection = () => (
       <div className="athlete-show-buy-sell animated slideInRight">
-        Buy and sell here
+        <BuySellContainer
+          orders={this.props.orders}
+          athleteId={this.state.athleteId}
+          currentUser={this.props.currentUser}
+          stocks={this.props.stocks}
+        />
       </div>
     );
 
