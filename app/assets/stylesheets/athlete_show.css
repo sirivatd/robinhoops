@@ -73,7 +73,7 @@
 .athlete-show-headshot {
   max-width: 150px;
   position: absolute;
-  bottom: 0px;
+  bottom: 15px;
 }
 
 .athlete-tweets-container {

@@ -4,10 +4,10 @@ import { connect } from "react-redux";
 
 const mSP = (props, ownProps) => {
   return {
-    stocks: Object.values(props.entities.stocks),
-    currentUser: props.currentUser,
-    orders: Object.values(props.entities.orders),
-    athletes: Object.values(props.entities.athletes)
+    stocks: Object.values(ownProps.stocks),
+    currentUser: ownProps.currentUser,
+    orders: Object.values(ownProps.orders),
+    athleteId: ownProps.athleteId
   };
 };
 

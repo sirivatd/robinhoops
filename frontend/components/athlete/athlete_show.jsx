@@ -5,6 +5,7 @@ import TopMoversIndexContainer from "./../home/top_movers/top_movers_container";
 import { fetchAthleteTweets } from "./../../util/athlete_api_util";
 import TweetsIndex from "./tweets/tweets_index";
 import BuySellContainer from "./../home/buy_sell/buy_sell_container";
+import CountUp from "react-countup";
 
 class AthleteShow extends React.Component {
   constructor(props) {
@@ -12,31 +13,80 @@ class AthleteShow extends React.Component {
     this.state = {
       previousPortValue: 0.0,
       totalPortValue: 0.0,
+      previousStockValue: 0.0,
+      currentStockValue: 0.0,
       athleteId: this.props.match.params.athleteId,
       tweets: [],
-      currentUser: this.props.currentUser
+      orders: this.props.orders,
+      currentUser: this.props.currentUser,
+      previousDailyPercentGain: 0.0,
+      currentDailyPercentGain: 0.0,
+      previousTotalGain: 0.0,
+      currentTotalGain: 0.0
     };
 
     this.findAthlete = this.findAthlete.bind(this);
+    this.findStock = this.findStock.bind(this);
   }
 
   componentDidMount() {
     this.props.fetchAllAthletes();
     this.props.fetchStocks();
+    this.props.fetchAllOrders(this.props.currentUser.id);
     fetchAthleteTweets(this.state.athleteId).then(res =>
       this.setState({ tweets: Object.values(res) })
     );
   }
 
   componentWillReceiveProps(nextProps) {
+    if (this.props.stocks.length > 0) {
+      this.setState({
+        stocks: this.props.stocks
+      });
+      this.findStock(this.state.athleteId);
+    }
+
     if (
       this.props.match.params.athleteId !== nextProps.match.params.athleteId
     ) {
-      fetchAthleteTweets(nextProps.match.params.athleteId).then(res =>
+      this.setState({
+        athleteId: nextProps.match.params.athleteId,
+        previousStockValue: 0,
+        currentStockValue: 0,
+        previousDailyPercentGain: 0,
+        currentDailyPercentGain: 0
+      });
+      this.findStock(this.state.athleteId);
+
+      fetchAthleteTweets(nextProps.match.params.athleteId).then(res => {
         this.setState({
           tweets: Object.values(res)
-        })
-      );
+        });
+      });
+    }
+  }
+
+  findStock(athleteId) {
+    const stocks = this.props.stocks;
+    let stock = {};
+    for (let i = 0; i < this.props.stocks.length; i++) {
+      if (this.props.stocks[i].athlete_id === parseInt(this.state.athleteId)) {
+        let totalGain =
+          this.props.stocks[i].current_price -
+          this.props.stocks[i].initial_price;
+
+        this.setState({
+          previousStockValue: this.state.currentStockValue,
+          currentStockValue: this.props.stocks[i].current_price,
+          previousDailyPercentGain: this.state.currentDailyPercentGain,
+          currentDailyPercentGain:
+            (totalGain / this.props.stocks[i].initial_price) * 100,
+          previousTotalGain: this.state.currentTotalGain,
+          currentTotalGain: totalGain,
+          currentStock: this.props.stocks[i],
+          orders: this.props.orders
+        });
+      }
     }
   }
 
@@ -113,8 +163,41 @@ class AthleteShow extends React.Component {
         <div className="athlete-show-name">
           {this.props.athletes.length > 0 ? athleteName() : loader()}
         </div>
-        <div className="athlete-show-price">$25.14</div>
-        <div className="athlete-show-percent-change">+ $1.91 (7.27%)</div>
+        <div className="athlete-show-price">
+          {" "}
+          <CountUp
+            start={this.state.previousStockValue.toFixed(2)}
+            end={this.state.currentStockValue.toFixed(2)}
+            duration={5}
+            separator=","
+            decimals={2}
+            decimal="."
+            prefix="$"
+          />
+        </div>
+        <div className="athlete-show-percent-change">
+          {this.state.currentTotalGain > 0 ? "+ " : "- "}
+          <CountUp
+            start={Math.abs(this.state.previousTotalGain)}
+            end={Math.abs(this.state.currentTotalGain)}
+            duration={5}
+            separator=","
+            decimals={2}
+            decimal="."
+            prefix="$"
+          />{" "}
+          (
+          <CountUp
+            start={this.state.previousDailyPercentGain}
+            end={this.state.currentDailyPercentGain}
+            duration={5}
+            separator=","
+            decimals={2}
+            decimal="."
+            prefix=""
+          />
+          %) Today
+        </div>
       </div>
     );
 
@@ -133,8 +216,8 @@ class AthleteShow extends React.Component {
       <div className="athlete-show-buy-sell animated slideInRight">
         <BuySellContainer
           orders={this.props.orders}
-          athleteId={this.state.athleteId}
-          currentUser={this.props.currentUser}
+          athleteId={parseInt(this.state.athleteId)}
+          currentUser={this.state.currentUser}
           stocks={this.props.stocks}
         />
       </div>
@@ -196,7 +279,8 @@ class AthleteShow extends React.Component {
           ? athleteStats()
           : loader()}
 
-        {Object.values(this.props.athletes).length > 0
+        {Object.values(this.props.orders).length > 0 &&
+        Object.values(this.props.stocks).length > 0
           ? buySellSection()
           : loader()}
 

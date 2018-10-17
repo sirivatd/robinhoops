@@ -5,7 +5,9 @@ const TweetsIndex = ({ tweets }) => {
   const tweetItems = () =>
     tweets
       .slice(0, 6)
-      .map(tweet => <TweetsIndexItem key={tweet.id} tweet={tweet} />);
+      .map(tweet => (
+        <TweetsIndexItem key={Math.random() * 100} tweet={tweet} />
+      ));
   return <div className="athlete-tweets-section">{tweetItems()}</div>;
 };
 

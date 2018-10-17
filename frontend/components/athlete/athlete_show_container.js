@@ -5,6 +5,7 @@ import AthleteShow from "./athlete_show.jsx";
 import { fetchAllAthletes } from "./../../actions/athlete_actions";
 import { fetchStocks } from "../../actions/stock_actions";
 import { logout } from "../../actions/session_actions";
+import { fetchAllOrders } from "./../../actions/order_actions";
 
 const mapStateToProps = (
   { session, entities: { athletes, users, orders, stocks } },
@@ -22,7 +23,8 @@ const mapStateToProps = (
 const mDP = dispatch => ({
   fetchAllAthletes: () => dispatch(fetchAllAthletes()),
   logout: () => dispatch(logout()),
-  fetchStocks: () => dispatch(fetchStocks())
+  fetchStocks: () => dispatch(fetchStocks()),
+  fetchAllOrders: userId => dispatch(fetchAllOrders(userId))
 });
 
 export default connect(
