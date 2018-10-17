@@ -54,11 +54,12 @@
 .athlete-show-buy-sell {
   width: 275px;
   height: 350px;
-  background-color: blue;
+  background-color: white;
   position: fixed;
   right: 100px;
-  bottom: 50px;
+  bottom: 115px;
   z-index: 9999;
+  box-shadow: -1px 4px 18px #c4c4c4;
 }
 
 .athlete-show-image-container {
@@ -66,8 +67,7 @@
   height: 150px;
   position: fixed;
   right: 163px;
-  background-color: green;
-  bottom: 400px;
+  bottom: 465px;
 }
 
 .athlete-show-headshot {
@@ -82,17 +82,34 @@
   margin-top: 50px;
   width: 676px;
   height: 300px;
-  background-color: cyan;
 }
 
 .athlete-similar-container {
   margin-left: 110px;
-  background-color: yellow;
-  margin-top: 50px;
   width: 676px;
   height: 300px;
   overflow-x: scroll;
   overflow-y: hidden;
   white-space: nowrap;
   -ms-overflow-style: none;
+}
+
+.watchlist-button {
+  width: 227px;
+  height: 48px;
+  background-color: transparent;
+  border: 1px solid #21ce99;
+  color: #21ce99;
+  font-family: "Noto Sans", sans-serif;
+  font-size: 15px;
+  position: fixed;
+  right: 122px;
+  bottom: 40px;
+}
+
+.watchlist-button:hover {
+  border: none;
+  background-color: #21ce99;
+  color: white;
+  cursor: pointer;
 }

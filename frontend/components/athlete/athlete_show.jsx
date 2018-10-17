@@ -3,13 +3,16 @@ import { withRouter } from "react-router";
 import SearchBar from "./../search_bar/search_bar";
 import TopMoversIndexContainer from "./../home/top_movers/top_movers_container";
 import { fetchAthleteTweets } from "./../../util/athlete_api_util";
+import TweetsIndex from "./tweets/tweets_index";
+
 class AthleteShow extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       previousPortValue: 0.0,
       totalPortValue: 0.0,
-      athleteId: this.props.match.params.athleteId
+      athleteId: this.props.match.params.athleteId,
+      tweets: []
     };
 
     this.findAthlete = this.findAthlete.bind(this);
@@ -18,7 +21,9 @@ class AthleteShow extends React.Component {
   componentDidMount() {
     this.props.fetchAllAthletes();
     this.props.fetchStocks();
-    fetchAthleteTweets(this.state.athleteId).then(res => console.log(res));
+    fetchAthleteTweets(this.state.athleteId).then(res =>
+      this.setState({ tweets: Object.values(res) })
+    );
   }
 
   componentWillReceiveProps(nextProps) {
@@ -26,7 +31,9 @@ class AthleteShow extends React.Component {
       this.props.match.params.athleteId !== nextProps.match.params.athleteId
     ) {
       fetchAthleteTweets(nextProps.match.params.athleteId).then(res =>
-        console.log(res)
+        this.setState({
+          tweets: Object.values(res)
+        })
       );
     }
   }
@@ -140,6 +147,7 @@ class AthleteShow extends React.Component {
       <div className="athlete-tweets-container">
         <h1 className="athlete-stats-header">Recent Tweets</h1>
         <hr className="athlete-show-break-line" />
+        <TweetsIndex tweets={this.state.tweets} />
       </div>
     );
 
@@ -185,10 +193,14 @@ class AthleteShow extends React.Component {
           ? buySellSection()
           : loader()}
 
+        <button className="watchlist-button">Add to Watchlist</button>
+
         {Object.values(this.props.athletes).length > 0
           ? athleteImage()
           : loader()}
-        {athleteTweets()}
+        {Object.values(this.state.tweets).length > 0
+          ? athleteTweets()
+          : loader()}
         {Object.values(this.props.stocks).length > 0
           ? similarAthletes()
           : loader()}

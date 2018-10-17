@@ -15,12 +15,13 @@ import {
 } from "../../actions/athlete_actions";
 
 const mapStateToProps = (
-  { session, entities: { users, stocks, orders, athletes } },
+  { session: { id, firstTime }, entities: { users, stocks, orders, athletes } },
   ownProps
 ) => {
   return {
     stocks: Object.values(stocks),
-    currentUser: users[session.id],
+    currentUser: users[id],
+    firstTime: firstTime,
     orders: Object.values(orders),
     athletes: Object.values(athletes)
   };

@@ -46,6 +46,7 @@ class FreeStock extends React.Component {
       order_type: "BUY"
     };
     this.props.createOrder(newOrder);
+    this.props.removeFirstUser();
     this.props.history.push("/");
   }
 

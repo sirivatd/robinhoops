@@ -15,6 +15,7 @@ class SignUpForm extends React.Component {
 
   componentDidMount() {
     this.props.receiveErrors([]);
+    this.props.receiveFirstUser();
   }
 
   loginAsGuest(e) {

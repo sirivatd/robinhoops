@@ -3,8 +3,20 @@ import * as APIUtil from "../util/session_api_util";
 export const RECEIVE_CURRENT_USER = "RECEIVE_CURRENT_USER";
 export const LOGOUT_CURRENT_USER = "LOGOUT_CURRENT_USER";
 export const RECEIVE_SESSION_ERRORS = "RECEIVE_SESSION_ERRORS";
+export const RECEIVE_FIRST_USER = "RECEIVE_FIRST_USER";
+export const REMOVE_FIRST_USER = "REMOVE_FIRST_USER";
 
 // Regular action creators
+
+export const receiveFirstUser = () => ({
+  type: RECEIVE_FIRST_USER,
+  firstUser: true
+});
+
+export const removeFirstUser = () => ({
+  type: REMOVE_FIRST_USER,
+  firstUser: false
+});
 
 export const receiveCurrentUser = currentUser => ({
   type: RECEIVE_CURRENT_USER,

@@ -45,10 +45,18 @@ class Home extends React.Component {
     document.removeEventListener("mousedown", this.handleClick, false);
   }
 
-  componentWillReceiveProps() {
-    this.calculateTotalPortValue();
+  componentWillReceiveProps(nextProps) {
+    if (this.props.firstTime !== undefined) {
+      if (this.props.firstTime === true) {
+        this.props.history.push(`/${this.state.currentUser.id}/free-stock`);
+      }
+    }
 
-    this.calculateTodayGain();
+    if (this.props.orders !== nextProps.orders) {
+      this.calculateTotalPortValue();
+
+      this.calculateTodayGain();
+    }
   }
 
   updateOrders() {

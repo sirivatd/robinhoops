@@ -1,0 +1,62 @@
+.tweet-content-view {
+  width: 250px;
+  height: 300px;
+  display: inline-block;
+  position: relative;
+  margin-right: 15px;
+  border-radius: 2px;
+  background-color: white;
+  box-shadow: -1px 4px 18px #c4c4c4;
+  margin-left: 20px;
+  overflow: scroll;
+  height: 200px;
+}
+
+.tweet-body-section {
+  word-break: normal;
+  padding: 15px;
+  overflow-y: hidden;
+}
+
+.athlete-tweets-container {
+  overflow-x: scroll;
+  overflow-y: hidden;
+  white-space: nowrap;
+  -ms-overflow-style: none;
+  height: 400px;
+  margin-left: 115px;
+}
+
+.tweet-body-section p {
+  word-break: break-all;
+  white-space: normal;
+  margin-top: 0;
+  font-family: "Noto Sans", sans-serif;
+  font-size: 12px;
+}
+
+.tweet-username {
+  font-family: "Noto Sans", sans-serif;
+  font-size: 13px;
+}
+
+.tweet-timestamp {
+  font-family: "Noto Sans", sans-serif;
+  font-size: 11px;
+  margin-left: 11px;
+  margin-right: 15px;
+}
+
+.tweet-header {
+  margin-top: 15px;
+  display: flex;
+  justify-content: space-between;
+  margin-left: 15px;
+}
+
+.tweet-break-line {
+  width: 247px;
+  border: none;
+  height: 1px;
+  background: #f2f2f2;
+}
