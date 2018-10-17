@@ -56,6 +56,3 @@ Athlete.all.each do |athlete|
     Stock.create({athlete_id: athlete.id, current_price: initial_price, initial_price: initial_price, day_start_price: initial_price})
 end
 
-Athlete.all.each do |athlete|
-    Tweet.sync(athlete)
-end
