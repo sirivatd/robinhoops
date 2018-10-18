@@ -6,6 +6,7 @@ import { fetchAthleteTweets } from "./../../util/athlete_api_util";
 import TweetsIndex from "./tweets/tweets_index";
 import BuySellContainer from "./../home/buy_sell/buy_sell_container";
 import CountUp from "react-countup";
+import AthleteChartViewContainer from "./athlete_chart/athlete_chart_container";
 
 class AthleteShow extends React.Component {
   constructor(props) {
@@ -240,7 +241,14 @@ class AthleteShow extends React.Component {
     );
 
     const athleteGraph = () => (
-      <div className="athlete-show-graph">This is where the graph goes</div>
+      <div className="athlete-show-graph">
+        <AthleteChartViewContainer
+          orders={this.props.orders}
+          athleteId={parseInt(this.state.athleteId)}
+          currentUser={this.state.currentUser}
+          stocks={this.props.stocks}
+        />
+      </div>
     );
 
     const buySellSection = () => (

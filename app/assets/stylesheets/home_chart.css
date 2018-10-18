@@ -26,7 +26,7 @@
 
 .top-movers-section {
   display: block;
-  margin-top: 70vh;
+  margin-top: 60vh;
   font-family: "Roboto", sans-serif;
   font-weight: 100;
   font-size: 21px;
@@ -42,4 +42,5 @@
 
 .chartjs-render-monitor {
   margin-left: 50px;
+  height: 275px;
 }

@@ -1,7 +1,7 @@
 import React from "react";
 import { Bar, Line, Pie } from "react-chartjs-2";
 
-class HomeChart extends React.Component {
+class AthleteChart extends React.Component {
   constructor(props) {
     super(props);
     this.state = { data: { datasets: [], labels: [] } };
@@ -9,17 +9,18 @@ class HomeChart extends React.Component {
 
   componentDidMount() {
     $.ajax({
-      url: `/api/users/${this.props.currentUser.id}/users_port_snapshots`,
+      url: `/api/athletes/${this.props.athleteId}/athlete_price_snapshots`,
       method: "GET"
     }).then(res => {
-      let snapshotPoints = Object.values(res);
+      let valuePoints = Object.values(res);
       let labels = [];
       let data = [];
 
-      for (let i = 0; i < snapshotPoints.length; i++) {
-        labels.push(snapshotPoints[i].created_at);
-        data.push(snapshotPoints[i].port_value);
+      for (let i = 0; i < valuePoints.length; i++) {
+        labels.push(valuePoints[i].created_at);
+        data.push(valuePoints[i].price);
       }
+
       this.setState({
         data: {
           labels: labels,
@@ -41,12 +42,7 @@ class HomeChart extends React.Component {
   }
 
   render() {
-    const loader = () => (
-      <span className="cssload-loader">
-        <span className="cssload-loader-inner" />
-      </span>
-    );
-    const athleteGraph = () => (
+    return (
       <Line
         options={{
           legend: {
@@ -93,10 +89,7 @@ class HomeChart extends React.Component {
         data={this.state.data}
       />
     );
-    return (
-      <div>{this.props.athletes.length > 0 ? athleteGraph() : loader()}</div>
-    );
   }
 }
 
-export default HomeChart;
+export default AthleteChart;
