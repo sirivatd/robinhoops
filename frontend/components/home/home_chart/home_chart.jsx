@@ -1,46 +1,92 @@
 import React from "react";
-import {
-  XYPlot,
-  XAxis,
-  YAxis,
-  HorizontalGridLines,
-  VerticalGridLines,
-  LineSeries,
-  LineMarkSeries
-} from "react-vis";
+import { Bar, Line, Pie } from "react-chartjs-2";
 
 class HomeChart extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      data: [
-        { x: 0, y: 8 },
-        { x: 1, y: 5 },
-        { x: 2, y: 4 },
-        { x: 3, y: 9 },
-        { x: 4, y: 1 },
-        { x: 5, y: 7 },
-        { x: 6, y: 6 },
-        { x: 7, y: 3 },
-        { x: 8, y: 2 },
-        { x: 9, y: 0 }
-      ]
-    };
+    this.state = { data: { datasets: [], labels: [] } };
+  }
+
+  componentDidMount() {
+    $.ajax({
+      url: `/api/users/${this.props.currentUser.id}/users_port_snapshots`,
+      method: "GET"
+    }).then(res => {
+      let snapshotPoints = Object.values(res);
+      let labels = [];
+      let data = [];
+
+      for (let i = 0; i < snapshotPoints.length; i++) {
+        labels.push(snapshotPoints[i].created_at);
+        data.push(snapshotPoints[i].port_value);
+      }
+      this.setState({
+        data: {
+          labels: labels,
+          datasets: [
+            {
+              fill: false,
+              borderColor: "#21ce99",
+              strokeColor: "#21ce99",
+              pointColor: "#21ce99",
+              pointRadius: 0,
+              pointStrokeColor: "#21ce99",
+              pointHighlightFill: "#21ce99",
+              data: data
+            }
+          ]
+        }
+      });
+    });
   }
 
   render() {
     return (
-      <XYPlot width={800} height={300}>
-        <HorizontalGridLines tickTotal={2} style={{ strokeStyle: "dashed" }} />
-
-        <LineSeries
-          data={this.state.data}
-          color={"#21ce99"}
-          style={{ strokeWidth: 3 }}
-        />
-
-        <XAxis />
-      </XYPlot>
+      <Line
+        options={{
+          legend: {
+            display: false
+          },
+          scales: {
+            xAxes: [
+              {
+                gridLines: {
+                  color: "rgba(0, 0, 0, 0)"
+                },
+                ticks: {
+                  display: false
+                }
+              }
+            ],
+            yAxes: [
+              {
+                gridLines: {
+                  color: "rgba(0, 0, 0, 0)"
+                },
+                ticks: {
+                  display: false
+                }
+              }
+            ]
+          },
+          annotations: [
+            {
+              type: "line",
+              mode: "horizontal",
+              scaleID: "y-axis-0",
+              value: 2000,
+              borderColor: "rgb(75, 192, 192)",
+              borderWidth: 4,
+              label: {
+                enabled: false,
+                content: "Test label"
+              }
+            }
+          ],
+          maintainAspectRatio: false
+        }}
+        data={this.state.data}
+      />
     );
   }
 }

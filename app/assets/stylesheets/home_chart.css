@@ -39,3 +39,7 @@
 .home-chart-container {
   height: 80%;
 }
+
+.chartjs-render-monitor {
+  margin-left: 50px;
+}
