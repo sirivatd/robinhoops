@@ -7,6 +7,7 @@ import TweetsIndex from "./tweets/tweets_index";
 import BuySellContainer from "./../home/buy_sell/buy_sell_container";
 import CountUp from "react-countup";
 import AthleteChartViewContainer from "./athlete_chart/athlete_chart_container";
+import AthleteStats from "./athlete_stats";
 
 class AthleteShow extends React.Component {
   constructor(props) {
@@ -23,7 +24,8 @@ class AthleteShow extends React.Component {
       previousDailyPercentGain: 0.0,
       currentDailyPercentGain: 0.0,
       previousTotalGain: 0.0,
-      currentTotalGain: 0.0
+      currentTotalGain: 0.0,
+      athlete: {}
     };
 
     this.findAthlete = this.findAthlete.bind(this);
@@ -37,7 +39,9 @@ class AthleteShow extends React.Component {
     this.props.fetchStocks();
     this.props.fetchAllOrders(this.props.currentUser.id);
     fetchAthleteTweets(this.state.athleteId).then(res =>
-      this.setState({ tweets: Object.values(res) })
+      this.setState({
+        tweets: Object.values(res)
+      })
     );
     document.addEventListener("mousedown", this.handleClick, false);
   }
@@ -148,6 +152,9 @@ class AthleteShow extends React.Component {
         athlete = this.props.athletes[i];
       }
     }
+    this.setState({
+      athlete: athlete
+    });
     return athlete;
   }
 
@@ -237,6 +244,10 @@ class AthleteShow extends React.Component {
       <div className="athlete-stats-section">
         <h1 className="athlete-stats-header"> Statistics</h1>
         <hr className="athlete-show-break-line" />
+        <AthleteStats
+          athleteId={this.state.athleteId}
+          athletes={this.props.athletes}
+        />
       </div>
     );
 
@@ -299,7 +310,15 @@ class AthleteShow extends React.Component {
           />
           <SearchBar athletes={this.props.athletes} />
           <nav className="login-signup">
-            {/* <button className="login-logout-button">Leaderboard</button> */}
+            <button
+              onClick={() => this.props.history.push("/")}
+              className="login-logout-button"
+            >
+              Home
+            </button>
+            <button className="login-logout-button">Developer</button>
+
+            <button className="login-logout-button">Leaderboard</button>
             <button
               id="account-button"
               className="login-logout-button"

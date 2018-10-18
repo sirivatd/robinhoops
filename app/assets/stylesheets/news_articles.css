@@ -54,6 +54,15 @@
   bottom: 0;
 }
 
+.news-article-timestamp {
+  font-family: "Noto Sans", sans-serif;
+  font-size: 10px;
+  color: #21ce99;
+  position: absolute;
+  right: 10px;
+  bottom: 0;
+}
+
 .news-article-description-section {
   height: 100%;
   overflow: hidden;

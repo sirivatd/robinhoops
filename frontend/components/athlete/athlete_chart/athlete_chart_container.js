@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 import AthleteChart from "./athlete_chart";
 
 const mapStateToProps = (props, ownProps) => {
-  debugger;
   return {
     currentUser: ownProps.currentUser,
     athleteId: ownProps.athleteId

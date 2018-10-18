@@ -39,9 +39,7 @@ class Home extends React.Component {
     this.props.fetchAllOrders(this.props.currentUser.id);
     this.props.fetchStocks();
     this.props.fetchAllAthletes();
-    this.calculateTotalPortValue();
 
-    this.calculateTodayGain();
     let url =
       "https://newsapi.org/v2/everything?" +
       "q=nbas&" +
@@ -54,6 +52,7 @@ class Home extends React.Component {
 
     this.intervalId = window.setInterval(this.updateOrders, 20000);
     document.addEventListener("mousedown", this.handleClick, false);
+    this.calculateTotalPortValue();
   }
 
   componentWillUnmount() {
@@ -82,11 +81,9 @@ class Home extends React.Component {
       port_value: this.state.totalPortValue
     };
     createUserPortSnapshot(newSnapshot);
-    this.calculateTotalPortValue();
 
     this.props.fetchAllOrders(this.props.currentUser.id);
-
-    this.calculateTodayGain();
+    this.calculateTotalPortValue();
   }
 
   findStock(order) {
@@ -167,6 +164,7 @@ class Home extends React.Component {
       previousPortValue: currentTotal,
       totalPortValue: total + this.props.currentUser.buying_power
     });
+    this.calculateTodayGain();
   }
 
   handleClick(e) {
@@ -303,7 +301,9 @@ class Home extends React.Component {
           />
           <SearchBar athletes={this.props.athletes} />
           <nav className="login-signup">
-            {/* <button className="login-logout-button">Leaderboard</button> */}
+            <button className="login-logout-button">Developer</button>
+
+            <button className="login-logout-button">Leaderboard</button>
             <button
               id="account-button"
               className="login-logout-button"

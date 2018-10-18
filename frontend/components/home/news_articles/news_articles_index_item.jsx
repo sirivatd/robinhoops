@@ -1,6 +1,7 @@
 import React from "react";
 
 const NewsArticlesIndexItem = ({ article }) => {
+  console.log(article);
   return (
     <div
       onClick={() => (window.location.href = article.url)}
@@ -13,6 +14,7 @@ const NewsArticlesIndexItem = ({ article }) => {
       </div>
       <div className="news-article-info-section">
         <h4 className="news-article-publisher">{article.source.name}</h4>
+        <h4 className="news-article-timestamp">{article.publishedAt}</h4>
       </div>
     </div>
   );

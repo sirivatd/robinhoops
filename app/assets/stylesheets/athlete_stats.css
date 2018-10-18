@@ -1,0 +1,92 @@
+.athlete-stats-name {
+  font-size: 22px;
+  color: #21ce99;
+}
+
+.athlete-stats-offense {
+  display: flex;
+  justify-content: space-between;
+}
+
+.athlete-stats-defense {
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+}
+
+.athlete-stats-section {
+  font-family: "Source Sans Pro", sans-serif;
+}
+
+.athlete-stats-points {
+  text-align: left;
+}
+
+.athlete-stats-fg-percentage {
+  text-align: left;
+}
+.athlete-stats-games-played {
+  text-align: left;
+}
+
+.athlete-stats-efficiency {
+  text-align: left;
+}
+
+.athlete-stats-assists {
+  text-align: left;
+  position: absolute;
+  left: 195px;
+}
+
+.athlete-stats-steals {
+  text-align: left;
+  position: absolute;
+  left: 380px;
+}
+
+.athlete-stats-blocks {
+  text-align: left;
+  position: absolute;
+  left: 560px;
+}
+
+.athlete-stats-rebounds {
+  text-align: left;
+}
+
+.games-played-label {
+  color: lightgray;
+}
+
+.athlete-points-label {
+  color: lightgray;
+}
+
+.fg-percentage-label {
+  color: lightgray;
+}
+
+.efficiency-label {
+  color: lightgray;
+}
+
+.athlete-rebounds-label {
+  color: lightgray;
+}
+
+.athlete-assists-label {
+  color: lightgray;
+}
+
+.athlete-steals-label {
+  color: lightgray;
+}
+
+.athlete-blocks-label {
+  color: lightgray;
+}
+
+.athlete-stats-team {
+  font-size: 16px;
+}
