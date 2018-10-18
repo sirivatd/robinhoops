@@ -10,10 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_16_030209) do
+ActiveRecord::Schema.define(version: 2018_10_18_021757) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "athlete_price_snapshots", force: :cascade do |t|
+    t.integer "athlete_id", null: false
+    t.float "price", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "athletes", force: :cascade do |t|
     t.string "name", null: false
@@ -69,10 +76,24 @@ ActiveRecord::Schema.define(version: 2018_10_16_030209) do
     t.index ["athlete_id"], name: "index_stocks_on_athlete_id"
   end
 
+  create_table "tweet_score_snapshots", force: :cascade do |t|
+    t.integer "athlete_id", null: false
+    t.float "twitter_sentiment", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "tweets", force: :cascade do |t|
     t.string "body"
     t.float "score"
     t.integer "athlete_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "user_port_snapshots", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.float "port_value", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

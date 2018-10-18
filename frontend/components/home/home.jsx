@@ -8,6 +8,7 @@ import TopMoversIndexContainer from "./top_movers/top_movers_container";
 import HomeChartContainer from "./home_chart/home_chart_container";
 import HomeChartViewContainer from "./home_chart/home_chart_container";
 import CountUp from "react-countup";
+import { createUserPortSnapshot } from "./../../util/user_port_snapshots_api_util";
 
 class Home extends React.Component {
   constructor(props) {
@@ -36,6 +37,9 @@ class Home extends React.Component {
     this.props.fetchAllOrders(this.props.currentUser.id);
     this.props.fetchStocks();
     this.props.fetchAllAthletes();
+    this.calculateTotalPortValue();
+
+    this.calculateTodayGain();
     window.setInterval(this.updateOrders, 20000);
     document.addEventListener("mousedown", this.handleClick, false);
   }
@@ -51,13 +55,6 @@ class Home extends React.Component {
         this.props.history.push(`/${this.state.currentUser.id}/free-stock`);
       }
     }
-
-    if (this.props.orders !== nextProps.orders) {
-      this.calculateTotalPortValue();
-      this.props.fetchAllOrders(this.props.currentUser.id);
-
-      this.calculateTodayGain();
-    }
   }
 
   updateOrders() {
@@ -68,6 +65,15 @@ class Home extends React.Component {
         this.props.receiveAStock(res)
       );
     });
+    let newSnapshot = {
+      user_id: this.props.currentUser.id,
+      port_value: this.state.totalPortValue
+    };
+    createUserPortSnapshot(newSnapshot);
+    this.calculateTotalPortValue();
+    this.props.fetchAllOrders(this.props.currentUser.id);
+
+    this.calculateTodayGain();
   }
 
   findStock(order) {
@@ -128,12 +134,21 @@ class Home extends React.Component {
     let currentTotal = this.state.totalPortValue;
 
     this.props.orders.forEach(order => {
-      let stockEquity = this.findStock(order).current_price;
-      if (!stockEquity) {
-        stockEquity = 0;
+      if (order.order_type === "SELL") {
+        let stockEquity = this.findStock(order).current_price;
+        if (!stockEquity) {
+          stockEquity = 0;
+        }
+        let totalEquity = order.num_share * stockEquity;
+        total += totalEquity;
+      } else {
+        let stockEquity = this.findStock(order).current_price;
+        if (!stockEquity) {
+          stockEquity = 0;
+        }
+        let totalEquity = order.num_share * stockEquity;
+        total -= totalEquity;
       }
-      let totalEquity = order.num_share * stockEquity;
-      total += totalEquity;
     });
 
     this.setState({

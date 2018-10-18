@@ -6,6 +6,7 @@ Rails.application.routes.draw do
     resources :users, only: [:create, :update] do
       resources :orders, only: [:create, :index, :show, :update]
       resources :athletes, only: [:show]
+      resources :users_port_snapshots, only: [:index, :create]
     end
     resource :session, only: [:create, :destroy, :show]
     resources :stocks, only: [:index, :show]

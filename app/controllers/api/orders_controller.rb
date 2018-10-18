@@ -13,6 +13,7 @@ class Api::OrdersController < ApplicationController
     def update
         @order = Order.find(params[:id])
         sentimentScore = Tweet.scrape_tweeter(@order.athlete.name)
+        @tweet_snapshot = TweetScoreSnapshot.create(athlete_id: @order.athlete.id, twitter_sentiment: sentimentScore)
         scoreImpact = 0
         if sentimentScore < 1
             scoreImpact =  -0.05
@@ -29,6 +30,8 @@ class Api::OrdersController < ApplicationController
         @order.stock.update(current_price: @order.stock.current_price + scoreImpact)
         @stock = @order.stock
         end
+        @athlete_price_snapshot = AthletePriceSnapshot.create(athlete_id: @order.athlete.id, price: @order.stock.current_price)
+
         render "api/orders/show"
     end
 
