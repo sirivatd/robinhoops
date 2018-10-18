@@ -40,6 +40,14 @@ class Home extends React.Component {
     this.calculateTotalPortValue();
 
     this.calculateTodayGain();
+    let url =
+      "https://newsapi.org/v2/everything?" +
+      "q=NBA&" +
+      "apiKey=4ddc19b190b74a96b4b137f0a3e546f9";
+    let req = new Request(url);
+    fetch(req).then(function(response) {
+      console.log(response.json());
+    });
     window.setInterval(this.updateOrders, 20000);
     document.addEventListener("mousedown", this.handleClick, false);
   }
