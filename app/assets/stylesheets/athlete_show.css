@@ -57,7 +57,7 @@
   background-color: white;
   position: fixed;
   right: 100px;
-  bottom: 115px;
+  bottom: 70px;
   z-index: 999;
   box-shadow: -1px 4px 18px #c4c4c4;
 }
@@ -73,7 +73,7 @@
 .athlete-show-headshot {
   max-width: 150px;
   position: absolute;
-  bottom: 15px;
+  bottom: -30px;
 }
 
 .athlete-tweets-container {
@@ -104,7 +104,7 @@
   font-size: 15px;
   position: fixed;
   right: 122px;
-  bottom: 40px;
+  bottom: 10px;
 }
 
 .watchlist-button:hover {
