@@ -23,7 +23,8 @@ class Home extends React.Component {
       orders: this.props.orders,
       athletes: this.props.athletes,
       stocks: this.props.stocks,
-      currentUser: this.props.currentUser
+      currentUser: this.props.currentUser,
+      articles: []
     };
     this.showMenu = this.showMenu.bind(this);
     this.handleClick = this.handleClick.bind(this);
@@ -44,16 +45,18 @@ class Home extends React.Component {
       "https://newsapi.org/v2/everything?" +
       "q=NBA&" +
       "apiKey=4ddc19b190b74a96b4b137f0a3e546f9";
-    let req = new Request(url);
-    fetch(req).then(function(response) {
-      console.log(response.json());
-    });
-    window.setInterval(this.updateOrders, 20000);
+
+    $.ajax({
+      url: url,
+      method: "GET"
+    }).then(res => console.log(res.articles));
+
+    this.intervalId = window.setInterval(this.updateOrders, 20000);
     document.addEventListener("mousedown", this.handleClick, false);
   }
 
   componentWillUnmount() {
-    window.clearInterval();
+    window.clearInterval(this.intervalId);
     document.removeEventListener("mousedown", this.handleClick, false);
   }
 
@@ -79,6 +82,7 @@ class Home extends React.Component {
     };
     createUserPortSnapshot(newSnapshot);
     this.calculateTotalPortValue();
+
     this.props.fetchAllOrders(this.props.currentUser.id);
 
     this.calculateTodayGain();

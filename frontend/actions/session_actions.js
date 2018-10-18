@@ -19,11 +19,6 @@ export const removeFirstUser = () => ({
   firstUser: false
 });
 
-export const removeCurrentUser = () => ({
-  type: REMOVE_CURRENT_USER,
-  user: {}
-});
-
 export const receiveCurrentUser = currentUser => ({
   type: RECEIVE_CURRENT_USER,
   currentUser
