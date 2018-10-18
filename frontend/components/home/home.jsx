@@ -7,6 +7,7 @@ import SearchBar from "./../search_bar/search_bar";
 import TopMoversIndexContainer from "./top_movers/top_movers_container";
 import HomeChartContainer from "./home_chart/home_chart_container";
 import HomeChartViewContainer from "./home_chart/home_chart_container";
+import NewsArticlesContainer from "./news_articles/news_articles_container";
 import CountUp from "react-countup";
 import { createUserPortSnapshot } from "./../../util/user_port_snapshots_api_util";
 
@@ -49,7 +50,7 @@ class Home extends React.Component {
     $.ajax({
       url: url,
       method: "GET"
-    }).then(res => console.log(res.articles));
+    }).then(res => this.setState({ articles: res.articles }));
 
     this.intervalId = window.setInterval(this.updateOrders, 20000);
     document.addEventListener("mousedown", this.handleClick, false);
@@ -247,6 +248,10 @@ class Home extends React.Component {
       </div>
     );
 
+    const newsArticles = () => (
+      <NewsArticlesContainer articles={this.state.articles} />
+    );
+
     const userStocksIndex = () => <UserStocksContainer />;
 
     const accountSettings = () => (
@@ -283,7 +288,7 @@ class Home extends React.Component {
 
     const topMovers = () => (
       <div className="top-movers-section">
-        <h3>Top Movers</h3>
+        <h3 className="top-movers-header">Top Movers</h3>
         <TopMoversIndexContainer />
       </div>
     );
@@ -313,6 +318,7 @@ class Home extends React.Component {
         {Object.values(this.props.athletes).length > 0
           ? userStocksIndex()
           : loader()}
+        {this.state.articles.length > 0 ? newsArticles() : loader()}
         )}
       </div>
     );
