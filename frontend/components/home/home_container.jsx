@@ -2,7 +2,7 @@ import { connect } from "react-redux";
 import React from "react";
 import { Link } from "react-router-dom";
 import Home from "./home";
-import { logout } from "../../actions/session_actions";
+import { logout, removeUser } from "../../actions/session_actions";
 import { fetchStocks, receiveAStock } from "../../actions/stock_actions";
 import {
   fetchAllOrders,
@@ -33,7 +33,8 @@ const mapDispatchToProps = dispatch => ({
   fetchAllOrders: userId => dispatch(fetchAllOrders(userId)),
   fetchAllAthletes: () => dispatch(fetchAllAthletes()),
   fetchStocks: () => dispatch(fetchStocks()),
-  receiveAStock: stock => dispatch(receiveAStock(stock))
+  receiveAStock: stock => dispatch(receiveAStock(stock)),
+  removeUser: () => dispatch(removeUser())
 });
 
 export default connect(

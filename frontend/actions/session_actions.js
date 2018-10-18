@@ -5,6 +5,7 @@ export const LOGOUT_CURRENT_USER = "LOGOUT_CURRENT_USER";
 export const RECEIVE_SESSION_ERRORS = "RECEIVE_SESSION_ERRORS";
 export const RECEIVE_FIRST_USER = "RECEIVE_FIRST_USER";
 export const REMOVE_FIRST_USER = "REMOVE_FIRST_USER";
+export const REMOVE_CURRENT_USER = "REMOVE_CURRENT_USER";
 
 // Regular action creators
 
@@ -16,6 +17,11 @@ export const receiveFirstUser = () => ({
 export const removeFirstUser = () => ({
   type: REMOVE_FIRST_USER,
   firstUser: false
+});
+
+export const removeCurrentUser = () => ({
+  type: REMOVE_CURRENT_USER,
+  user: {}
 });
 
 export const receiveCurrentUser = currentUser => ({
@@ -48,3 +54,5 @@ export const login = user => dispatch =>
 
 export const logout = () => dispatch =>
   APIUtil.logout().then(user => dispatch(logoutCurrentUser()));
+
+export const removeUser = () => dispatch => dispatch(removeCurrentUser());

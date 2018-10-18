@@ -41,6 +41,42 @@ class AthleteChart extends React.Component {
     });
   }
 
+  componentWillReceiveProps(nextProps) {
+    if (this.props.athleteId !== nextProps.athleteId) {
+      $.ajax({
+        url: `/api/athletes/${this.props.athleteId}/athlete_price_snapshots`,
+        method: "GET"
+      }).then(res => {
+        let valuePoints = Object.values(res);
+        let labels = [];
+        let data = [];
+
+        for (let i = 0; i < valuePoints.length; i++) {
+          labels.push(valuePoints[i].created_at);
+          data.push(valuePoints[i].price);
+        }
+
+        this.setState({
+          data: {
+            labels: labels,
+            datasets: [
+              {
+                fill: false,
+                borderColor: "#21ce99",
+                strokeColor: "#21ce99",
+                pointColor: "#21ce99",
+                pointRadius: 0,
+                pointStrokeColor: "#21ce99",
+                pointHighlightFill: "#21ce99",
+                data: data
+              }
+            ]
+          }
+        });
+      });
+    }
+  }
+
   render() {
     return (
       <Line

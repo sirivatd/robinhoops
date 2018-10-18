@@ -28,6 +28,7 @@ class BuySell extends React.Component {
   componentWillReceiveProps(nextProps) {
     if (Object.values(this.state.stock).length > 0) {
       this.calculateOwnedShares();
+      this.findStock(nextProps.athleteId);
     }
     if (this.props.athleteId !== nextProps.athleteId) {
       this.findStock(nextProps.athleteId);
