@@ -44,7 +44,7 @@ class Home extends React.Component {
     this.calculateTodayGain();
     let url =
       "https://newsapi.org/v2/everything?" +
-      "q=NBA&" +
+      "q=nbas&" +
       "apiKey=4ddc19b190b74a96b4b137f0a3e546f9";
 
     $.ajax({
@@ -319,7 +319,6 @@ class Home extends React.Component {
           ? userStocksIndex()
           : loader()}
         {this.state.articles.length > 0 ? newsArticles() : loader()}
-        )}
       </div>
     );
   }
