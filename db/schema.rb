@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_18_021757) do
+ActiveRecord::Schema.define(version: 2018_10_18_030032) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -108,6 +108,13 @@ ActiveRecord::Schema.define(version: 2018_10_18_021757) do
     t.datetime "updated_at", null: false
     t.float "buying_power", null: false
     t.index ["email"], name: "index_users_on_email"
+  end
+
+  create_table "watchlist_items", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "stock_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
 end
