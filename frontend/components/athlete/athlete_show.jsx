@@ -46,12 +46,10 @@ class AthleteShow extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    if (this.props.stocks.length > 0) {
-      this.setState({
-        stocks: this.props.stocks
-      });
-      this.findStock(this.state.athleteId);
-    }
+    this.setState({
+      stocks: this.props.stocks
+    });
+    this.findStock(this.state.athleteId);
 
     if (
       this.props.match.params.athleteId !== nextProps.match.params.athleteId
@@ -312,8 +310,8 @@ class AthleteShow extends React.Component {
           ? athleteStats()
           : loader()}
 
-        {Object.values(this.props.orders).length > 0 &&
-        Object.values(this.props.stocks).length > 0
+        {Object.values(this.props.athletes).length > 0 &&
+        Object.values(this.props.athletes).length > 0
           ? buySellSection()
           : loader()}
 
@@ -325,7 +323,7 @@ class AthleteShow extends React.Component {
         {Object.values(this.state.tweets).length > 0
           ? athleteTweets()
           : loader()}
-        {Object.values(this.props.stocks).length > 0
+        {Object.values(this.props.athletes).length > 0
           ? similarAthletes()
           : loader()}
       </div>

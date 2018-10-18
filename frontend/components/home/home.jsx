@@ -132,22 +132,21 @@ class Home extends React.Component {
   calculateTotalPortValue() {
     let total = 0;
     let currentTotal = this.state.totalPortValue;
-
     this.props.orders.forEach(order => {
       if (order.order_type === "SELL") {
-        let stockEquity = this.findStock(order).current_price;
+        let stockEquity = order.purchase_price;
         if (!stockEquity) {
           stockEquity = 0;
         }
         let totalEquity = order.num_share * stockEquity;
-        total += totalEquity;
+        total -= totalEquity;
       } else {
         let stockEquity = this.findStock(order).current_price;
         if (!stockEquity) {
           stockEquity = 0;
         }
         let totalEquity = order.num_share * stockEquity;
-        total -= totalEquity;
+        total += totalEquity;
       }
     });
 
