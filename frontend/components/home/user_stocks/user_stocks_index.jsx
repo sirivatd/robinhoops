@@ -27,6 +27,9 @@ class UserStocksIndex extends React.Component {
       .getElementsByClassName("user-stocks-dropdown")[0]
       .addEventListener("scroll", this.handleClickOutside);
     this.user;
+  }
+
+  componentWillReceiveProps(nextProps) {
     this.normalizeOrders();
   }
 

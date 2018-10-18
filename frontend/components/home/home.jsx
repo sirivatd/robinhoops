@@ -54,6 +54,7 @@ class Home extends React.Component {
 
     if (this.props.orders !== nextProps.orders) {
       this.calculateTotalPortValue();
+      this.props.fetchAllOrders(this.props.currentUser.id);
 
       this.calculateTodayGain();
     }
@@ -172,7 +173,7 @@ class Home extends React.Component {
 
     const userOrders = () => (
       <ul className="user-stock-card">
-        {this.props.orders.map(order => (
+        {this.state.orders.map(order => (
           <li>{order.purchase_price}</li>
         ))}
       </ul>

@@ -123,6 +123,7 @@ class BuySell extends React.Component {
       parseInt(this.state.numShares) < 0
     ) {
       alert("There was a problem completing your order");
+      return;
     }
 
     const newOrder = {
