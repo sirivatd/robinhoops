@@ -8,6 +8,7 @@ import BuySellContainer from "./../home/buy_sell/buy_sell_container";
 import CountUp from "react-countup";
 import AthleteChartViewContainer from "./athlete_chart/athlete_chart_container";
 import AthleteStats from "./athlete_stats";
+import { addWatchlistItem } from "./../../actions/watchlist_actions";
 
 class AthleteShow extends React.Component {
   constructor(props) {

@@ -14,8 +14,13 @@ import {
   receiveAthlete
 } from "../../actions/athlete_actions";
 
+import { fetchAllWatchlistItems } from "../../actions/watchlist_actions";
+
 const mapStateToProps = (
-  { session: { id, firstTime }, entities: { users, stocks, orders, athletes } },
+  {
+    session: { id, firstTime },
+    entities: { users, stocks, orders, athletes, watchlistItems }
+  },
   ownProps
 ) => {
   return {
@@ -23,7 +28,8 @@ const mapStateToProps = (
     currentUser: users[id],
     firstTime: firstTime,
     orders: Object.values(orders),
-    athletes: Object.values(athletes)
+    athletes: Object.values(athletes),
+    watchlistItems: Object.values(watchlistItems)
   };
 };
 
@@ -34,7 +40,8 @@ const mapDispatchToProps = dispatch => ({
   fetchAllAthletes: () => dispatch(fetchAllAthletes()),
   fetchStocks: () => dispatch(fetchStocks()),
   receiveAStock: stock => dispatch(receiveAStock(stock)),
-  removeUser: () => dispatch(removeUser())
+  removeUser: () => dispatch(removeUser()),
+  fetchAllWatchlistItems: userId => dispatch(fetchAllWatchlistItems(userId))
 });
 
 export default connect(

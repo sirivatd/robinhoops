@@ -39,6 +39,7 @@ class Home extends React.Component {
     this.props.fetchAllOrders(this.props.currentUser.id);
     this.props.fetchStocks();
     this.props.fetchAllAthletes();
+    this.props.fetchAllWatchlistItems(this.props.currentUser.id);
 
     let url =
       "https://newsapi.org/v2/everything?" +

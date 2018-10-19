@@ -18,12 +18,12 @@ export const receiveWatchlistItem = item => {
   };
 };
 
-export const deleteWatchlistItem = item => {
-    return {
-        type: REMOVE_WATCHLIST_ITEM,
-        item: item
-    }
-}
+export const removeWatchlistItem = item => {
+  return {
+    type: REMOVE_WATCHLIST_ITEM,
+    item: item
+  };
+};
 
 // thunk action creators
 
@@ -35,12 +35,12 @@ export const addWatchlistItem = (userId, item) => dispatch => {
 
 export const deleteWatchlistItem = (userId, itemId) => dispatch => {
   return APIUtil.deleteWatchlistItem(userId, itemId).then(res =>
-    dispatch(receiveWatchlistItem(res))
+    dispatch(removeWatchlistItem(res))
   );
 };
 
 export const fetchAllWatchlistItems = userId => dispatch => {
   return APIUtil.fetchWatchlistItems(userId).then(res =>
-    dispatch(deleteWatchlistItem(res))
+    dispatch(receiveAllWatchlistItems(res))
   );
 };
