@@ -6,7 +6,10 @@ import { fetchAllAthletes } from "./../../actions/athlete_actions";
 import { fetchStocks } from "../../actions/stock_actions";
 import { logout } from "../../actions/session_actions";
 import { fetchAllOrders } from "./../../actions/order_actions";
-import { addWatchlistItem } from "./../../actions/watchlist_actions";
+import {
+  addWatchlistItem,
+  fetchAllWatchlistItems
+} from "./../../actions/watchlist_actions";
 
 const mapStateToProps = (
   { session, entities: { athletes, users, orders, stocks, watchlistItems } },
@@ -18,7 +21,7 @@ const mapStateToProps = (
     athletes: Object.values(athletes),
     orders: Object.values(orders),
     stocks: Object.values(stocks),
-    watchlistItem: Object.values(watchlistItems)
+    watchlistItems: Object.values(watchlistItems)
   };
 };
 
@@ -27,7 +30,8 @@ const mDP = dispatch => ({
   logout: () => dispatch(logout()),
   fetchStocks: () => dispatch(fetchStocks()),
   fetchAllOrders: userId => dispatch(fetchAllOrders(userId)),
-  addWatchlistItem: (userId, item) => dispatch(addWatchlistItem(userId, item))
+  addWatchlistItem: (userId, item) => dispatch(addWatchlistItem(userId, item)),
+  fetchAllWatchlistItems: userId => dispatch(fetchAllWatchlistItems(userId))
 });
 
 export default connect(

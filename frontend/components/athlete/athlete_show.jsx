@@ -8,7 +8,10 @@ import BuySellContainer from "./../home/buy_sell/buy_sell_container";
 import CountUp from "react-countup";
 import AthleteChartViewContainer from "./athlete_chart/athlete_chart_container";
 import AthleteStats from "./athlete_stats";
-import { addWatchlistItem } from "./../../actions/watchlist_actions";
+import {
+  addWatchlistItem,
+  fetchAllWatchlistItems
+} from "./../../actions/watchlist_actions";
 
 class AthleteShow extends React.Component {
   constructor(props) {
@@ -27,13 +30,35 @@ class AthleteShow extends React.Component {
       previousTotalGain: 0.0,
       currentTotalGain: 0.0,
       athlete: {},
-      stock: {}
+      stock: {},
+      watching: false
     };
 
     this.findAthlete = this.findAthlete.bind(this);
     this.findStock = this.findStock.bind(this);
     this.handleClick = this.handleClick.bind(this);
     this.showMenu = this.showMenu.bind(this);
+    this.onWatchlist = this.onWatchlist.bind(this);
+  }
+
+  onWatchlist(athleteId, watchlistItems) {
+    this.setState({
+      watching: false
+    });
+    let stock = {};
+    for (let i = 0; i < this.props.stocks.length; i++) {
+      if (this.props.stocks[i].athlete_id === parseInt(athleteId)) {
+        stock = this.props.stocks[i];
+      }
+    }
+
+    for (let j = 0; j < watchlistItems.length; j++) {
+      if (watchlistItems[j].stock_id === stock.id) {
+        this.setState({
+          watching: true
+        });
+      }
+    }
   }
 
   componentDidMount() {
@@ -45,6 +70,7 @@ class AthleteShow extends React.Component {
         tweets: Object.values(res)
       })
     );
+    this.props.fetchAllWatchlistItems(this.props.currentUser.id);
     document.addEventListener("mousedown", this.handleClick, false);
   }
 
@@ -53,6 +79,13 @@ class AthleteShow extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
+    if (nextProps.watchlistItems.length > 0) {
+      this.onWatchlist(
+        nextProps.match.params.athleteId,
+        nextProps.watchlistItems
+      );
+    }
+
     this.setState({
       stocks: this.props.stocks
     });
@@ -61,6 +94,12 @@ class AthleteShow extends React.Component {
     if (
       this.props.match.params.athleteId !== nextProps.match.params.athleteId
     ) {
+      if (nextProps.watchlistItems.length > 0) {
+        this.onWatchlist(
+          nextProps.match.params.athleteId,
+          nextProps.watchlistItems
+        );
+      }
       this.setState({
         athleteId: nextProps.match.params.athleteId,
         previousStockValue: 0,
@@ -162,7 +201,6 @@ class AthleteShow extends React.Component {
   }
 
   render() {
-    debugger;
     const loader = () => (
       <span className="cssload-loader">
         <span className="cssload-loader-inner" />
@@ -303,6 +341,34 @@ class AthleteShow extends React.Component {
       </div>
     );
 
+    const addWatchlistButton = () => (
+      <button
+        className="watchlist-button"
+        onClick={() =>
+          this.props.addWatchlistItem(this.props.currentUser.id, {
+            user_id: this.props.currentUser.id,
+            stock_id: this.state.stock.id
+          })
+        }
+      >
+        Add to Watchlist
+      </button>
+    );
+
+    const removeWatchlistButton = () => (
+      <button
+        className="watchlist-button"
+        onClick={() =>
+          this.props.addWatchlistItem(this.props.currentUser.id, {
+            user_id: this.props.currentUser.id,
+            stock_id: this.state.stock.id
+          })
+        }
+      >
+        Remove from Watchlist
+      </button>
+    );
+
     return (
       <div className="athlete-show-section">
         {accountSettings()}
@@ -346,7 +412,7 @@ class AthleteShow extends React.Component {
           ? buySellSection()
           : loader()}
 
-        <button className="watchlist-button">Add to Watchlist</button>
+        {this.state.watching ? removeWatchlistButton() : addWatchlistButton()}
 
         {Object.values(this.props.athletes).length > 0
           ? athleteImage()

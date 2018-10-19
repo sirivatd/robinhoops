@@ -28,8 +28,8 @@ export const removeWatchlistItem = item => {
 // thunk action creators
 
 export const addWatchlistItem = (userId, item) => dispatch => {
-  return APIUtil.fetchWatchlistItems(userId).then(res =>
-    dispatch(receiveAllWatchlistItems(res))
+  return APIUtil.createWatchlistItem(userId, item).then(res =>
+    dispatch(receiveWatchlistItem(res))
   );
 };
 
