@@ -13,6 +13,15 @@ class Api::WatchlistItemsController < ApplicationController
         end
     end
 
+    def destroy
+        @item = WatchlistItem.find(params[:id])
+        if @item.delete
+            render "api/watchlist_items/show"
+        else
+            render ["Problem deleting watchlist item"]
+        end
+    end
+
     private
 
     def watchlist_item_params 

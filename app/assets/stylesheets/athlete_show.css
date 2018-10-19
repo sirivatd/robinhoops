@@ -92,7 +92,7 @@
   -ms-overflow-style: none;
 }
 
-.watchlist-button {
+.add-watchlist-button {
   width: 227px;
   height: 48px;
   background-color: transparent;
@@ -105,9 +105,27 @@
   bottom: 20px;
 }
 
-.watchlist-button:hover {
+.add-watchlist-button:hover {
   border: none;
   background-color: #21ce99;
   color: white;
+  cursor: pointer;
+}
+
+.remove-watchlist-button {
+  width: 227px;
+  height: 48px;
+  background-color: #21ce99;
+  border: none;
+  color: white;
+  font-family: "Noto Sans", sans-serif;
+  font-size: 15px;
+  position: fixed;
+  right: 122px;
+  bottom: 20px;
+}
+
+.remove-watchlist-button:hover {
+  background-color: #1ae9aa;
   cursor: pointer;
 }

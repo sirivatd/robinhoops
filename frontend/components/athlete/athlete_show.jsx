@@ -31,7 +31,8 @@ class AthleteShow extends React.Component {
       currentTotalGain: 0.0,
       athlete: {},
       stock: {},
-      watching: false
+      watching: false,
+      watchlistItemId: -1
     };
 
     this.findAthlete = this.findAthlete.bind(this);
@@ -55,7 +56,8 @@ class AthleteShow extends React.Component {
     for (let j = 0; j < watchlistItems.length; j++) {
       if (watchlistItems[j].stock_id === stock.id) {
         this.setState({
-          watching: true
+          watching: true,
+          watchlistItemId: watchlistItems[j].id
         });
       }
     }
@@ -343,7 +345,7 @@ class AthleteShow extends React.Component {
 
     const addWatchlistButton = () => (
       <button
-        className="watchlist-button"
+        className="add-watchlist-button"
         onClick={() =>
           this.props.addWatchlistItem(this.props.currentUser.id, {
             user_id: this.props.currentUser.id,
@@ -357,13 +359,16 @@ class AthleteShow extends React.Component {
 
     const removeWatchlistButton = () => (
       <button
-        className="watchlist-button"
-        onClick={() =>
-          this.props.addWatchlistItem(this.props.currentUser.id, {
-            user_id: this.props.currentUser.id,
-            stock_id: this.state.stock.id
-          })
-        }
+        className="remove-watchlist-button"
+        onClick={() => {
+          this.props.deleteWatchlistItem(
+            this.props.currentUser.id,
+            this.state.watchlistItemId
+          );
+          this.setState({
+            watching: false
+          });
+        }}
       >
         Remove from Watchlist
       </button>
