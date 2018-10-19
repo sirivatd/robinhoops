@@ -17,7 +17,7 @@ export const receiveAthlete = athlete => {
   };
 };
 
-// thunk action creatos
+// thunk action creators
 
 export const fetchAllAthletes = () => dispatch => {
   return APIUtil.fetchAllAthletes().then(res =>

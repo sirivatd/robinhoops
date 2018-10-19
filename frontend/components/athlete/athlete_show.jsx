@@ -25,7 +25,8 @@ class AthleteShow extends React.Component {
       currentDailyPercentGain: 0.0,
       previousTotalGain: 0.0,
       currentTotalGain: 0.0,
-      athlete: {}
+      athlete: {},
+      stock: {}
     };
 
     this.findAthlete = this.findAthlete.bind(this);
@@ -120,7 +121,8 @@ class AthleteShow extends React.Component {
           previousTotalGain: this.state.currentTotalGain,
           currentTotalGain: totalGain,
           currentStock: this.props.stocks[i],
-          orders: this.props.orders
+          orders: this.props.orders,
+          stock: this.props.stocks[i]
         });
       }
     }
@@ -159,6 +161,7 @@ class AthleteShow extends React.Component {
   }
 
   render() {
+    debugger;
     const loader = () => (
       <span className="cssload-loader">
         <span className="cssload-loader-inner" />

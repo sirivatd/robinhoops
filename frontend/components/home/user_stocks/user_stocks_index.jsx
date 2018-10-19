@@ -154,6 +154,8 @@ class UserStocksIndex extends React.Component {
               />
             );
           })}
+          <h2 className="user-stocks-title">Watchlist</h2>
+          <hr className="user-stocks-break-line" />
         </ul>
       </div>
     );
