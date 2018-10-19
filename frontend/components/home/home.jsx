@@ -52,6 +52,7 @@ class Home extends React.Component {
     }).then(res => this.setState({ articles: res.articles }));
 
     this.intervalId = window.setInterval(this.updateOrders, 20000);
+    this.secondIntervalId = window.setInterval(this.updateOrders, 1000);
     document.addEventListener("mousedown", this.handleClick, false);
     this.calculateTotalPortValue();
   }
@@ -70,6 +71,7 @@ class Home extends React.Component {
   }
 
   updateOrders() {
+    window.clearInterval(this.secondIntervalId);
     console.log("Updating orders");
     let newOrders = [];
     this.props.orders.forEach(order => {
