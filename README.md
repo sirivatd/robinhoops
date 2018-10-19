@@ -58,7 +58,6 @@ Install node dependencies
 ```
 $ npm install
 ```
-https://newsapi.org/
 Start local rails server
 ```
 $ rails server
