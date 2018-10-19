@@ -1,5 +1,8 @@
 # Robinhoops
 
+[Live Site](http://www.robinhoops.io)
+
+
 Robinhoops is a Robinhood.com clone that allows users to invest in the top NBA athletes.
 
 put image here
