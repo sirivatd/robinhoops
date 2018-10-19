@@ -5,9 +5,10 @@
 
 Robinhoops is a Robinhood.com clone built with Rails and React/Redux that allows users to invest in the top NBA athletes.
 
-put image here
+![Alt text](https://user-images.githubusercontent.com/10847668/47234581-20435a80-d38b-11e8-94b9-b2eaf5f1102c.png)
 
 Athletes' prices are updated every few seconds based on their stats and recent overall Twitter sentiment.
+
 
 ## Twitter Sentiment
 
@@ -44,7 +45,10 @@ Using Nokogiri and HTTParty
 
 All new users receive $2000.00 and a free stock/athlete.
 
-To be really specific, Robinhoops creates a new user and then store snapshots of portfolio value and twitter sentiment every 20 seconds. These data points are then used to graph stock and user portfolio value volatility. An athlete's price will only fluctuate if users on trading that specific stock
+To be really specific, Robinhoops creates a new user and then store snapshots of portfolio value and twitter sentiment every 20 seconds. These data points are then used to graph stock and user portfolio value volatility. An athlete's price will only fluctuate if users on trading that specific stock.
+
+![Alt text](https://user-images.githubusercontent.com/10847668/47234588-25080e80-d38b-11e8-9bce-29c24704d9e7.png)
+
 
 ## Usage
 
