@@ -24,7 +24,6 @@ class UserStocksIndex extends React.Component {
   }
 
   componentDidMount() {
-    debugger;
     document.addEventListener("mousedown", this.handleClick, false);
     document
       .getElementsByClassName("user-stocks-dropdown")[0]
@@ -137,7 +136,6 @@ class UserStocksIndex extends React.Component {
   findAthleteFromStockId(id) {
     for (let i = 0; i < this.props.athletes.length; i++) {
       if (this.props.athletes[i].id === this.findStockFromId(id).athlete_id) {
-        debugger;
         return this.props.athletes[i];
       }
     }

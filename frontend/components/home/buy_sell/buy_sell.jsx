@@ -169,8 +169,8 @@ class BuySell extends React.Component {
     );
 
     const buySection = () => (
-      <label className="estimated-cost-credit-label">
-        Estimated Cost
+      <div className="estimated-cost-credit">
+        <h2 className="estimated-cost-credit-label">Estimated Cost</h2>
         <h3 className="estimated-cost-credit-value">
           <CountUp
             start={this.state.estimatedCost}
@@ -181,12 +181,12 @@ class BuySell extends React.Component {
             prefix="$"
           />
         </h3>
-      </label>
+      </div>
     );
 
     const sellSection = () => (
-      <label className="estimated-cost-credit-label">
-        Estimated Credit
+      <div className="estimated-cost-credit">
+        <h2 className="estimated-cost-credit-label">Estimated Credit</h2>
         <h3 className="estimated-cost-credit-value">
           <CountUp
             start={this.state.estimatedCost}
@@ -197,7 +197,7 @@ class BuySell extends React.Component {
             prefix="$"
           />
         </h3>
-      </label>
+      </div>
     );
 
     const buyingPowerSection = () => (

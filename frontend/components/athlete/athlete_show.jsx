@@ -251,7 +251,7 @@ class AthleteShow extends React.Component {
           <CountUp
             start={this.state.previousStockValue.toFixed(2)}
             end={this.state.currentStockValue.toFixed(2)}
-            duration={5}
+            duration={3}
             separator=","
             decimals={2}
             decimal="."
@@ -263,7 +263,7 @@ class AthleteShow extends React.Component {
           <CountUp
             start={Math.abs(this.state.previousTotalGain)}
             end={Math.abs(this.state.currentTotalGain)}
-            duration={5}
+            duration={3}
             separator=","
             decimals={2}
             decimal="."
@@ -273,7 +273,7 @@ class AthleteShow extends React.Component {
           <CountUp
             start={this.state.previousDailyPercentGain}
             end={this.state.currentDailyPercentGain}
-            duration={5}
+            duration={3}
             separator=","
             decimals={2}
             decimal="."
@@ -392,7 +392,7 @@ class AthleteShow extends React.Component {
               Home
             </button>
             <button
-              onClick={() => (window.location.href = article.url)}
+              onClick={() => (window.location.href = "http://www.dsirivat.com")}
               className="login-logout-button"
             >
               Developer

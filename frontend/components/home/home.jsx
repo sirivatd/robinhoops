@@ -211,7 +211,7 @@ class Home extends React.Component {
           <CountUp
             start={this.state.previousPortValue.toFixed(2)}
             end={this.state.totalPortValue.toFixed(2)}
-            duration={1}
+            duration={3}
             separator=","
             decimals={2}
             decimal="."
@@ -223,7 +223,7 @@ class Home extends React.Component {
           <CountUp
             start={Math.abs(this.state.previousTotalGain)}
             end={Math.abs(this.state.currentTotalGain)}
-            duration={1}
+            duration={3}
             separator=","
             decimals={2}
             decimal="."
@@ -233,7 +233,7 @@ class Home extends React.Component {
           <CountUp
             start={this.state.previousDailyPercentGain}
             end={this.state.currentDailyPercentGain}
-            duration={1}
+            duration={3}
             separator=","
             decimals={2}
             decimal="."
