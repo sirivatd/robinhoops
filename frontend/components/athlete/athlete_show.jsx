@@ -394,13 +394,6 @@ class AthleteShow extends React.Component {
             <button className="login-logout-button">Developer</button>
 
             <button className="login-logout-button">Leaderboard</button>
-            <button
-              id="account-button"
-              className="login-logout-button"
-              onClick={this.showMenu}
-            >
-              Account
-            </button>
           </nav>
         </div>
 
