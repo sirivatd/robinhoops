@@ -8,41 +8,107 @@ class AthleteChart extends React.Component {
   }
 
   componentDidMount() {
-    $.ajax({
-      url: `/api/athletes/${this.props.athleteId}/athlete_price_snapshots`,
-      method: "GET"
-    }).then(res => {
-      let valuePoints = Object.values(res);
-      let labels = [];
-      let data = [];
+    if (this.props.graphOption) {
+      $.ajax({
+        url: `/api/athletes/${this.props.athleteId}/tweet_score_snapshots`,
+        method: "GET"
+      }).then(res => {
+        let valuePoints = Object.values(res);
+        let labels = [];
+        let data = [];
 
-      for (let i = 0; i < valuePoints.length; i++) {
-        labels.push(valuePoints[i].created_at);
-        data.push(valuePoints[i].price);
-      }
-
-      this.setState({
-        data: {
-          labels: labels,
-          datasets: [
-            {
-              fill: false,
-              borderColor: "#21ce99",
-              strokeColor: "#21ce99",
-              pointColor: "#21ce99",
-              pointRadius: 0,
-              pointStrokeColor: "#21ce99",
-              pointHighlightFill: "#21ce99",
-              data: data
-            }
-          ]
+        for (let i = 0; i < valuePoints.length; i++) {
+          labels.push(valuePoints[i].created_at);
+          data.push(valuePoints[i].score);
         }
+
+        this.setState({
+          data: {
+            labels: labels,
+            datasets: [
+              {
+                fill: false,
+                borderColor: "#21ce99",
+                strokeColor: "#21ce99",
+                pointColor: "#21ce99",
+                pointRadius: 0,
+                pointStrokeColor: "#21ce99",
+                pointHighlightFill: "#21ce99",
+                data: data
+              }
+            ]
+          }
+        });
       });
-    });
+    } else {
+      $.ajax({
+        url: `/api/athletes/${this.props.athleteId}/athlete_price_snapshots`,
+        method: "GET"
+      }).then(res => {
+        let valuePoints = Object.values(res);
+        let labels = [];
+        let data = [];
+
+        for (let i = 0; i < valuePoints.length; i++) {
+          labels.push(valuePoints[i].created_at);
+          data.push(valuePoints[i].price);
+        }
+
+        this.setState({
+          data: {
+            labels: labels,
+            datasets: [
+              {
+                fill: false,
+                borderColor: "#21ce99",
+                strokeColor: "#21ce99",
+                pointColor: "#21ce99",
+                pointRadius: 0,
+                pointStrokeColor: "#21ce99",
+                pointHighlightFill: "#21ce99",
+                data: data
+              }
+            ]
+          }
+        });
+      });
+    }
   }
 
   componentWillReceiveProps(nextProps) {
-    if (this.props.athleteId !== nextProps.athleteId) {
+    if (nextProps.graphOption) {
+      $.ajax({
+        url: `/api/athletes/${nextProps.athleteId}/tweet_score_snapshots`,
+        method: "GET"
+      }).then(res => {
+        let valuePoints = Object.values(res);
+        let labels = [];
+        let data = [];
+
+        for (let i = 0; i < valuePoints.length; i++) {
+          labels.push(valuePoints[i].created_at);
+          data.push(valuePoints[i].twitter_sentiment);
+        }
+
+        this.setState({
+          data: {
+            labels: labels,
+            datasets: [
+              {
+                fill: false,
+                borderColor: "#21ce99",
+                strokeColor: "#21ce99",
+                pointColor: "#21ce99",
+                pointRadius: 0,
+                pointStrokeColor: "#21ce99",
+                pointHighlightFill: "#21ce99",
+                data: data
+              }
+            ]
+          }
+        });
+      });
+    } else {
       $.ajax({
         url: `/api/athletes/${nextProps.athleteId}/athlete_price_snapshots`,
         method: "GET"
@@ -74,6 +140,73 @@ class AthleteChart extends React.Component {
           }
         });
       });
+    }
+    if (this.props.athleteId !== nextProps.athleteId) {
+      if (nextProps.graphOption) {
+        $.ajax({
+          url: `/api/athletes/${nextProps.athleteId}/tweet_score_snapshots`,
+          method: "GET"
+        }).then(res => {
+          let valuePoints = Object.values(res);
+          let labels = [];
+          let data = [];
+
+          for (let i = 0; i < valuePoints.length; i++) {
+            labels.push(valuePoints[i].created_at);
+            data.push(valuePoints[i].score);
+          }
+
+          this.setState({
+            data: {
+              labels: labels,
+              datasets: [
+                {
+                  fill: false,
+                  borderColor: "#21ce99",
+                  strokeColor: "#21ce99",
+                  pointColor: "#21ce99",
+                  pointRadius: 0,
+                  pointStrokeColor: "#21ce99",
+                  pointHighlightFill: "#21ce99",
+                  data: data
+                }
+              ]
+            }
+          });
+        });
+      } else {
+        $.ajax({
+          url: `/api/athletes/${nextProps.athleteId}/athlete_price_snapshots`,
+          method: "GET"
+        }).then(res => {
+          let valuePoints = Object.values(res);
+          let labels = [];
+          let data = [];
+
+          for (let i = 0; i < valuePoints.length; i++) {
+            labels.push(valuePoints[i].created_at);
+            data.push(valuePoints[i].price);
+          }
+
+          this.setState({
+            data: {
+              labels: labels,
+              datasets: [
+                {
+                  fill: false,
+                  borderColor: "#21ce99",
+                  strokeColor: "#21ce99",
+                  pointColor: "#21ce99",
+                  pointRadius: 0,
+                  pointStrokeColor: "#21ce99",
+                  pointHighlightFill: "#21ce99",
+                  data: data
+                }
+              ]
+            }
+          });
+        });
+      }
     }
   }
 

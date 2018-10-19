@@ -6,7 +6,8 @@ import AthleteChart from "./athlete_chart";
 const mapStateToProps = (props, ownProps) => {
   return {
     currentUser: ownProps.currentUser,
-    athleteId: ownProps.athleteId
+    athleteId: ownProps.athleteId,
+    graphOption: ownProps.graphOption
   };
 };
 

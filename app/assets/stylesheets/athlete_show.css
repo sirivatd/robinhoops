@@ -129,3 +129,39 @@
   background-color: #1ae9aa;
   cursor: pointer;
 }
+
+.athlete-show-graph-options {
+  display: flex;
+  margin-top: 0px;
+  margin-left: 70px;
+  font-family: "Noto Sans", sans-serif;
+  margin-bottom: 0px;
+}
+
+.athlete-show-graph-break-line {
+  position: absolute;
+  left: 120px;
+  width: 670px;
+  border: none;
+  background: #f2f2f2;
+  height: 1px;
+  margin-top: 0px;
+}
+
+.graph-option-sentiment {
+  margin-left: 20px;
+}
+
+.athlete-show-graph-options li:hover {
+  color: #1ae9aa;
+  cursor: pointer;
+}
+
+.option-active {
+  color: #1ae9aa;
+  border-bottom: 2px solid #1ae9aa;
+}
+
+.athlete-show-graph-options li {
+  padding-bottom: 20px;
+}

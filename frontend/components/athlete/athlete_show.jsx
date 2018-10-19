@@ -32,7 +32,8 @@ class AthleteShow extends React.Component {
       athlete: {},
       stock: {},
       watching: false,
-      watchlistItemId: -1
+      watchlistItemId: -1,
+      graphOption: false
     };
 
     this.findAthlete = this.findAthlete.bind(this);
@@ -40,6 +41,7 @@ class AthleteShow extends React.Component {
     this.handleClick = this.handleClick.bind(this);
     this.showMenu = this.showMenu.bind(this);
     this.onWatchlist = this.onWatchlist.bind(this);
+    this.graphOptionClicked = this.graphOptionClicked.bind(this);
   }
 
   onWatchlist(athleteId, watchlistItems) {
@@ -202,6 +204,25 @@ class AthleteShow extends React.Component {
     return athlete;
   }
 
+  graphOptionClicked(e) {
+    const currentOption = document.getElementsByClassName("option-active")[0];
+    if (currentOption.contains(e.target)) {
+      return;
+    }
+    const firstOption = document.getElementsByClassName(
+      "graph-option-price"
+    )[0];
+    const secondOption = document.getElementsByClassName(
+      "graph-option-sentiment"
+    )[0];
+    firstOption.classList.toggle("option-active");
+    secondOption.classList.toggle("option-active");
+
+    this.setState({
+      graphOption: !this.state.graphOption
+    });
+  }
+
   render() {
     const loader = () => (
       <span className="cssload-loader">
@@ -302,6 +323,7 @@ class AthleteShow extends React.Component {
           athleteId={parseInt(this.state.athleteId)}
           currentUser={this.state.currentUser}
           stocks={this.props.stocks}
+          graphOption={this.state.graphOption}
         />
       </div>
     );
@@ -406,6 +428,21 @@ class AthleteShow extends React.Component {
           ? athleteHeader()
           : loader()}
         {athleteGraph()}
+        <ul className="athlete-show-graph-options">
+          <li
+            onClick={this.graphOptionClicked}
+            className="graph-option-price option-active"
+          >
+            Price
+          </li>
+          <li
+            onClick={this.graphOptionClicked}
+            className="graph-option-sentiment"
+          >
+            Sentiment
+          </li>
+        </ul>
+        <hr className="athlete-show-graph-break-line" />
         {Object.values(this.props.athletes).length > 0
           ? athleteStats()
           : loader()}
