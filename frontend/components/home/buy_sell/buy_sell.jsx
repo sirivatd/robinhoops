@@ -26,11 +26,12 @@ class BuySell extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    if (Object.values(this.state.stock).length > 0) {
-      this.calculateOwnedShares();
-      this.findStock(nextProps.athleteId);
-    }
+    // if (Object.values(this.state.stock).length > 0) {
+    //   this.calculateOwnedShares();
+    //   this.findStock(nextProps.athleteId);
+    // }
     if (this.props.athleteId !== nextProps.athleteId) {
+      debugger;
       this.findStock(nextProps.athleteId);
     }
   }
@@ -55,8 +56,9 @@ class BuySell extends React.Component {
   }
 
   findStock(athleteId) {
+    // debugger;
     for (let i = 0; i < this.props.stocks.length; i++) {
-      if (this.props.stocks[i].athlete_id === this.props.athleteId) {
+      if (this.props.stocks[i].athlete_id === athleteId) {
         this.setState({
           stock: this.props.stocks[i]
         });
@@ -152,6 +154,7 @@ class BuySell extends React.Component {
   }
 
   render() {
+    // debugger
     const loader = () => (
       <span className="cssload-loader">
         <span className="cssload-loader-inner" />
