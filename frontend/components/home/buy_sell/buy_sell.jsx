@@ -31,7 +31,6 @@ class BuySell extends React.Component {
     //   this.findStock(nextProps.athleteId);
     // }
     if (this.props.athleteId !== nextProps.athleteId) {
-      debugger;
       this.findStock(nextProps.athleteId);
     }
   }
@@ -56,7 +55,6 @@ class BuySell extends React.Component {
   }
 
   findStock(athleteId) {
-    // debugger;
     for (let i = 0; i < this.props.stocks.length; i++) {
       if (this.props.stocks[i].athlete_id === athleteId) {
         this.setState({

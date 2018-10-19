@@ -93,6 +93,7 @@ class AthleteShow extends React.Component {
     this.setState({
       stocks: this.props.stocks
     });
+    debugger;
     this.findStock(this.state.athleteId);
 
     if (
@@ -104,14 +105,16 @@ class AthleteShow extends React.Component {
           nextProps.watchlistItems
         );
       }
-      this.setState({
-        athleteId: nextProps.match.params.athleteId,
-        previousStockValue: 0,
-        currentStockValue: 0,
-        previousDailyPercentGain: 0,
-        currentDailyPercentGain: 0
-      });
-      this.findStock(this.state.athleteId);
+      this.setState(
+        {
+          athleteId: nextProps.match.params.athleteId,
+          previousStockValue: 0,
+          currentStockValue: 0,
+          previousDailyPercentGain: 0,
+          currentDailyPercentGain: 0
+        },
+        () => this.findStock(this.state.athleteId)
+      );
 
       fetchAthleteTweets(nextProps.match.params.athleteId).then(res => {
         this.setState({
@@ -150,12 +153,14 @@ class AthleteShow extends React.Component {
   findStock(athleteId) {
     const stocks = this.props.stocks;
     let stock = {};
+    console.log(this.props.stocks);
     for (let i = 0; i < this.props.stocks.length; i++) {
-      if (this.props.stocks[i].athlete_id === parseInt(this.state.athleteId)) {
+      console.error("FIND STOCK IS RUNNING");
+      if (this.props.stocks[i].athlete_id === parseInt(athleteId)) {
         let totalGain =
           this.props.stocks[i].current_price -
           this.props.stocks[i].initial_price;
-
+        debugger;
         this.setState({
           previousStockValue: this.state.currentStockValue,
           currentStockValue: this.props.stocks[i].current_price,
