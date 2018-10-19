@@ -398,7 +398,7 @@ class AthleteShow extends React.Component {
               Developer
             </button>
 
-            <button className="login-logout-button">Leaderboard</button>
+            {/* <button className="login-logout-button">Leaderboard</button> */}
           </nav>
         </div>
 

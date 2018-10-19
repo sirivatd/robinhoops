@@ -304,9 +304,13 @@ class Home extends React.Component {
           />
           <SearchBar athletes={this.props.athletes} />
           <nav className="login-signup">
-            <button className="login-logout-button">Developer</button>
-
-            <button className="login-logout-button">Leaderboard</button>
+            <button
+              onClick={() => (window.location.href = "http://www.dsirivat.com")}
+              className="login-logout-button"
+            >
+              Developer
+            </button>
+            {/* <button className="login-logout-button">Leaderboard</button> */}
             <button
               id="account-button"
               className="login-logout-button"
