@@ -3,11 +3,11 @@
 [Live Site](http://www.robinhoops.io)
 
 
-Robinhoops is a Robinhood.com clone that allows users to invest in the top NBA athletes.
+Robinhoops is a Robinhood.com clone built with Rails and React/Redux that allows users to invest in the top NBA athletes.
 
 put image here
 
-Athletes' prices are updated every few seconds based on their stats and recent overall Twitter sentiment
+Athletes' prices are updated every few seconds based on their stats and recent overall Twitter sentiment.
 
 ## Twitter Sentiment
 
