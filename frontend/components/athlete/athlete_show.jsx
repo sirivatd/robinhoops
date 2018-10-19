@@ -391,7 +391,12 @@ class AthleteShow extends React.Component {
             >
               Home
             </button>
-            <button className="login-logout-button">Developer</button>
+            <button
+              onClick={() => (window.location.href = article.url)}
+              className="login-logout-button"
+            >
+              Developer
+            </button>
 
             <button className="login-logout-button">Leaderboard</button>
           </nav>
