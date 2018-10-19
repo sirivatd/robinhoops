@@ -10,7 +10,7 @@
   border-radius: 2px;
   text-align: center;
   padding: 0;
-  z-index: 9999;
+  z-index: 999;
   -ms-overflow-style: none;
 }
 
@@ -125,7 +125,7 @@
   height: 280px;
   position: fixed;
   top: 120px;
-  z-index: 99;
+  z-index: 9999;
   right: 40px;
   padding: 0px;
   text-align: left;
