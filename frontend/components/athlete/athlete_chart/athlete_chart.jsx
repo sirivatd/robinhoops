@@ -44,7 +44,7 @@ class AthleteChart extends React.Component {
   componentWillReceiveProps(nextProps) {
     if (this.props.athleteId !== nextProps.athleteId) {
       $.ajax({
-        url: `/api/athletes/${this.props.athleteId}/athlete_price_snapshots`,
+        url: `/api/athletes/${nextProps.athleteId}/athlete_price_snapshots`,
         method: "GET"
       }).then(res => {
         let valuePoints = Object.values(res);
