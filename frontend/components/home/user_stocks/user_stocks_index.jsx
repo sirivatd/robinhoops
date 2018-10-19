@@ -14,6 +14,8 @@ class UserStocksIndex extends React.Component {
     this.findAthlete = this.findAthlete.bind(this);
     this.findStock = this.findStock.bind(this);
     this.normalizeOrders = this.normalizeOrders.bind(this);
+    this.findAthleteFromStockId = this.findAthleteFromStockId.bind(this);
+    this.findStockFromId = this.findStockFromId.bind(this);
   }
 
   showMenu() {
@@ -22,6 +24,7 @@ class UserStocksIndex extends React.Component {
   }
 
   componentDidMount() {
+    debugger;
     document.addEventListener("mousedown", this.handleClick, false);
     document
       .getElementsByClassName("user-stocks-dropdown")[0]
@@ -122,6 +125,25 @@ class UserStocksIndex extends React.Component {
     }
   }
 
+  findStockFromId(id) {
+    for (let i = 0; i < this.props.stocks.length; i++) {
+      if (this.props.stocks[i].id === id) {
+        return this.props.stocks[i];
+      }
+    }
+    return {};
+  }
+
+  findAthleteFromStockId(id) {
+    for (let i = 0; i < this.props.athletes.length; i++) {
+      if (this.props.athletes[i].id === this.findStockFromId(id).athlete_id) {
+        debugger;
+        return this.props.athletes[i];
+      }
+    }
+    return {};
+  }
+
   render() {
     return (
       <div>
@@ -156,6 +178,15 @@ class UserStocksIndex extends React.Component {
           })}
           <h2 className="user-stocks-title">Watchlist</h2>
           <hr className="user-stocks-break-line" />
+          {this.props.watchlistItems.map(item => {
+            return (
+              <UserStocksItem
+                key={item.id}
+                athlete={this.findAthleteFromStockId(item.stock_id)}
+                stock={this.findStockFromId(item.stock_id)}
+              />
+            );
+          })}
         </ul>
       </div>
     );

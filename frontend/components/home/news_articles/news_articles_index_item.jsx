@@ -1,7 +1,6 @@
 import React from "react";
 
 const NewsArticlesIndexItem = ({ article }) => {
-  console.log(article);
   return (
     <div
       onClick={() => (window.location.href = article.url)}

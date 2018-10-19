@@ -17,9 +17,10 @@ const watchlistItemsReducer = (state = {}, action) => {
     case RECEIVE_WATCHLIST_ITEM:
       return merge({}, state, action.item);
     case REMOVE_WATCHLIST_ITEM:
-      return Object.assign({}, state, {
-        items: [...state.items.filter(item => item.id !== action.item.id)]
-      });
+      let newState = Object.assign({}, state);
+      delete newState[Object.values(action.item)[0].id];
+
+      return newState;
     default:
       return state;
   }
