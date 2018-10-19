@@ -11,7 +11,8 @@ class BuySell extends React.Component {
       numShares: "",
       estimatedCost: 0,
       ownedShares: 0,
-      orderType: true
+      orderType: true,
+      orders: {}
     };
     this.optionsClicked = this.optionsClicked.bind(this);
     this.findStock = this.findStock.bind(this);
@@ -23,6 +24,12 @@ class BuySell extends React.Component {
   componentDidMount() {
     this.props.fetchAllOrders();
     this.findStock(this.props.athleteId);
+    this.setState(
+      {
+        orders: this.props.orders
+      },
+      () => this.calculateOwnedShares()
+    );
   }
 
   componentWillReceiveProps(nextProps) {
@@ -32,6 +39,12 @@ class BuySell extends React.Component {
     // }
     if (this.props.athleteId !== nextProps.athleteId) {
       this.findStock(nextProps.athleteId);
+      this.setState(
+        {
+          stocks: nextProps.stocks
+        },
+        () => this.calculateOwnedShares() //   this.calculateOwnedShares();
+      );
     }
   }
 
@@ -39,12 +52,12 @@ class BuySell extends React.Component {
     let boughtShares = 0;
     let soldShares = 0;
 
-    for (let i = 0; i < this.props.orders.length; i++) {
-      if (parseInt(this.props.orders[i].stock_id) === this.state.stock.id) {
-        if (this.props.orders[i].order_type === "BUY") {
-          boughtShares += this.props.orders[i].num_share;
+    for (let i = 0; i < this.state.orders.length; i++) {
+      if (parseInt(this.state.orders[i].stock_id) === this.state.stock.id) {
+        if (this.state.orders[i].order_type === "BUY") {
+          boughtShares += this.state.orders[i].num_share;
         } else {
-          soldShares += this.props.orders[i].num_share;
+          soldShares += this.state.orders[i].num_share;
         }
       }
     }
