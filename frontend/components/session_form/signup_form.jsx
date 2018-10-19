@@ -117,7 +117,7 @@ class SignUpForm extends React.Component {
           <form onSubmit={this.handleSubmit} className="signup-form-box">
             <h1 className="signup-header">Make Your Money Move</h1>
             <h3 className="signup-description">
-              TradeBlitz lets you invest in athletes you love, commission-free.
+              Robinhoops lets you invest in athletes you love, commission-free.
             </h3>
             <div className="signup-form">
               <div className="name-inputs">

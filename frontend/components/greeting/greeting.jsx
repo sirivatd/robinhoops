@@ -64,7 +64,7 @@ const Greeting = ({ currentUser, logout, history }) => {
           <h1 className="hero-text animated fadeInUp delay-1s">Reimagined.</h1>
           <br />
           <h3 className="hero-description animated fadeInUp delay-2s">
-            TradeBlitz lets you invest in top athletes for free.
+            Robinhoops lets you invest in top athletes for free.
           </h3>
           <button
             onClick={() => history.push("/signup")}
@@ -122,7 +122,7 @@ const Greeting = ({ currentUser, logout, history }) => {
         <div className="design-content" id="design-content">
           <h2 className="design-text">No manual needed.</h2>
           <h3 className="design-description">
-            We've designed TradeBlitz from the ground up{" "}
+            We've designed Robinhoops from the ground up{" "}
           </h3>
           <br />
           <h3 className="design-description">
@@ -181,7 +181,7 @@ const Greeting = ({ currentUser, logout, history }) => {
           <br />
           <br />
           <h3 className="security-description">
-            TradeBlitz is a member of SPIC, which means securities in your
+            Robinhoops is a member of SPIC, which means securities in your
           </h3>
           <br />
           <h3 className="security-description">
