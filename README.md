@@ -58,16 +58,17 @@ Install node dependencies
 ```
 $ npm install
 ```
-
+https://newsapi.org/
 Start local rails server
 ```
 $ rails server
 ```
 
 ## Credits
+The following packages/libraries were used in the development of Robinhoops.io
 
-The following packages/frameworks were used in the development of Robinhoops.io
-Chart.js
-Sentimental gem
-News API
-NBA Players Stats API
+* [Chart.js](https://www.chartjs.org/)
+* [Sentimental gem](https://github.com/7compass/sentimental)
+* [News API](https://newsapi.org/)
+* [NBA Players Stats API](https://github.com/hlyford/nba-player-stats-api)
+
