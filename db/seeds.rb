@@ -14,6 +14,8 @@ Athlete.destroy_all
 Stock.destroy_all
 Order.destroy_all
 Tweet.destroy_all
+TweetScoreSnapshot.destroy_all
+UserPortSnapshot.destroy_all
 
 
 uri = URI("http://nba-players.herokuapp.com/players-stats/")
